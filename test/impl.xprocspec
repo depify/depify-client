@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.daisy.org/ns/xprocspec/xprocspec.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<x:description xmlns:x="http://www.daisy.org/ns/xprocspec"
+               xmlns:depify="https://github.com/xquery/depify"
+               xmlns:impl="https://github.com/xquery/depify/impl"
+               script="../src/client/xproc/depify-impl.xpl">
+
+    <x:scenario label="impl:install invoke">
+      <x:call step="impl:install">
+        <x:option name="package-name" select="'xquery.1.functx'"/>
+        <x:option name="package-version" select="'1.0'"/>
+        <x:input port="source">
+          <x:document type="file" href="data/depify.xml"/>
+        </x:input>        
+        <x:input port="package">
+          <x:document type="inline">
+             <test/>
+          </x:document>
+        </x:input>
+      </x:call>
+    <x:context label="the results">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect type="compare" label="Check correct contents">
+      <x:document type="inline">
+         <depify xmlns="https://github.com/xquery/depify" ts="current datetime"><test xmlns=""/></depify>
+      </x:document>
+    </x:expect>
+  </x:scenario>
+
+    <x:scenario label="impl:install functx package">
+      <x:call step="impl:install">
+        <x:option name="package-name" select="'xquery.1.functx'"/>
+        <x:option name="package-version" select="'1.0'"/>
+        <x:input port="source">
+          <x:document type="file" href="data/depify.xml"/>
+        </x:input>        
+        <x:input port="package">
+          <x:document type="inline">
+  <dep xmlns="https://github.com/xquery/depify" path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"><title>FunctX library</title><desc>The FunctX function library is a set of useful functions on
+  XML documents and data. It comes in two flavors: XQuery 1.0 and
+  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
+  function definitions as consistent as possible across the two
+  languages. The source code for the functions is available under the
+  GNU-LGPL license. However, the longer descriptions of the functions
+  and the design of the FunctX Web sites is copyrighted and may only
+  be used with permission.This site also includes descriptions and
+  examples of the XQuery and XPath built-in functions, taken with
+  permission from the book XQuery (2007, O'Reilly Media).We hope you
+  find these functions useful and that you will take the time to
+  provide feedback and/or contribute your own functions.
+  </desc><license type="GNU-LGPL">
+  <uri>?</uri>
+  </license><repo type="?">
+  <uri>?</uri>
+  </repo><author id="pwalmsley">Priscilla Walmsley</author><website>http://www.xqueryfunctions.com/</website><xquery version="1.0">
+  <prefix>functx</prefix>
+  <namespace>http://www.functx.com</namespace>
+  <uri>functx.xq</uri>
+  </xquery></dep>
+          </x:document>
+        </x:input>
+      </x:call>
+    <x:context label="the results">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect type="compare" label="Check correct contents">
+      <x:document type="file" href="data/depify-functx.xml"/>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="impl:remove functx package">
+    <x:call step="impl:remove">
+      <x:option name="package-name" select="'xquery.1.functx'"/>
+      <x:option name="package-version" select="'1.0'"/>
+      <x:input port="source">
+        <x:document type="file" href="data/depify-functx.xml"/>
+      </x:input>        
+    </x:call>
+    <x:context label="the results">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect type="compare" label="Check correct contents">
+      <x:document type="file" href="data/depify-empty.xml"/>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="impl:list-installed all packages">
+    <x:call step="impl:list-installed">
+      <x:option name="package-name" select="''"/>
+      <x:option name="package-version" select="''"/>
+      <x:input port="source">
+        <x:document type="file" href="data/depify-functx.xml"/>
+      </x:input>        
+    </x:call>
+    <x:context label="the results">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect type="compare" label="Check correct contents">
+      <x:document type="file" href="data/depify-functx.xml"/>
+    </x:expect>
+  </x:scenario>
+ 
+  <x:scenario label="impl:list-installed single package">
+    <x:call step="impl:list-installed">
+      <x:option name="package-name" select="'xquery.1.functx'"/>
+      <x:option name="package-version" select="''"/>
+      <x:input port="source">
+        <x:document type="file" href="data/depify-functx.xml"/>
+      </x:input>        
+    </x:call>
+    <x:context label="the results">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect type="compare" label="Check correct contents">
+      <x:document type="file" href="data/depify-functx.xml"/>
+    </x:expect>
+  </x:scenario>
+   
+  <x:scenario label="impl:list-repo packages">
+    <x:call step="impl:list-repo">
+      <x:option name="package-name" select="''"/>
+      <x:option name="package-version" select="''"/>
+      <x:input port="source">
+        <x:document type="file" href="data/depify-functx.xml"/>
+      </x:input>        
+    </x:call>
+    <x:context label="the results">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect type="compare" label="Check correct contents">
+      <x:document type="file" href="data/package.xml"/>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="impl:get-package-from-github-repo test">
+    <x:call step="impl:get-package-from-github-repo">
+      <x:option name="github-download-uri" select="'https://github.com/koppor/xmltree.git'"/>
+      <x:option name="app_dir" select="'/tmp'"/>
+      <x:option name="app_dir_lib" select="'lib'"/>
+    </x:call>
+    <x:context label="the results">
+      <x:document type="port" port="result"/>
+    </x:context>
+  </x:scenario>
+
+  <x:scenario label="impl:get-package-from-depify-repo test">
+    <x:call step="impl:get-package-from-depify-repo">
+      <x:option name="depify-download-uri" select="'http://depify.com/downloads/js.ecmascript.prettify-1.0.zip'"/>
+      <x:option name="app_dir" select="'/tmp'"/>
+      <x:option name="app_dir_lib" select="'lib'"/>
+    </x:call>
+    <x:context label="the results">
+      <x:document type="port" port="result"/>
+    </x:context>
+  </x:scenario>  
+
+  
+    -- Local Variables:
+    -- compile-command: "/usr/local/bin/calabash -Xtransparent-json -Xjson-flavor=marklogic -i source=impl.xprocspec -o result=target/impl.xml -o html=target/impl.html -o junit=target/impl-junit.xml xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl"
+    -- End:    
+    
+</x:description>
+

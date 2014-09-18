@@ -1,0 +1,107 @@
+<package path="/packages/master/xquery/1/functx/1.0/" 
+         name="xquery.1.functx" 
+         version="1.0"
+         package-date=""
+         publish="true|false"
+         xmlns="https://github.com/xquery/depx">
+    <!-- assist depx.org search //-->
+    <keyword></keyword>
+    <keyword></keyword>
+    
+    <title>Title used by depx.org</title>
+    <desc>
+       Description used by depx.org
+    </desc>
+    <!-- primary readme URL//-->
+    <website>
+        <uri/>
+    </website>
+    
+    <!-- scm to pull project from //-->
+    <repo type="github|google|sourceforge|svn|git">
+        <uri/>
+    </repo>
+    
+        
+    <!-- license(s) //-->
+    <license type="GNU-LGPL">
+        <uri/>
+    </license>
+    <license type="GNU-LGPL">
+        <uri/>
+    </license>            
+    
+    <!-- author / contributor information //-->
+    <author depx-user-id="xquery">
+        <uri/> <!-- to AUTHORS file //-->
+        <name>Jim Fuller</name>
+        <email>jim.fuller@webcomposite.com</email>
+        <website>http://www.webcomposite.com/</website>
+    </author>
+    
+    <!-- processor specific information //-->
+    <processor type="xquery|xproc|xslt|css|js">
+        <vendor>
+            <name></name>
+            <requires></requires>
+        </vendor>        
+    </processor>
+
+    <!-- install these dependencies as well //-->
+    <dep type="depx|*">
+        <package name="" version=""/>
+        <uri></uri>
+    </dep>    
+    <dep type="depx|*">
+        <package name="" version=""/>
+        <uri></uri>
+    </dep>
+    
+    <!-- primary entry point(s) into your module //-->
+    <xquery>
+        <prefix>functx</prefix>
+        <namespace>http://www.functx.com</namespace>
+        <uri>functx/functx.xq</uri>
+    </xquery>
+    <xslt>
+        <uri>functx/functx.xsl</uri>
+    </xslt>
+    <xproc>
+        <prefix>functx</prefix>
+        <namespace>http://www.functx.com</namespace>
+        <uri></uri>
+        <stepname></stepname>
+    </xproc>
+    <css>
+        <uri></uri>
+    </css>
+    <js>
+        <uri></uri>
+    </js>
+    <app>
+        <uri>index.xqy</uri>
+    </app>
+    <shell os="linux osx">
+        <uri>test-runner.sh</uri>
+    </shell>
+
+    
+    <!--ancillary project information //-->
+    <project>
+        <website></website>
+        <bug>
+            <email></email>
+            <uri></uri>
+        </bug>
+        <docs>
+            <uri></uri>
+        </docs>
+        <samples>
+            <uri>samples</uri>
+        </samples>
+        <tests>
+            <uri>test</uri>
+        </tests>
+    </project>
+
+</package>   

@@ -1,0 +1,17 @@
+<depify xmlns="https://github.com/xquery/depify" ts="current datetime">
+  <dep name="xquery.1.functx" version="1.0">
+    <title>test1 FunctX library</title>
+    <desc>functx</desc>
+    <repo type="?">
+      <uri>?</uri>
+    </repo>
+  </dep>
+  <dep name="js.ecmascript.prettify" version="1.0">
+    <title>prettify </title>
+    <desc>test</desc>
+    <repo type="?">
+      <uri>?</uri>
+    </repo>
+  </dep>
+</depify>
+

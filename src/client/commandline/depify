@@ -1,0 +1,124 @@
+#!/bin/bash
+
+# Copyright (c) 2011-2014 Jim Fuller  
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+# http://www.apache.org/licenses/LICENSE-2.0
+  
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# depx 0.1, app dep management
+#
+# see https://github.com/xquery/depify
+# see http://depify.com
+#
+# simple: depify command package version"
+#
+# advanced: depify [-c command (install|remove|list|refresh|init|register|search) ] [-p package name] [-v package version] [-r init repo uri] [-a application directory] 
+#
+# ex. depify install functional.xq 1.0
+#
+# ex. depify init myNewPackage 1.0 https://github.com/xquery/rxq
+#
+# ex. depify register myNewPackage 1.0 https://github.com/xquery/rxq
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
+DEPX_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+CURRENTDIR=`pwd`
+
+#default values
+#####################################################################
+COMMAND=$1 
+PACKAGE=$2
+VERSION=$3
+INITREPO=$4
+APP_DIR=$CURRENTDIR
+LIB_DIR=/lib/
+#####################################################################
+
+function usage(){
+    echo -e $'\e[34m'"depify 1.0, app dep management"
+    echo "Copyright (c) 2014 Jim Fuller"
+    echo "see https://github.com/xquery/depify"
+    echo -e $'\e[97m'
+    echo "see http://depify.com to search/review packages for installation"
+    echo ""
+    echo "advanced: depify [-c command (install|remove|list|refresh|init|register|search) ] [-p package name] [-v package version] [-r init repo uri] [-a application directory] "
+    echo ""
+    echo "simple: depify command package version"
+    echo ""
+    echo "ex. depify install functional.xq 1.0"
+    echo ""
+    echo "ex. depify init myNewPackage 1.0 https://github.com/xquery/rxq"
+    echo ""
+    echo "ex. depify register mypackage 1.0 https://github.com/myuser/myrepo"
+    exit 1
+}
+
+while getopts 'c:p:v:a::l:h' OPTION
+do
+case $OPTION in
+    c) COMMAND="$OPTARG";;
+    p) PACKAGE="$OPTARG";;
+    v) VERSION="$OPTARG";;
+    r) INITREPO="$OPTARG";;
+    a) APP_DIR="$OPTARG";;
+    a) LIB_DIR="$OPTARG";;
+    *)
+      usage
+      exit 1;
+  esac
+done
+
+if [ "$1" == "help" ]; then
+    usage
+    exit 1;
+fi
+
+echo $'\e[34m'"depify 1.0, app dep management"
+echo "Copyright (c) 2014 Jim Fuller"
+echo "see https://github.com/xquery/depify"
+echo $'\e[97m'
+echo $'\e[34m'"depify command:"$'\e[97m' $COMMAND
+echo $'\e[34m'"package-name:$"$'\e[97m' $PACKAGE
+echo $'\e[34m'"package-version:"$'\e[97m' $VERSION
+if [ $COMMAND == "init" ]; then
+echo $'\e[34m'"init-repo-uri:"$'\e[97m' $INITREPO
+fi
+echo $'\e[34m'"app dir (current directory):"$'\e[97m' $APP_DIR
+echo $'\e[34m'"lib dir (where deps are installed):"$'\e[97m' $LIB_DIR
+echo ""
+echo $'\e[34m'"---------------------------------"
+echo "start depifying"
+echo "---------------------------------"$'\e[97m'
+echo ""
+
+# create lib directory if it does not exist
+if [ ! -d ".$LIB_DIR" ]; then
+mkdir .$LIB_DIR
+fi
+
+# create empty depify.xml if it does not exist (run depify init)
+if  [ ! -e "$CURRENTDIR/depify.xml" ]; then
+ # run xproc pipeline
+ echo '<depify xmlns="https://github.com/xquery/depify"/>' > $CURRENTDIR/depify.xml
+
+ if [ $COMMAND != "init" ]; then
+ java -jar $DEPX_DIR/deps/xmlcalabash/calabash.jar -isource=$CURRENTDIR/depify.xml -oresult=- $DEPX_DIR/libs/xproc/depify.xpl command="init" app_dir=$APP_DIR app_dir_lib=$LIB_DIR
+fi
+fi
+# run xproc pipeline
+echo -e `java -jar $DEPX_DIR/deps/xmlcalabash/calabash.jar -isource=$CURRENTDIR/depify.xml -oresult=- $DEPX_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR`    
+
+echo ""
+echo $'\e[34m'"---------------------------------"
+echo "done depifying"
+echo "---------------------------------"$'\e[97m'

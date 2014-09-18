@@ -1,0 +1,23 @@
+<depify path="/packages/master/xquery/3/functionalxq/1.0/"
+     name="functional.xq"
+     version="1.0"
+     repo-uri="git://github.com/jpcs/functional.xq.git"
+     dep-lib="lib/">
+  <title>functional.xq</title>
+  <desc>A library of useful functionality for working with XQuery 3.0 higher order functions.
+  Includes a number of functions from the standard Haskell prelude, as well as functions to
+  perform currying, function composition, and Y-combination.</desc>
+  <license type="APLV2">
+    <uri>https://github.com/jpcs/functional.xq/blob/master/LICENSE</uri>
+  </license>
+  <repo type="git">
+    <uri>git://github.com/jpcs/functional.xq.git</uri>
+  </repo>
+  <author github="jpcs">John Snelson</author>
+  <website>https://github.com/jpcs/functional.xq/</website>
+  <xquery version="3.0">
+    <prefix>func</prefix>
+    <namespace>http://snelson.org.uk/functions/functional</namespace>
+    <uri>functional.xq</uri>
+  </xquery>
+</depify>

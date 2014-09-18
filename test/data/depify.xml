@@ -1,0 +1,4 @@
+<depify:depify xmlns:depify="https://github.com/xquery/depify"
+               xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils"
+               xmlns:pxp="http://exproc.org/proposed/steps"
+               ts="current datetime"/>

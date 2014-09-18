@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.daisy.org/ns/xprocspec/xprocspec.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<x:description xmlns:x="http://www.daisy.org/ns/xprocspec"
+               xmlns:depify="https://github.com/xquery/depify"
+               script="../src/client/xproc/depify.xpl">
+
+    <x:scenario label="install package">
+        <x:call step="depify:depify">
+            <x:option name="command" select="'install'"/>
+            <x:option name="package" select="'xquery.1.functx'"/>
+            <x:option name="version" select="'1.0'"/>
+            <x:option name="app_dir" select="'.'"/>
+            <x:option name="app_dir_lib" select="'lib'"/>
+            <x:input port="source">
+                <x:document type="inline">
+                  <test/>
+                </x:document>
+            </x:input>
+        </x:call>        
+        <x:context label="The output">
+            <x:document type="port" port="result"/>
+        </x:context>
+        <x:expect type="xpath"
+                  label="The package name should be xquery.1.functx'"
+                  test="//depify:dep/@name"
+                  equals="'xquery.1.functx'"/>
+      </x:scenario>
+
+    <x:scenario label="repeat install package with defaults">
+        <x:call step="depify:depify">
+            <x:option name="command" select="'install'"/>
+            <x:option name="package" select="'xquery.1.functx'"/>
+            <x:option name="version" select="'1.0'"/>
+            <x:input port="source">
+              <x:document type="file" href="data/depify.xml"/>
+            </x:input>
+        </x:call>        
+        <x:context label="The output">
+            <x:document type="port" port="result"/>
+        </x:context>        
+        <x:expect type="xpath"
+                  label="The package name should be xquery.1.functx'"
+                  test="//depify:dep/@name"
+                  equals="'xquery.1.functx'"/>
+    </x:scenario>
+    
+    <x:scenario label="remove package">
+        <x:call step="depify:depify">
+            <x:option name="command" select="'remove'"/>
+            <x:option name="package" select="'xquery.1.functx'"/>
+            <x:option name="version" select="'1.0'"/>
+            <x:option name="app_dir" select="'.'"/>
+            <x:option name="app_dir_lib" select="'lib'"/>
+            <x:input port="source">
+              <x:document type="file" href="data/depify-functx.xml"/>
+            </x:input>
+        </x:call>     
+        <x:context label="The output">
+            <x:document type="port" port="result"/>
+        </x:context>        
+        <x:expect type="xpath"
+                  label="The package xquery.1.functx' should not exist"
+                  test="exists(//depify:dep[@name eq 'xquery.1.functx'])"
+                  equals="false()"/>
+    </x:scenario>   
+
+    <x:scenario label="list installed packages">
+        <x:call step="depify:depify">
+            <x:option name="command" select="'list'"/>
+            <x:option name="app_dir" select="'.'"/>
+            <x:option name="app_dir_lib" select="'lib'"/>
+            <x:input port="source">
+              <x:document type="file" href="data/depify-functx.xml"/>
+            </x:input>
+        </x:call>        
+        <x:context label="The output">
+            <x:document type="port" port="result"/>
+        </x:context>        
+        <x:expect type="xpath"
+                  label="The package xquery.1.functx' should not exist"
+                  test="exists(//depify:dep[@name eq 'xquery.1.functx'])"
+                  equals="true()"/>
+    </x:scenario>
+
+    <x:scenario label="package info">
+      <x:call step="depify:depify">
+        <x:option name="command" select="'info'"/>
+        <x:option name="package" select="'js.ecmascript.qunit'"/>
+        <x:option name="version" select="'1.0'"/>
+        <x:option name="app_dir" select="'.'"/>
+        <x:option name="app_dir_lib" select="'lib'"/>
+        <x:input port="source">
+          <x:document type="file" href="data/depify-functx.xml"/>
+        </x:input>
+      </x:call>        
+      <x:context label="The output">
+        <x:document type="port" port="result"/>
+      </x:context>        
+      <x:expect type="xpath"
+                label="The package js.ecmascript.qunit should be present"
+                test="exists(//depify:dep[@name eq 'js.ecmascript.qunit'])"
+                equals="true()"/>
+    </x:scenario>
+
+    <x:scenario label="install packages">
+      <x:call step="depify:depify">
+        <x:option name="command" select="'install'"/>
+        <x:option name="package" select="''"/>
+        <x:option name="version" select="''"/>
+        <x:option name="app_dir" select="'/tmp'"/>
+        <x:option name="app_dir_lib" select="'lib'"/>
+        <x:input port="source">
+          <x:document type="file" href="data/depify-install.xml"/>
+        </x:input>
+      </x:call>        
+      <x:context label="The output">
+        <x:document type="port" port="result"/>
+      </x:context>        
+    <!--x:expect type="compare" label="Check correct contents">
+      <x:document type="inline">
+        <depify xmlns="https://github.com/xquery/depify" ts="current datetime">
+  <dep name="xquery.1.functx" version="1.0">
+    <title>FunctX library</title>
+    <desc>test</desc>
+    <repo type="?">
+      <uri>?</uri>
+    </repo>
+  </dep>
+</depify>
+      </x:document>
+    </x:expect-->
+    </x:scenario>
+    
+     -- Local Variables:
+    -- compile-command: "/usr/local/bin/calabash  -i source=test.xprocspec -o result=target/test.xml -o html=target/test.html -o junit=target/test-junit.xml xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl"
+    -- End:    
+    
+</x:description>
+

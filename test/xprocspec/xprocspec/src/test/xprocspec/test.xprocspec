@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.daisy.org/ns/xprocspec/xprocspec.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<x:description xmlns:x="http://www.daisy.org/ns/xprocspec" script="../../main/resources/content/xml/xproc/xprocspec.xpl">
+
+    <x:scenario label="the description element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+            <x:input port="source">
+                <x:document type="file" href="tests/description-1.xprocspec"/>
+            </x:input>
+        </x:call>
+        <x:context label="the junit output port">
+            <x:document type="port" port="junit"/>
+        </x:context>
+        <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        <x:expect label="one of the tests should be pending" type="xpath" test="sum(/*/testsuite/number(@skipped))=1"/>
+    </x:scenario>
+
+
+    <x:scenario label="the import element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+        </x:call>
+
+        <x:scenario label="- two imports">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/import-1.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+
+        <x:scenario label="- one import with one import">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/import-2.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+
+        <x:scenario label="- circular imports">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/import-3.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+    </x:scenario>
+
+
+    <x:scenario label="the scenario element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+        </x:call>
+
+        <x:scenario label="- with pending attribute">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/scenario-1.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+            <x:expect label="there should be a skipped test" type="xpath" test="/*/*/@skipped='1'"/>
+        </x:scenario>
+
+        <x:scenario label="- with two child scenarios, one of which has another child scenario">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/scenario-2.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+    </x:scenario>
+
+
+    <x:scenario label="the call element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+        </x:call>
+
+        <x:scenario label="- inherit from call elements in ancestor scenarios">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/call-1.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+
+        <x:scenario label="- step attribute pointing to step declared in an XProc library">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/call-2.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+
+        <x:scenario label="- two different scenarios testing different steps in the same library">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/call-3.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+    </x:scenario>
+
+
+    <x:scenario label="the input element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+        </x:call>
+
+        <x:scenario label="- empty sequence">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/input-1.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+
+        <x:scenario label="- sequence of two documents">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/input-2.xprocspec"/>
+                </x:input>
+            </x:call>
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+    </x:scenario>
+
+
+    <x:scenario label="the option element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+            <x:input port="source">
+                <x:document type="file" href="tests/option-1.xprocspec"/>
+            </x:input>
+        </x:call>
+
+        <x:context label="the junit output port">
+            <x:document type="port" port="junit"/>
+        </x:context>
+        <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+    </x:scenario>
+
+    <x:scenario label="the param element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+            <x:input port="source">
+                <x:document type="file" href="tests/param-1.xprocspec"/>
+            </x:input>
+        </x:call>
+
+        <x:context label="the junit output port">
+            <x:document type="port" port="junit"/>
+        </x:context>
+        <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+    </x:scenario>
+
+
+    <x:scenario label="the context element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+            <x:input port="source">
+                <x:document type="file" href="tests/context-1.xprocspec"/>
+            </x:input>
+        </x:call>
+
+        <x:context label="the junit output port">
+            <x:document type="port" port="junit"/>
+        </x:context>
+        <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+    </x:scenario>
+
+
+    <x:scenario label="the expect element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+            <x:input port="source">
+                <x:document type="file" href="tests/expect-1.xprocspec"/>
+            </x:input>
+        </x:call>
+
+        <x:context label="the junit output port">
+            <x:document type="port" port="junit"/>
+        </x:context>
+        <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+    </x:scenario>
+
+
+    <x:scenario label="the document element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+        </x:call>
+
+        <x:scenario label="- all the different types except 'errors'">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/document-1.xprocspec"/>
+                </x:input>
+            </x:call>
+
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+
+        <x:scenario label="- the 'errors' type">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/document-2.xprocspec"/>
+                </x:input>
+            </x:call>
+
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+    </x:scenario>
+
+
+    <x:scenario label="the pending element">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+            <x:input port="source">
+                <x:document type="file" href="tests/pending-1.xprocspec"/>
+            </x:input>
+        </x:call>
+
+        <x:context label="the junit output port">
+            <x:document type="port" port="junit"/>
+        </x:context>
+        <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        <x:expect label="one of the test cases should be successful ('the step should execute successfully')" type="xpath" test="count(/testsuites/testsuite/testcase[@status='SUCCESS'])" equals="1"/>
+        <x:expect label="other than the 'execute successfully' test, all tests should be skipped" type="xpath" test="sum(/testsuites/testsuite/number(@skipped))" equals="/testsuites/number(@tests) - 1"/>
+    </x:scenario>
+
+
+    <x:scenario label="regression tests">
+        <x:call step="x:xprocspec">
+            <x:option name="temp-dir" select="$temp-dir"/>
+        </x:call>
+
+        <x:scenario label="- on elements in the xproc namespace: allow attributes from other namespaces">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/regression-tests/regression-1_attributes-from-foreign-namespaces-on-xproc-elements.xprocspec"/>
+                </x:input>
+            </x:call>
+            
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+
+        <x:scenario label="- attributes on x:expect/x:document[@type='inline'] should not be deleted">
+            <x:call>
+                <x:input port="source">
+                    <x:document type="file" href="tests/regression-tests/regression-1_attributes-on-inline-document-should-not-be-deleted.xprocspec"/>
+                </x:input>
+            </x:call>
+            
+            <x:context label="the junit output port">
+                <x:document type="port" port="junit"/>
+            </x:context>
+            <x:expect label="there should be at least one test, and none of the tests should fail" type="xpath" test="not(/*/@tests='0') and /*/@failures='0' and /*/@errors='0'"/>
+        </x:scenario>
+    </x:scenario>
+
+</x:description>

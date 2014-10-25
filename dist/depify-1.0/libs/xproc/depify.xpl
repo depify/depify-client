@@ -34,7 +34,7 @@ limitations under the License.
   <p:input port="source" primary="true"/>
 
   <p:input port="packages">
-    <p:document href="http://depify.com/packages/package.xml"/>
+    <p:document href="http://depify.com/packages/packages.xml"/>
   </p:input>
 
   <p:output port="result" sequence="true"/>
@@ -42,17 +42,18 @@ limitations under the License.
   <p:import href="extension-library.xml"/>
   <p:import href="depify-impl.xpl"/>
 
-  <p:option name="depify-repo-download-url" select="'http://depify.com/packages/package.xml'"/>
+  <p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/>
   <p:option name="command" select="'list'"/>
   <p:option name="package" select="''"/>
-  <p:option name="version" select="'1.0'"/>
+  <p:option name="version" select="'latest'"/>
   <p:option name="init-repo-uri" select="''"/>
   <p:option name="app_dir" select="'.'"/>
   <p:option name="app_dir_lib" select="'lib'"/>
 
   <p:in-scope-names name="vars"/>
 
-  <!--p:try-->
+  <p:try>
+    
   <p:group>
   <p:filter name="get-package">
     <p:with-option name="select" select="concat('/depify:depify/depify:dep[@name eq &quot;',$package,'&quot;]')"/>
@@ -60,9 +61,10 @@ limitations under the License.
       <p:pipe step="main" port="packages"/>
     </p:input>
   </p:filter>
+  
 
   <p:choose name="command-step">
-    <p:when test="$command eq 'init'">
+    <p:when test="$command eq 'init' and not(doc-available( concat($app_dir,'.depify') ))">
       <p:output port="result"/>
       <cx:message>
         <p:with-option name="message" select="'.depify.xml does not exist, creating now'"/>
@@ -102,7 +104,22 @@ limitations under the License.
         <p:variable name="repo-uri" select="(/depify:dep/@repo-uri/data(.),/depify:dep/depify:repo/depify:uri/data(.))[1]">
           <p:pipe step="get-package" port="result"/>
         </p:variable>
-        <p:when test="starts-with($repo-uri,'https://github.com/')">
+        <!-- download zip file //-->
+        <p:when test="contains($repo-uri,'.zip')">
+          <p:variable name="package-repo-uri" select="$repo-uri">
+            <p:pipe step="get-package" port="result"/>
+          </p:variable>
+          <cx:message>
+            <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
+          </cx:message>
+          <impl:get-package-from-github-repo>
+            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
+            <p:with-option name="app_dir" select="$app_dir"/>
+            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+          </impl:get-package-from-github-repo>
+        </p:when>
+        <!-- download from github release //-->
+        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version eq 'latest' or empty($version))">
           <p:variable name="package-repo-uri" select="concat(substring-before($repo-uri,'.git'),'/archive/master.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
@@ -115,21 +132,34 @@ limitations under the License.
             <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
           </impl:get-package-from-github-repo>
         </p:when>
-        <p:when test="starts-with($repo-uri,'git://')">
-          <p:variable name="package-repo-uri" select="concat('https://',substring-after(substring-before($repo-uri,'.git'),'git://'),'/archive/master.zip')">
+        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version ne 'latest' or not(empty($version)))">
+          <p:variable name="package-repo-uri" select="concat(substring-before($repo-uri,'.git'),'/archive/v',$version,'.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
           <cx:message>
             <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
-          </cx:message>      
+          </cx:message>
+          <impl:get-package-from-github-repo>
+            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
+            <p:with-option name="app_dir" select="$app_dir"/>
+            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+          </impl:get-package-from-github-repo>
+        </p:when>        
+        <p:when test="starts-with($repo-uri,'git://github.com/') and ($version eq 'latest' or empty($version))">
+          <p:variable name="package-repo-uri" select="concat('https:',substring-after(substring-before($repo-uri,'.git'),'git:'),'/archive/master.zip')">
+            <p:pipe step="get-package" port="result"/>
+          </p:variable>
+          <cx:message>
+            <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
+          </cx:message>
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
             <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
           </impl:get-package-from-github-repo>
         </p:when>
-        <p:when test="ends-with($repo-uri,'.zip')">
-          <p:variable name="package-repo-uri" select="$repo-uri">
+        <p:when test="starts-with($repo-uri,'git://github.com/') and ($version ne 'latest' or not(empty($version)))">
+          <p:variable name="package-repo-uri" select="concat('https:',substring-after(substring-before($repo-uri,'.git'),'git'),'/archive/v',$version,'.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
           <cx:message>
@@ -173,7 +203,7 @@ limitations under the License.
               <p:pipe step="get-package" port="result"/>
             </p:iteration-source>
             <depify:depify>
-                <p:with-option name="depify-repo-download-url" select="'http://depify.com/packages/package.xml'"/>
+                <p:with-option name="depify-repo-download-url" select="$depify-repo-download-url"/>
                 <p:with-option name="command" select="'install'"/>
                 <p:with-option name="package" select="/depify:dep/@name"/>
                 <p:with-option name="version" select="/depify:dep/@version"/>
@@ -330,15 +360,15 @@ search depify packages: <xsl:value-of select="$search"/><xsl:text>
   </p:choose>
   </p:group>
 
-  <!--p:catch>
+  <p:catch>
     <p:identity>
       <p:input port="source">
         <p:inline>
-          <error>DEPify package not found.</error>
+          <error>DEPify {$package} package not found.</error>
         </p:inline>
       </p:input>
     </p:identity>
   </p:catch>  
-</p:try-->
+</p:try>
 
 </p:declare-step>

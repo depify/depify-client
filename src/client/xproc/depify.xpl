@@ -34,7 +34,7 @@ limitations under the License.
   <p:input port="source" primary="true"/>
 
   <p:input port="packages">
-    <p:document href="http://depify.com/packages/package.xml"/>
+    <p:document href="http://depify.com/packages/packages.xml"/>
   </p:input>
 
   <p:output port="result" sequence="true"/>
@@ -42,7 +42,7 @@ limitations under the License.
   <p:import href="extension-library.xml"/>
   <p:import href="depify-impl.xpl"/>
 
-  <p:option name="depify-repo-download-url" select="'http://depify.com/packages/package.xml'"/>
+  <p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/>
   <p:option name="command" select="'list'"/>
   <p:option name="package" select="''"/>
   <p:option name="version" select="'1.0'"/>
@@ -173,7 +173,7 @@ limitations under the License.
               <p:pipe step="get-package" port="result"/>
             </p:iteration-source>
             <depify:depify>
-                <p:with-option name="depify-repo-download-url" select="'http://depify.com/packages/package.xml'"/>
+                <p:with-option name="depify-repo-download-url" select="$depify-repo-download-url"/>
                 <p:with-option name="command" select="'install'"/>
                 <p:with-option name="package" select="/depify:dep/@name"/>
                 <p:with-option name="version" select="/depify:dep/@version"/>

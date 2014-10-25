@@ -3,7 +3,7 @@
 <x:description xmlns:x="http://www.daisy.org/ns/xprocspec"
                xmlns:depify="https://github.com/xquery/depify"
                xmlns:impl="https://github.com/xquery/depify/impl"
-               script="../src/client/xproc/depify-impl.xpl">
+               script="../src/xproc/depify-impl.xpl">
 
     <x:scenario label="impl:install invoke">
       <x:call step="impl:install">

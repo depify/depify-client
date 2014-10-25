@@ -16,6 +16,9 @@
                   <test/>
                 </x:document>
             </x:input>
+            <x:input port="packages">
+              <x:document href="packages.xml"/>
+            </x:input>
         </x:call>        
         <x:context label="The output">
             <x:document type="port" port="result"/>
@@ -33,6 +36,9 @@
             <x:option name="version" select="'1.0'"/>
             <x:input port="source">
               <x:document type="file" href="data/depify.xml"/>
+            </x:input>
+            <x:input port="packages">
+              <x:document href="packages.xml"/>
             </x:input>
         </x:call>        
         <x:context label="The output">
@@ -54,6 +60,9 @@
             <x:input port="source">
               <x:document type="file" href="data/depify-functx.xml"/>
             </x:input>
+            <x:input port="packages">
+              <x:document href="packages.xml"/>
+            </x:input>
         </x:call>     
         <x:context label="The output">
             <x:document type="port" port="result"/>
@@ -71,6 +80,9 @@
             <x:option name="app_dir_lib" select="'lib'"/>
             <x:input port="source">
               <x:document type="file" href="data/depify-functx.xml"/>
+            </x:input>
+            <x:input port="packages">
+              <x:document href="packages.xml"/>
             </x:input>
         </x:call>        
         <x:context label="The output">
@@ -92,6 +104,9 @@
         <x:input port="source">
           <x:document type="file" href="data/depify-functx.xml"/>
         </x:input>
+        <x:input port="packages">
+          <x:document href="packages.xml"/>
+        </x:input>
       </x:call>        
       <x:context label="The output">
         <x:document type="port" port="result"/>
@@ -111,6 +126,9 @@
         <x:option name="app_dir_lib" select="'lib'"/>
         <x:input port="source">
           <x:document type="file" href="data/depify-install.xml"/>
+        </x:input>
+        <x:input port="packages">
+          <x:document href="packages.xml"/>
         </x:input>
       </x:call>        
       <x:context label="The output">

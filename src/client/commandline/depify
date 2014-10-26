@@ -48,7 +48,7 @@ LIB_DIR=/lib/
 function usage(){
     echo -e $'\e[34m'"depify 1.0, app dep management"
     echo "Copyright (c) 2014 Jim Fuller"
-    echo "see https://github.com/xquery/depify"
+    echo "see https://github.com/depify"
     echo -e $'\e[97m'
     echo "see http://depify.com to search/review packages for installation"
     echo ""
@@ -86,7 +86,7 @@ fi
 
 echo $'\e[34m'"depify 1.0, app dep management"
 echo "Copyright (c) 2014 Jim Fuller"
-echo "see https://github.com/xquery/depify"
+echo "see https://github.com/depify"
 echo $'\e[97m'
 echo $'\e[34m'"depify command:"$'\e[97m' $COMMAND
 echo $'\e[34m'"package-name:$"$'\e[97m' $PACKAGE
@@ -112,8 +112,9 @@ if  [ ! -e "$CURRENTDIR/.depify.xml" ]; then
  # run xproc pipeline
  echo '<depify xmlns="https://github.com/xquery/depify"/>' > $CURRENTDIR/.depify.xml
 
- if [ $COMMAND != "init" ]; then
- java -jar $DEPX_DIR/deps/xmlcalabash/calabash.jar -isource=$CURRENTDIR/depify.xml -oresult=- $DEPX_DIR/libs/xproc/depify.xpl command="init" app_dir=$APP_DIR app_dir_lib=$LIB_DIR
+# initialize if .depify.xml does not exist
+if [ $COMMAND != "init" ]; then
+echo -e `java -jar $DEPX_DIR/deps/xmlcalabash/calabash.jar -isource=$CURRENTDIR/.depify.xml -oresult=- $DEPX_DIR/libs/xproc/depify.xpl command="init" app_dir=$APP_DIR app_dir_lib=$LIB_DIR`
 fi
 fi
 # run xproc pipeline

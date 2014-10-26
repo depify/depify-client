@@ -20,8 +20,8 @@ limitations under the License.
     xmlns:cx="http://xmlcalabash.com/ns/extensions"
     xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils"
     xmlns:pxp="http://exproc.org/proposed/steps"
-    xmlns:depify="https://github.com/xquery/depify"
-    xmlns:impl="https://github.com/xquery/depify/impl"
+    xmlns:depify="https://github.com/depify"
+    xmlns:impl="https://github.com/depify/impl"
     xmlns:fn="http://www.w3.org/2005/xpath-functions"
     xmlns:j="http://marklogic.com/json"
     version="1.0"
@@ -39,10 +39,10 @@ limitations under the License.
     <p:option name="package-version"/>
     
     <p:choose>
-      <p:when test="/depify:depify/depify:dep[@name eq $package-name]">
+      <p:when test="/depify:depify/depify:depify[@name eq $package-name]">
         <p:identity/>
       </p:when>
-      <p:when test="/depify:depify/depify:dep[@name ne $package-name]">  
+      <p:when test="/depify:depify/depify:depify[@name ne $package-name]">  
         <p:insert match="/depify:depify/depify:dep" position="after">
           <p:input port="insertion">
             <p:pipe port="package" step="install-step"/>
@@ -57,7 +57,7 @@ limitations under the License.
         </p:insert>
       </p:when>
       <p:otherwise>
-        <p:wrap match="/" wrapper="depify" wrapper-namespace="https://github.com/xquery/depify">
+        <p:wrap match="/" wrapper="depify" wrapper-namespace="https://github.com/depify">
           <p:input port="source">
             <p:pipe port="package" step="install-step"/>
           </p:input>
@@ -77,7 +77,7 @@ limitations under the License.
       <p:group>
        <p:delete>
          <p:with-option name="match" select="concat(
-                                             '/depify:depify/depify:dep[@name eq &quot;',
+                                             '/depify:depify/depify:depify[@name eq &quot;',
                                              $package-name,
                                              '&quot;]')"/>
        </p:delete>
@@ -99,9 +99,9 @@ limitations under the License.
       </p:when>
       <p:otherwise>  
         <p:filter>
-          <p:with-option name="select" select="concat('//depify:dep[@name eq &quot;',$package-name,'&quot;]')"/>
+          <p:with-option name="select" select="concat('//depify:depify[@name eq &quot;',$package-name,'&quot;]')"/>
         </p:filter>
-        <p:wrap-sequence wrapper="depify" wrapper-namespace="https://github.com/xquery/depify"/>
+        <p:wrap-sequence wrapper="depify" wrapper-namespace="https://github.com/depify"/>
     </p:otherwise>
     </p:choose>
     <p:add-attribute match="/depify:depify" attribute-name="ts" attribute-value="current datetime"/>

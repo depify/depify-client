@@ -20,8 +20,8 @@ limitations under the License.
     xmlns:cx="http://xmlcalabash.com/ns/extensions"
     xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils"
     xmlns:pxp="http://exproc.org/proposed/steps"
-    xmlns:depify="https://github.com/xquery/depify"
-    xmlns:impl="https://github.com/xquery/depify/impl"
+    xmlns:depify="https://github.com/depify"
+    xmlns:impl="https://github.com/depify/impl"
     version="1.0"
     name="main"
     type="depify:depify"
@@ -56,7 +56,7 @@ limitations under the License.
     
   <p:group>
   <p:filter name="get-package">
-    <p:with-option name="select" select="concat('/depify:depify/depify:dep[@name eq &quot;',$package,'&quot;]')"/>
+    <p:with-option name="select" select="concat('/depify:packages/depify:depify[@name eq &quot;',$package,'&quot;]')"/>
     <p:input port="source">
       <p:pipe step="main" port="packages"/>
     </p:input>
@@ -64,7 +64,7 @@ limitations under the License.
   
 
   <p:choose name="command-step">
-    <p:when test="$command eq 'init' and not(doc-available( concat($app_dir,'.depify') ))">
+    <p:when test="$command eq 'init' and not(doc-available( concat($app_dir,'.depify.xml') ))">
       <p:output port="result"/>
       <cx:message>
         <p:with-option name="message" select="'.depify.xml does not exist, creating now'"/>
@@ -77,17 +77,16 @@ limitations under the License.
          <p:input port="stylesheet">
           <p:inline>
             <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                            xmlns="https://github.com/xquery/depify"
+                            xmlns="https://github.com/depify"
                             version="2.0">
               <xsl:output method="xml" indent="yes" encoding="UTF-8" />
               <xsl:param name="package"/>
               <xsl:param name="version"/>
               <xsl:param name="init-repo-uri"/>
               <xsl:template match="/">
-                <depify xmlns="https://github.com/xquery/depify" name="{$package}" version="{$version}" repo-uri="{$init-repo-uri}">
+                <depify xmlns="https://github.com/depify" name="{$package}" version="{$version}" repo-uri="{$init-repo-uri}">
                   <title><xsl:value-of select="$package"/></title>
                   <desc></desc>
-                  <!--dep name="functional.xq" version="1.0"/-->  
                 </depify>
               </xsl:template>
             </xsl:stylesheet>
@@ -101,7 +100,7 @@ limitations under the License.
     <p:when test="$command eq 'install'">
       <p:output port="result"/>
       <p:choose>        
-        <p:variable name="repo-uri" select="(/depify:dep/@repo-uri/data(.),/depify:dep/depify:repo/depify:uri/data(.))[1]">
+        <p:variable name="repo-uri" select="/depify:depify/@repo-uri/data(.)">
           <p:pipe step="get-package" port="result"/>
         </p:variable>
         <!-- download zip file //-->
@@ -197,16 +196,16 @@ limitations under the License.
         <p:xpath-context>
           <p:pipe step="get-package" port="result"/>          
         </p:xpath-context>
-        <p:when test="/depify:dep/depify:dep">  
+        <p:when test="/depify:depify/depify:dep">  
           <p:for-each>
-            <p:iteration-source select="/depify:dep/depify:dep">  
+            <p:iteration-source select="/depify:depify/depify:dep">  
               <p:pipe step="get-package" port="result"/>
             </p:iteration-source>
             <depify:depify>
                 <p:with-option name="depify-repo-download-url" select="$depify-repo-download-url"/>
                 <p:with-option name="command" select="'install'"/>
-                <p:with-option name="package" select="/depify:dep/@name"/>
-                <p:with-option name="version" select="/depify:dep/@version"/>
+                <p:with-option name="package" select="/depify:depify/@name"/>
+                <p:with-option name="version" select="/depify:depify/@version"/>
                 <p:with-option name="app_dir" select="$app_dir"/>
                 <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
             </depify:depify> 
@@ -289,7 +288,7 @@ limitations under the License.
          <p:input port="stylesheet">
           <p:inline>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:depify="https://github.com/xquery/depify"
+    xmlns:depify="https://github.com/depify"
     version="2.0">
     <xsl:output method="xml" indent="no" encoding="UTF-8" />
     <xsl:variable name="search"/>
@@ -300,7 +299,7 @@ search depify packages: <xsl:value-of select="$search"/><xsl:text>
     <xsl:apply-templates/>
   </search>
     </xsl:template>
-    <xsl:template match="*:dep">
+    <xsl:template match="depify:depify">
         <xsl:value-of select="@name"/>, v<xsl:value-of select="@version"/>, <xsl:value-of select="@repo-uri"/> <xsl:text>
 </xsl:text>
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.daisy.org/ns/xprocspec/xprocspec.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <x:description xmlns:x="http://www.daisy.org/ns/xprocspec"
-               xmlns:depify="https://github.com/xquery/depify"
+               xmlns:depify="https://github.com/depify"
                script="../src/client/xproc/depify.xpl">
 
     <x:scenario label="install package">
         <x:call step="depify:depify">
             <x:option name="command" select="'install'"/>
-            <x:option name="package" select="'xquery.1.functx'"/>
+            <x:option name="package" select="'transform.xq'"/>
             <x:option name="version" select="'1.0'"/>
             <x:option name="app_dir" select="'.'"/>
             <x:option name="app_dir_lib" select="'lib'"/>
@@ -17,59 +17,59 @@
                 </x:document>
             </x:input>
             <x:input port="packages">
-              <x:document href="packages.xml"/>
+              <x:document href="data/packages.xml"/>
             </x:input>
         </x:call>        
         <x:context label="The output">
             <x:document type="port" port="result"/>
         </x:context>
         <x:expect type="xpath"
-                  label="The package name should be xquery.1.functx'"
-                  test="//depify:dep/@name"
-                  equals="'xquery.1.functx'"/>
+                  label="The package name should be transform.xq"
+                  test="//depify:depify/@name"
+                  equals="'transform.xq'"/>
       </x:scenario>
 
     <x:scenario label="repeat install package with defaults">
         <x:call step="depify:depify">
             <x:option name="command" select="'install'"/>
-            <x:option name="package" select="'xquery.1.functx'"/>
+            <x:option name="package" select="'transform.xq'"/>
             <x:option name="version" select="'1.0'"/>
             <x:input port="source">
               <x:document type="file" href="data/depify.xml"/>
             </x:input>
             <x:input port="packages">
-              <x:document href="packages.xml"/>
+              <x:document href="data/packages.xml"/>
             </x:input>
         </x:call>        
         <x:context label="The output">
             <x:document type="port" port="result"/>
         </x:context>        
         <x:expect type="xpath"
-                  label="The package name should be xquery.1.functx'"
-                  test="//depify:dep/@name"
-                  equals="'xquery.1.functx'"/>
+                  label="The package name should be transform.xq'"
+                  test="//depify:depify/@name"
+                  equals="'transform.xq'"/>
     </x:scenario>
     
     <x:scenario label="remove package">
         <x:call step="depify:depify">
             <x:option name="command" select="'remove'"/>
-            <x:option name="package" select="'xquery.1.functx'"/>
+            <x:option name="package" select="'transform.xq'"/>
             <x:option name="version" select="'1.0'"/>
             <x:option name="app_dir" select="'.'"/>
             <x:option name="app_dir_lib" select="'lib'"/>
             <x:input port="source">
-              <x:document type="file" href="data/depify-functx.xml"/>
+              <x:document type="file" href="data/depify-transformxq.xml"/>
             </x:input>
             <x:input port="packages">
-              <x:document href="packages.xml"/>
+              <x:document href="data/packages.xml"/>
             </x:input>
         </x:call>     
         <x:context label="The output">
             <x:document type="port" port="result"/>
         </x:context>        
         <x:expect type="xpath"
-                  label="The package xquery.1.functx' should not exist"
-                  test="exists(//depify:dep[@name eq 'xquery.1.functx'])"
+                  label="The package transform.xq' should not exist"
+                  test="exists(//depify:depify[@name eq 'transform.xq'])"
                   equals="false()"/>
     </x:scenario>   
 
@@ -79,18 +79,18 @@
             <x:option name="app_dir" select="'.'"/>
             <x:option name="app_dir_lib" select="'lib'"/>
             <x:input port="source">
-              <x:document type="file" href="data/depify-functx.xml"/>
+              <x:document type="file" href="data/depify-transformxq.xml"/>
             </x:input>
             <x:input port="packages">
-              <x:document href="packages.xml"/>
+              <x:document href="data/packages.xml"/>
             </x:input>
         </x:call>        
         <x:context label="The output">
             <x:document type="port" port="result"/>
         </x:context>        
         <x:expect type="xpath"
-                  label="The package xquery.1.functx' should not exist"
-                  test="exists(//depify:dep[@name eq 'xquery.1.functx'])"
+                  label="The package transform.xq' should not exist"
+                  test="exists(//depify:depify[@name eq 'transform.xq'])"
                   equals="true()"/>
     </x:scenario>
 
@@ -102,10 +102,10 @@
         <x:option name="app_dir" select="'.'"/>
         <x:option name="app_dir_lib" select="'lib'"/>
         <x:input port="source">
-          <x:document type="file" href="data/depify-functx.xml"/>
+          <x:document type="file" href="data/depify-transformxq.xml"/>
         </x:input>
         <x:input port="packages">
-          <x:document href="packages.xml"/>
+          <x:document href="data/packages.xml"/>
         </x:input>
       </x:call>        
       <x:context label="The output">
@@ -113,7 +113,7 @@
       </x:context>        
       <x:expect type="xpath"
                 label="The package js.ecmascript.qunit should be present"
-                test="exists(//depify:dep[@name eq 'js.ecmascript.qunit'])"
+                test="exists(//depify:depify[@name eq 'js.ecmascript.qunit'])"
                 equals="true()"/>
     </x:scenario>
 
@@ -128,7 +128,7 @@
           <x:document type="file" href="data/depify-install.xml"/>
         </x:input>
         <x:input port="packages">
-          <x:document href="packages.xml"/>
+          <x:document href="data/packages.xml"/>
         </x:input>
       </x:call>        
       <x:context label="The output">
@@ -137,7 +137,7 @@
     <!--x:expect type="compare" label="Check correct contents">
       <x:document type="inline">
         <depify xmlns="https://github.com/xquery/depify" ts="current datetime">
-  <dep name="xquery.1.functx" version="1.0">
+  <dep name="transform.xq" version="1.0">
     <title>FunctX library</title>
     <desc>test</desc>
     <repo type="?">

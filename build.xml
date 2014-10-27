@@ -34,7 +34,7 @@
   <target name="dist" depends="init,distrib,izpacktool"
           if="izpack.present">
 
-    <izpack input="${dist.dir}/install.xml"
+    <izpack input="install.xml"
             output="${dist.dir}/depify-client-${version}.jar"
             installerType="standard"
             basedir="${dist.dir}"

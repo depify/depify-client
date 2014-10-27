@@ -1,0 +1,19 @@
+<depify xmlns="https://github.com/depify">
+<depify 
+         name="transform.xq"
+         version="1.0"
+         repo-uri="https://github.com/jpcs/transform.xq.git">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify>
+</depify>

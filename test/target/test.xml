@@ -1,57 +1,108 @@
-<x:test-report xmlns:x="http://www.daisy.org/ns/xprocspec"><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20140918141813169/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/xquery/depify" xmlns:impl="https://github.com/xquery/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/xquery/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'1.0'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/xquery/depify" end-time="2014-09-18T12:18:14.736Z" label="install package" start-time="2014-09-18T12:18:14.34Z"><x:call x:type="{https://github.com/xquery/depify}depify" step="depify:depify"><x:option select="'install'" name="command" value="install"/><x:option select="'xquery.1.functx'" name="package" value="xquery.1.functx"/><x:option select="'1.0'" name="version" value="1.0"/><x:option select="'.'" name="app_dir" value="."/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
+<x:test-report xmlns:x="http://www.daisy.org/ns/xprocspec"><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20141027071624575/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'latest'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" end-time="2014-10-27T06:16:27.941Z" label="install package" start-time="2014-10-27T06:16:25.798Z"><x:call x:type="{https://github.com/depify}depify" step="depify:depify"><x:option select="'install'" name="command" value="install"/><x:option select="'transform.xq'" name="package" value="transform.xq"/><x:option select="'1.0'" name="version" value="1.0"/><x:option select="'.'" name="app_dir" value="."/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
                 <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline">
                   <test/>
                 </x:document>
             </x:input><x:input port="packages">
-              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="packages.xml"/>
+              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="data/packages.xml"/>
             </x:input></x:call>
                                                 <x:context label="errors" id="errors">
-                                                    <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><c:errors test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" error-location="running the script"><c:error xmlns="http://xproc.org/ns/errors" code="XE0001" href="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" line="1" column="338">depify.com</c:error></c:errors></x:document>
+                                                    
                                                 </x:context>
                                             
                                                 <x:expect type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors"/>
                                             <x:context label="The output" id="context0">
-            
-        </x:context><x:expect type="xpath" label="The package name should be xquery.1.functx'" test="//depify:dep/@name" equals="'xquery.1.functx'" contextref="context0"/></x:scenario><c:errors test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" error-location="running the script"><c:error xmlns="http://xproc.org/ns/errors" code="XE0001" href="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" line="1" column="338">depify.com</c:error></c:errors><x:test-result xmlns:depify="https://github.com/xquery/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="failed">
+            <x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/packages.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify" ts="current datetime"><depify path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify></depify></x:document>
+        </x:context><x:expect type="xpath" label="The package name should be transform.xq" test="//depify:depify/@name" equals="'transform.xq'" contextref="context0"/></x:scenario><x:output port="result"><x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/packages.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify" ts="current datetime"><depify path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify></depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>1</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/xquery/depify" type="xpath" label="The package name should be xquery.1.functx'" test="//depify:dep/@name" equals="'xquery.1.functx'" contextref="context0" result="passed"><x:expected xml:space="preserve">XPath: 'xquery.1.functx'</x:expected><x:was xml:space="preserve">XPath: //depify:dep/@name</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20140918141813169/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/xquery/depify" xmlns:impl="https://github.com/xquery/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/xquery/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'1.0'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/xquery/depify" end-time="2014-09-18T12:18:14.891Z" label="repeat install package with defaults" start-time="2014-09-18T12:18:14.861Z"><x:call x:type="{https://github.com/xquery/depify}depify" step="depify:depify"><x:option select="'install'" name="command" value="install"/><x:option select="'xquery.1.functx'" name="package" value="xquery.1.functx"/><x:option select="'1.0'" name="version" value="1.0"/><x:input port="source">
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" type="xpath" label="The package name should be transform.xq" test="//depify:depify/@name" equals="'transform.xq'" contextref="context0" result="passed"><x:expected xml:space="preserve">XPath: 'transform.xq'
+Value: transform.xq</x:expected><x:was xml:space="preserve">XPath: //depify:depify/@name
+Value: transform.xq</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20141027071624575/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'latest'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" end-time="2014-10-27T06:16:28.954Z" label="repeat install package with defaults" start-time="2014-10-27T06:16:28.081Z"><x:call x:type="{https://github.com/depify}depify" step="depify:depify"><x:option select="'install'" name="command" value="install"/><x:option select="'transform.xq'" name="package" value="transform.xq"/><x:option select="'1.0'" name="version" value="1.0"/><x:input port="source">
               <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><depify:depify xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" ts="current datetime"/></x:document>
             </x:input><x:input port="packages">
-              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="packages.xml"/>
+              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="data/packages.xml"/>
             </x:input></x:call>
                                                 <x:context label="errors" id="errors">
-                                                    <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><c:errors test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" error-location="running the script"><c:error xmlns="http://xproc.org/ns/errors" code="XE0001" href="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" line="1" column="338">depify.com</c:error></c:errors></x:document>
+                                                    
                                                 </x:context>
                                             
                                                 <x:expect type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors"/>
                                             <x:context label="The output" id="context1">
-            
-        </x:context><x:expect type="xpath" label="The package name should be xquery.1.functx'" test="//depify:dep/@name" equals="'xquery.1.functx'" contextref="context1"/></x:scenario><c:errors test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" error-location="running the script"><c:error xmlns="http://xproc.org/ns/errors" code="XE0001" href="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" line="1" column="338">depify.com</c:error></c:errors><x:test-result xmlns:depify="https://github.com/xquery/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="failed">
+            <x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify.xml" xml:space="preserve" type="inline"><depify:depify xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" ts="current datetime"><depify xmlns="https://github.com/depify" path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify></depify:depify></x:document>
+        </x:context><x:expect type="xpath" label="The package name should be transform.xq'" test="//depify:depify/@name" equals="'transform.xq'" contextref="context1"/></x:scenario><x:output port="result"><x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify.xml" xml:space="preserve" type="inline"><depify:depify xmlns:depify="https://github.com/depify" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" ts="current datetime"><depify xmlns="https://github.com/depify" path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify></depify:depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>1</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/xquery/depify" type="xpath" label="The package name should be xquery.1.functx'" test="//depify:dep/@name" equals="'xquery.1.functx'" contextref="context1" result="passed"><x:expected xml:space="preserve">XPath: 'xquery.1.functx'</x:expected><x:was xml:space="preserve">XPath: //depify:dep/@name</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20140918141813169/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/xquery/depify" xmlns:impl="https://github.com/xquery/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/xquery/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'1.0'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/xquery/depify" end-time="2014-09-18T12:18:15.032Z" label="remove package" start-time="2014-09-18T12:18:15.001Z"><x:call x:type="{https://github.com/xquery/depify}depify" step="depify:depify"><x:option select="'remove'" name="command" value="remove"/><x:option select="'xquery.1.functx'" name="package" value="xquery.1.functx"/><x:option select="'1.0'" name="version" value="1.0"/><x:option select="'.'" name="app_dir" value="."/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
-              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/xquery/depify" ts="current datetime"><dep path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"><title>FunctX library</title><desc>The FunctX function library is a set of useful functions on
-  XML documents and data. It comes in two flavors: XQuery 1.0 and
-  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
-  function definitions as consistent as possible across the two
-  languages. The source code for the functions is available under the
-  GNU-LGPL license. However, the longer descriptions of the functions
-  and the design of the FunctX Web sites is copyrighted and may only
-  be used with permission.This site also includes descriptions and
-  examples of the XQuery and XPath built-in functions, taken with
-  permission from the book XQuery (2007, O'Reilly Media).We hope you
-  find these functions useful and that you will take the time to
-  provide feedback and/or contribute your own functions.
-  </desc><license type="GNU-LGPL">
-  <uri>?</uri>
-  </license><repo type="?">
-  <uri>?</uri>
-  </repo><author id="pwalmsley">Priscilla Walmsley</author><website>http://www.xqueryfunctions.com/</website><xquery version="1.0">
-  <prefix>functx</prefix>
-  <namespace>http://www.functx.com</namespace>
-  <uri>functx.xq</uri>
-  </xquery></dep></depify></x:document>
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" type="xpath" label="The package name should be transform.xq'" test="//depify:depify/@name" equals="'transform.xq'" contextref="context1" result="passed"><x:expected xml:space="preserve">XPath: 'transform.xq'
+Value: transform.xq</x:expected><x:was xml:space="preserve">XPath: //depify:depify/@name
+Value: transform.xq</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20141027071624575/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'latest'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" end-time="2014-10-27T06:16:29.104Z" label="remove package" start-time="2014-10-27T06:16:29.074Z"><x:call x:type="{https://github.com/depify}depify" step="depify:depify"><x:option select="'remove'" name="command" value="remove"/><x:option select="'transform.xq'" name="package" value="transform.xq"/><x:option select="'1.0'" name="version" value="1.0"/><x:option select="'.'" name="app_dir" value="."/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
+              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify">
+<depify name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify>
+</depify></x:document>
             </x:input><x:input port="packages">
-              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="packages.xml"/>
+              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="data/packages.xml"/>
             </x:input></x:call>
                                                 <x:context label="errors" id="errors">
                                                     
@@ -59,35 +110,34 @@
                                             
                                                 <x:expect type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors"/>
                                             <x:context label="The output" id="context2">
-            <x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify-functx.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/xquery/depify" ts="current datetime"/></x:document>
-        </x:context><x:expect type="xpath" label="The package xquery.1.functx' should not exist" test="exists(//depify:dep[@name eq 'xquery.1.functx'])" equals="false()" contextref="context2"/></x:scenario><x:output port="result"><x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify-functx.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/xquery/depify" ts="current datetime"/></x:document></x:output><x:test-result xmlns:depify="https://github.com/xquery/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
+            <x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify-transformxq.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify">
+
+</depify></x:document>
+        </x:context><x:expect type="xpath" label="The package transform.xq' should not exist" test="exists(//depify:depify[@name eq 'transform.xq'])" equals="false()" contextref="context2"/></x:scenario><x:output port="result"><x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify-transformxq.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify">
+
+</depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/xquery/depify" type="xpath" label="The package xquery.1.functx' should not exist" test="exists(//depify:dep[@name eq 'xquery.1.functx'])" equals="false()" contextref="context2" result="passed"><x:expected xml:space="preserve">XPath: false()
-Value: false</x:expected><x:was xml:space="preserve">XPath: exists(//depify:dep[@name eq 'xquery.1.functx'])
-Value: false</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20140918141813169/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/xquery/depify" xmlns:impl="https://github.com/xquery/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/xquery/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'1.0'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/xquery/depify" end-time="2014-09-18T12:18:15.171Z" label="list installed packages" start-time="2014-09-18T12:18:15.134Z"><x:call x:type="{https://github.com/xquery/depify}depify" step="depify:depify"><x:option select="'list'" name="command" value="list"/><x:option select="'.'" name="app_dir" value="."/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
-              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/xquery/depify" ts="current datetime"><dep path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"><title>FunctX library</title><desc>The FunctX function library is a set of useful functions on
-  XML documents and data. It comes in two flavors: XQuery 1.0 and
-  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
-  function definitions as consistent as possible across the two
-  languages. The source code for the functions is available under the
-  GNU-LGPL license. However, the longer descriptions of the functions
-  and the design of the FunctX Web sites is copyrighted and may only
-  be used with permission.This site also includes descriptions and
-  examples of the XQuery and XPath built-in functions, taken with
-  permission from the book XQuery (2007, O'Reilly Media).We hope you
-  find these functions useful and that you will take the time to
-  provide feedback and/or contribute your own functions.
-  </desc><license type="GNU-LGPL">
-  <uri>?</uri>
-  </license><repo type="?">
-  <uri>?</uri>
-  </repo><author id="pwalmsley">Priscilla Walmsley</author><website>http://www.xqueryfunctions.com/</website><xquery version="1.0">
-  <prefix>functx</prefix>
-  <namespace>http://www.functx.com</namespace>
-  <uri>functx.xq</uri>
-  </xquery></dep></depify></x:document>
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" type="xpath" label="The package transform.xq' should not exist" test="exists(//depify:depify[@name eq 'transform.xq'])" equals="false()" contextref="context2" result="passed"><x:expected xml:space="preserve">XPath: false()
+Value: false</x:expected><x:was xml:space="preserve">XPath: exists(//depify:depify[@name eq 'transform.xq'])
+Value: false</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20141027071624575/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'latest'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" end-time="2014-10-27T06:16:29.252Z" label="list installed packages" start-time="2014-10-27T06:16:29.216Z"><x:call x:type="{https://github.com/depify}depify" step="depify:depify"><x:option select="'list'" name="command" value="list"/><x:option select="'.'" name="app_dir" value="."/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
+              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify">
+<depify name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify>
+</depify></x:document>
             </x:input><x:input port="packages">
-              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="packages.xml"/>
+              <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="data/packages.xml"/>
             </x:input></x:call>
                                                 <x:context label="errors" id="errors">
                                                     
@@ -95,75 +145,60 @@ Value: false</x:was></x:test-result></x:description><x:description xmlns:cx="htt
                                             
                                                 <x:expect type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors"/>
                                             <x:context label="The output" id="context3">
-            <x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify-functx.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/xquery/depify" ts="current datetime"><dep path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"><title>FunctX library</title><desc>The FunctX function library is a set of useful functions on
-  XML documents and data. It comes in two flavors: XQuery 1.0 and
-  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
-  function definitions as consistent as possible across the two
-  languages. The source code for the functions is available under the
-  GNU-LGPL license. However, the longer descriptions of the functions
-  and the design of the FunctX Web sites is copyrighted and may only
-  be used with permission.This site also includes descriptions and
-  examples of the XQuery and XPath built-in functions, taken with
-  permission from the book XQuery (2007, O'Reilly Media).We hope you
-  find these functions useful and that you will take the time to
-  provide feedback and/or contribute your own functions.
-  </desc><license type="GNU-LGPL">
-  <uri>?</uri>
-  </license><repo type="?">
-  <uri>?</uri>
-  </repo><author id="pwalmsley">Priscilla Walmsley</author><website>http://www.xqueryfunctions.com/</website><xquery version="1.0">
-  <prefix>functx</prefix>
-  <namespace>http://www.functx.com</namespace>
-  <uri>functx.xq</uri>
-  </xquery></dep></depify></x:document>
-        </x:context><x:expect type="xpath" label="The package xquery.1.functx' should not exist" test="exists(//depify:dep[@name eq 'xquery.1.functx'])" equals="true()" contextref="context3"/></x:scenario><x:output port="result"><x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify-functx.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/xquery/depify" ts="current datetime"><dep path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"><title>FunctX library</title><desc>The FunctX function library is a set of useful functions on
-  XML documents and data. It comes in two flavors: XQuery 1.0 and
-  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
-  function definitions as consistent as possible across the two
-  languages. The source code for the functions is available under the
-  GNU-LGPL license. However, the longer descriptions of the functions
-  and the design of the FunctX Web sites is copyrighted and may only
-  be used with permission.This site also includes descriptions and
-  examples of the XQuery and XPath built-in functions, taken with
-  permission from the book XQuery (2007, O'Reilly Media).We hope you
-  find these functions useful and that you will take the time to
-  provide feedback and/or contribute your own functions.
-  </desc><license type="GNU-LGPL">
-  <uri>?</uri>
-  </license><repo type="?">
-  <uri>?</uri>
-  </repo><author id="pwalmsley">Priscilla Walmsley</author><website>http://www.xqueryfunctions.com/</website><xquery version="1.0">
-  <prefix>functx</prefix>
-  <namespace>http://www.functx.com</namespace>
-  <uri>functx.xq</uri>
-  </xquery></dep></depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/xquery/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
+            <x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify-transformxq.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify">
+<depify name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify>
+</depify></x:document>
+        </x:context><x:expect type="xpath" label="The package transform.xq' should not exist" test="exists(//depify:depify[@name eq 'transform.xq'])" equals="true()" contextref="context3"/></x:scenario><x:output port="result"><x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify-transformxq.xml" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify">
+<depify name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify>
+</depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/xquery/depify" type="xpath" label="The package xquery.1.functx' should not exist" test="exists(//depify:dep[@name eq 'xquery.1.functx'])" equals="true()" contextref="context3" result="passed"><x:expected xml:space="preserve">XPath: true()
-Value: true</x:expected><x:was xml:space="preserve">XPath: exists(//depify:dep[@name eq 'xquery.1.functx'])
-Value: true</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20140918141813169/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/xquery/depify" xmlns:impl="https://github.com/xquery/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/xquery/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'1.0'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/xquery/depify" end-time="2014-09-18T12:18:15.304Z" label="package info" start-time="2014-09-18T12:18:15.276Z"><x:call x:type="{https://github.com/xquery/depify}depify" step="depify:depify"><x:option select="'info'" name="command" value="info"/><x:option select="'js.ecmascript.qunit'" name="package" value="js.ecmascript.qunit"/><x:option select="'1.0'" name="version" value="1.0"/><x:option select="'.'" name="app_dir" value="."/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
-          <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/xquery/depify" ts="current datetime"><dep path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"><title>FunctX library</title><desc>The FunctX function library is a set of useful functions on
-  XML documents and data. It comes in two flavors: XQuery 1.0 and
-  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
-  function definitions as consistent as possible across the two
-  languages. The source code for the functions is available under the
-  GNU-LGPL license. However, the longer descriptions of the functions
-  and the design of the FunctX Web sites is copyrighted and may only
-  be used with permission.This site also includes descriptions and
-  examples of the XQuery and XPath built-in functions, taken with
-  permission from the book XQuery (2007, O'Reilly Media).We hope you
-  find these functions useful and that you will take the time to
-  provide feedback and/or contribute your own functions.
-  </desc><license type="GNU-LGPL">
-  <uri>?</uri>
-  </license><repo type="?">
-  <uri>?</uri>
-  </repo><author id="pwalmsley">Priscilla Walmsley</author><website>http://www.xqueryfunctions.com/</website><xquery version="1.0">
-  <prefix>functx</prefix>
-  <namespace>http://www.functx.com</namespace>
-  <uri>functx.xq</uri>
-  </xquery></dep></depify></x:document>
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" type="xpath" label="The package transform.xq' should not exist" test="exists(//depify:depify[@name eq 'transform.xq'])" equals="true()" contextref="context3" result="passed"><x:expected xml:space="preserve">XPath: true()
+Value: true</x:expected><x:was xml:space="preserve">XPath: exists(//depify:depify[@name eq 'transform.xq'])
+Value: true</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20141027071624575/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'latest'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" end-time="2014-10-27T06:16:29.406Z" label="package info" start-time="2014-10-27T06:16:29.368Z"><x:call x:type="{https://github.com/depify}depify" step="depify:depify"><x:option select="'info'" name="command" value="info"/><x:option select="'js.ecmascript.qunit'" name="package" value="js.ecmascript.qunit"/><x:option select="'1.0'" name="version" value="1.0"/><x:option select="'.'" name="app_dir" value="."/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
+          <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify">
+<depify name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+</depify>
+</depify></x:document>
         </x:input><x:input port="packages">
-          <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="packages.xml"/>
+          <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="data/packages.xml"/>
         </x:input></x:call>
                                                 <x:context label="errors" id="errors">
                                                     
@@ -172,35 +207,24 @@ Value: true</x:was></x:test-result></x:description><x:description xmlns:cx="http
                                                 <x:expect type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors"/>
                                             <x:context label="The output" id="context4">
         
-      </x:context><x:expect type="xpath" label="The package js.ecmascript.qunit should be present" test="exists(//depify:dep[@name eq 'js.ecmascript.qunit'])" equals="true()" contextref="context4"/></x:scenario><x:output port="result"/><x:test-result xmlns:depify="https://github.com/xquery/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
+      </x:context><x:expect type="xpath" label="The package js.ecmascript.qunit should be present" test="exists(//depify:depify[@name eq 'js.ecmascript.qunit'])" equals="true()" contextref="context4"/></x:scenario><x:output port="result"/><x:test-result xmlns:depify="https://github.com/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/xquery/depify" type="xpath" label="The package js.ecmascript.qunit should be present" test="exists(//depify:dep[@name eq 'js.ecmascript.qunit'])" equals="true()" contextref="context4" result="passed"><x:expected xml:space="preserve">XPath: true()</x:expected><x:was xml:space="preserve">XPath: exists(//depify:dep[@name eq 'js.ecmascript.qunit'])</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20140918141813169/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/xquery/depify" xmlns:impl="https://github.com/xquery/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/xquery/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'1.0'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/xquery/depify" end-time="2014-09-18T12:18:15.447Z" label="install packages" start-time="2014-09-18T12:18:15.419Z"><x:call x:type="{https://github.com/xquery/depify}depify" step="depify:depify"><x:option select="'install'" name="command" value="install"/><x:option select="''" name="package" value=""/><x:option select="''" name="version" value=""/><x:option select="'/tmp'" name="app_dir" value="/tmp"/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
-          <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/xquery/depify" ts="current datetime">
-  <dep name="xquery.1.functx" version="1.0">
-    <title>test1 FunctX library</title>
-    <desc>functx</desc>
-    <repo type="?">
-      <uri>?</uri>
-    </repo>
-  </dep>
-  <dep name="js.ecmascript.prettify" version="1.0">
-    <title>prettify </title>
-    <desc>test</desc>
-    <repo type="?">
-      <uri>?</uri>
-    </repo>
-  </dep>
-</depify></x:document>
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" type="xpath" label="The package js.ecmascript.qunit should be present" test="exists(//depify:depify[@name eq 'js.ecmascript.qunit'])" equals="true()" contextref="context4" result="passed"><x:expected xml:space="preserve">XPath: true()</x:expected><x:was xml:space="preserve">XPath: exists(//depify:depify[@name eq 'js.ecmascript.qunit'])</x:was></x:test-result></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20141027071624575/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" version="1.0" name="main" type="depify:depify" x:type="{https://github.com/depify}depify"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="packages" kind="document" sequence="false" primary="false"><p:document href="http://depify.com/packages/packages.xml"/></p:input><p:output port="result" kind="document" sequence="true" primary="true"/><p:option name="depify-repo-download-url" select="'http://depify.com/packages/packages.xml'"/><p:option name="command" select="'list'"/><p:option name="package" select="''"/><p:option name="version" select="'latest'"/><p:option name="init-repo-uri" select="''"/><p:option name="app_dir" select="'.'"/><p:option name="app_dir_lib" select="'lib'"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" end-time="2014-10-27T06:16:29.568Z" label="install packages" start-time="2014-10-27T06:16:29.533Z"><x:call x:type="{https://github.com/depify}depify" step="depify:depify"><x:option select="'install'" name="command" value="install"/><x:option select="''" name="package" value=""/><x:option select="''" name="version" value=""/><x:option select="'/tmp'" name="app_dir" value="/tmp"/><x:option select="'lib'" name="app_dir_lib" value="lib"/><x:input port="source">
+          <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify" name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git"/></x:document>
         </x:input><x:input port="packages">
-          <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="packages.xml"/>
+          <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline" href="data/packages.xml"/>
         </x:input></x:call>
                                                 <x:context label="errors" id="errors">
-                                                    <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" xml:space="preserve" type="inline"><c:errors test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" error-location="running the script"><c:error xmlns:err="http://www.w3.org/ns/xproc-error" code="err:XD0026" href="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" line="1" column="338">Expression refers to context when none is available: (/depify:dep/@repo-uri/data(.),/depify:dep/depify:repo/depify:uri/data(.))[1]</c:error></c:errors></x:document>
+                                                    
                                                 </x:context>
                                             
                                                 <x:expect type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors"/>
                                             <x:context label="The output" id="context5">
-        
-      </x:context></x:scenario><c:errors test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" error-location="running the script"><c:error xmlns:err="http://www.w3.org/ns/xproc-error" code="err:XD0026" href="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec" line="1" column="338">Expression refers to context when none is available: (/depify:dep/@repo-uri/data(.),/depify:dep/depify:repo/depify:uri/data(.))[1]</c:error></c:errors><x:test-result xmlns:depify="https://github.com/xquery/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="failed">
+        <x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" xml:space="preserve" type="inline">
+          <error xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:impl="https://github.com/depify/impl">DEPify {$package} package not found.</error>
+        </x:document>
+      </x:context></x:scenario><x:output port="result"><x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify.xpl" xml:space="preserve" type="inline">
+          <error xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl">DEPify {$package} package not found.</error>
+        </x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>1</x:was></x:test-result></x:description></x:test-report>
+                                                    <x:was>0</x:was></x:test-result></x:description></x:test-report>

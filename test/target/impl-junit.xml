@@ -1,73 +1,159 @@
-<testsuites tests="14" failures="0" time="18.782" errors="0" name="impl"><testsuite timestamp="2014-04-13T15:46:15.734Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d5466e1" name="implinstallInvoke" package="https://github.com/xquery/depify/impl" time="0.013">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify/test/impl.xprocspec)"/><property name="input: package" value="&lt;test xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify/test/impl.xprocspec)"/>
+<testsuites tests="0" failures="0" time="2.101" errors="1" name="impl"><testsuite timestamp="2014-10-26T17:48:20.171Z" hostname="localhost" tests="0" errors="1" failures="0" skipped="0" id="d767e1" name="compilationError" package="org.daisy.xprocspec"><properties><property name="xml:base" value="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec"/><property name="test-base-uri" value="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec"/><property name="error-location" value="preprocess.xpl - flatten scenario(s) and get step declaration"/></properties><error message="preprocess.xpl - flatten scenario(s) and get step declaration" type="static"/><system-out>impl.xprocspec: ERROR</system-out><system-err>line: 406
+column: 33
+More than one document in context for parameter 'param1'</system-err><system-err>&lt;x:was xmlns:x="http://www.daisy.org/ns/xprocspec" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec"&gt;&lt;x:description xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/xquery/depify/impl" script="../src/xproc/depify-impl.xpl" test-grammar="xprocspec"&gt;
 
-<property name="option: package-name" value="xquery.1.functx"/>
-<property name="option: package-version" value="1.0"/>
+    &lt;x:scenario label="impl:install invoke"&gt;
+      &lt;x:call step="impl:install"&gt;
+        &lt;x:option name="package-name" select="'xquery.1.functx'"/&gt;
+        &lt;x:option name="package-version" select="'1.0'"/&gt;
+        &lt;x:input port="source"&gt;
+          &lt;x:document type="file" href="data/depify.xml"/&gt;
+        &lt;/x:input&gt;        
+        &lt;x:input port="package"&gt;
+          &lt;x:document type="inline"&gt;
+             &lt;test/&gt;
+          &lt;/x:document&gt;
+        &lt;/x:input&gt;
+      &lt;/x:call&gt;
+    &lt;x:context label="the results"&gt;
+      &lt;x:document type="port" port="result"/&gt;
+    &lt;/x:context&gt;
+    &lt;x:expect type="compare" label="Check correct contents"&gt;
+      &lt;x:document type="inline"&gt;
+         &lt;depify xmlns="https://github.com/depify" ts="current datetime"&gt;&lt;test xmlns=""/&gt;&lt;/depify&gt;
+      &lt;/x:document&gt;
+    &lt;/x:expect&gt;
+  &lt;/x:scenario&gt;
 
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="install" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="CheckCorrectContents" classname="install" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-04-13T15:46:15.782Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d5472e1" name="implinstallFunctxPackage" package="https://github.com/xquery/depify/impl" time="0.012">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify/test/impl.xprocspec)"/><property name="input: package" value="&lt;dep xmlns=&#34;https://github.com/xquery/depify&#34; ...&gt;...&lt;/dep&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify/test/impl.xprocspec)"/>
+    &lt;x:scenario label="impl:install functx package"&gt;
+      &lt;x:call step="impl:install"&gt;
+        &lt;x:option name="package-name" select="'xquery.1.functx'"/&gt;
+        &lt;x:option name="package-version" select="'1.0'"/&gt;
+        &lt;x:input port="source"&gt;
+          &lt;x:document type="file" href="data/depify.xml"/&gt;
+        &lt;/x:input&gt;        
+        &lt;x:input port="package"&gt;
+          &lt;x:document type="inline"&gt;
+  &lt;depify xmlns="https://github.com/depify" path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"&gt;&lt;title&gt;FunctX library&lt;/title&gt;&lt;desc&gt;The FunctX function library is a set of useful functions on
+  XML documents and data. It comes in two flavors: XQuery 1.0 and
+  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
+  function definitions as consistent as possible across the two
+  languages. The source code for the functions is available under the
+  GNU-LGPL license. However, the longer descriptions of the functions
+  and the design of the FunctX Web sites is copyrighted and may only
+  be used with permission.This site also includes descriptions and
+  examples of the XQuery and XPath built-in functions, taken with
+  permission from the book XQuery (2007, O'Reilly Media).We hope you
+  find these functions useful and that you will take the time to
+  provide feedback and/or contribute your own functions.
+  &lt;/desc&gt;&lt;license type="GNU-LGPL"&gt;
+  &lt;uri&gt;?&lt;/uri&gt;
+  &lt;/license&gt;
+  &lt;author id="pwalmsley"&gt;Priscilla Walmsley&lt;/author&gt;&lt;website&gt;http://www.xqueryfunctions.com/&lt;/website&gt;&lt;xquery version="1.0"&gt;
+  &lt;prefix&gt;functx&lt;/prefix&gt;
+  &lt;namespace&gt;http://www.functx.com&lt;/namespace&gt;
+  &lt;uri&gt;functx.xq&lt;/uri&gt;
+  &lt;/xquery&gt;&lt;/depify&gt;
+          &lt;/x:document&gt;
+        &lt;/x:input&gt;
+      &lt;/x:call&gt;
+    &lt;x:context label="the results"&gt;
+      &lt;x:document type="port" port="result"/&gt;
+    &lt;/x:context&gt;
+    &lt;x:expect type="compare" label="Check correct contents"&gt;
+      &lt;x:document type="file" href="data/depify-functx.xml"/&gt;
+    &lt;/x:expect&gt;
+  &lt;/x:scenario&gt;
 
-<property name="option: package-name" value="xquery.1.functx"/>
-<property name="option: package-version" value="1.0"/>
+  &lt;x:scenario label="impl:remove functx package"&gt;
+    &lt;x:call step="impl:remove"&gt;
+      &lt;x:option name="package-name" select="'xquery.1.functx'"/&gt;
+      &lt;x:option name="package-version" select="'1.0'"/&gt;
+      &lt;x:input port="source"&gt;
+        &lt;x:document type="file" href="data/depify-functx.xml"/&gt;
+      &lt;/x:input&gt;        
+    &lt;/x:call&gt;
+    &lt;x:context label="the results"&gt;
+      &lt;x:document type="port" port="result"/&gt;
+    &lt;/x:context&gt;
+    &lt;x:expect type="compare" label="Check correct contents"&gt;
+      &lt;x:document type="file" href="data/depify-empty.xml"/&gt;
+    &lt;/x:expect&gt;
+  &lt;/x:scenario&gt;
 
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="install" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="CheckCorrectContents" classname="install" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-04-13T15:46:15.823Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d5477e1" name="implremoveFunctxPackage" package="https://github.com/xquery/depify/impl" time="0.011">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify/test/impl.xprocspec)"/>
+  &lt;x:scenario label="impl:list-installed all packages"&gt;
+    &lt;x:call step="impl:list-installed"&gt;
+      &lt;x:option name="package-name" select="''"/&gt;
+      &lt;x:option name="package-version" select="''"/&gt;
+      &lt;x:input port="source"&gt;
+        &lt;x:document type="file" href="data/depify-functx.xml"/&gt;
+      &lt;/x:input&gt;        
+    &lt;/x:call&gt;
+    &lt;x:context label="the results"&gt;
+      &lt;x:document type="port" port="result"/&gt;
+    &lt;/x:context&gt;
+    &lt;x:expect type="compare" label="Check correct contents"&gt;
+      &lt;x:document type="file" href="data/depify-functx.xml"/&gt;
+    &lt;/x:expect&gt;
+  &lt;/x:scenario&gt;
+ 
+  &lt;x:scenario label="impl:list-installed single package"&gt;
+    &lt;x:call step="impl:list-installed"&gt;
+      &lt;x:option name="package-name" select="'xquery.1.functx'"/&gt;
+      &lt;x:option name="package-version" select="''"/&gt;
+      &lt;x:input port="source"&gt;
+        &lt;x:document type="file" href="data/depify-functx.xml"/&gt;
+      &lt;/x:input&gt;        
+    &lt;/x:call&gt;
+    &lt;x:context label="the results"&gt;
+      &lt;x:document type="port" port="result"/&gt;
+    &lt;/x:context&gt;
+    &lt;x:expect type="compare" label="Check correct contents"&gt;
+      &lt;x:document type="file" href="data/depify-functx.xml"/&gt;
+    &lt;/x:expect&gt;
+  &lt;/x:scenario&gt;
+   
+  &lt;x:scenario label="impl:list-repo packages"&gt;
+    &lt;x:call step="impl:list-repo"&gt;
+      &lt;x:option name="package-name" select="''"/&gt;
+      &lt;x:option name="package-version" select="''"/&gt;
+      &lt;x:input port="source"&gt;
+        &lt;x:document type="file" href="data/depify-functx.xml"/&gt;
+      &lt;/x:input&gt;        
+    &lt;/x:call&gt;
+    &lt;x:context label="the results"&gt;
+      &lt;x:document type="port" port="result"/&gt;
+    &lt;/x:context&gt;
+    &lt;x:expect type="compare" label="Check correct contents"&gt;
+      &lt;x:document type="file" href="data/package.xml"/&gt;
+    &lt;/x:expect&gt;
+  &lt;/x:scenario&gt;
 
-<property name="option: package-name" value="xquery.1.functx"/>
-<property name="option: package-version" value="1.0"/>
+  &lt;x:scenario label="impl:get-package-from-github-repo test"&gt;
+    &lt;x:call step="impl:get-package-from-github-repo"&gt;
+      &lt;x:option name="github-download-uri" select="'https://github.com/koppor/xmltree.git'"/&gt;
+      &lt;x:option name="app_dir" select="'/tmp'"/&gt;
+      &lt;x:option name="app_dir_lib" select="'lib'"/&gt;
+    &lt;/x:call&gt;
+    &lt;x:context label="the results"&gt;
+      &lt;x:document type="port" port="result"/&gt;
+    &lt;/x:context&gt;
+  &lt;/x:scenario&gt;
 
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="remove" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="CheckCorrectContents" classname="remove" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-04-13T15:46:15.865Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d5482e1" name="impllistinstalledAllPackages" package="https://github.com/xquery/depify/impl" time="0.017">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify/test/impl.xprocspec)"/>
+  &lt;x:scenario label="impl:get-package-from-depify-repo test"&gt;
+    &lt;x:call step="impl:get-package-from-depify-repo"&gt;
+      &lt;x:option name="depify-download-uri" select="'http://depify.com/downloads/js.ecmascript.prettify-1.0.zip'"/&gt;
+      &lt;x:option name="app_dir" select="'/tmp'"/&gt;
+      &lt;x:option name="app_dir_lib" select="'lib'"/&gt;
+    &lt;/x:call&gt;
+    &lt;x:context label="the results"&gt;
+      &lt;x:document type="port" port="result"/&gt;
+    &lt;/x:context&gt;
+  &lt;/x:scenario&gt;  
 
-<property name="option: package-name" value=""/>
-<property name="option: package-version" value=""/>
-
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="list-installed" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="CheckCorrectContents" classname="list-installed" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-04-13T15:46:15.892Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d5487e1" name="impllistinstalledSinglePackage" package="https://github.com/xquery/depify/impl" time="0.012">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify/test/impl.xprocspec)"/>
-
-<property name="option: package-name" value="xquery.1.functx"/>
-<property name="option: package-version" value=""/>
-
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="list-installed" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="CheckCorrectContents" classname="list-installed" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-04-13T15:46:15.933Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d5492e1" name="impllistrepoPackages" package="https://github.com/xquery/depify/impl" time="1.422">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify/test/impl.xprocspec)"/>
-
-<property name="option: package-name" value=""/>
-<property name="option: package-version" value=""/>
-
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="list-repo" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="CheckCorrectContents" classname="list-repo" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-04-13T15:46:15.965Z" hostname="localhost" tests="1" errors="0" failures="0" skipped="0" id="d5497e1" name="implgetpackagefromgithubrepoTest" package="https://github.com/xquery/depify/impl" time="7.027">
-<properties>
-
-<property name="option: github-download-uri" value="https://github.com/koppor/xmltree.git"/>
-<property name="option: app_dir" value="/tmp/"/>
-<property name="option: app_dir_lib" value="lib"/>
-
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="get-package-from-github-repo" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-04-13T15:46:15.993Z" hostname="localhost" tests="1" errors="0" failures="0" skipped="0" id="d5502e1" name="implgetpackagefromdepifyrepoTest" package="https://github.com/xquery/depify/impl" time="2.254">
-<properties>
-
-<property name="option: depify-download-uri" value="http://depify.com/downloads/js.ecmascript.prettify-1.0.zip"/>
-<property name="option: app_dir" value="/tmp"/>
-<property name="option: app_dir_lib" value="lib"/>
-
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="get-package-from-depify-repo" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase></testsuite></testsuites>
+  
+    -- Local Variables:
+    -- compile-command: "/usr/local/bin/calabash -Xtransparent-json -Xjson-flavor=marklogic -i source=impl.xprocspec -o result=target/impl.xml -o html=target/impl.html -o junit=target/impl-junit.xml xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl"
+    -- End:    
+    
+&lt;/x:description&gt;&lt;/x:was&gt;</system-err></testsuite></testsuites>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.daisy.org/ns/xprocspec/xprocspec.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <x:description xmlns:x="http://www.daisy.org/ns/xprocspec"
-               xmlns:depify="https://github.com/xquery/depify"
+               xmlns:depify="https://github.com/depify"
                xmlns:impl="https://github.com/xquery/depify/impl"
                script="../src/xproc/depify-impl.xpl">
 
@@ -23,7 +23,7 @@
     </x:context>
     <x:expect type="compare" label="Check correct contents">
       <x:document type="inline">
-         <depify xmlns="https://github.com/xquery/depify" ts="current datetime"><test xmlns=""/></depify>
+         <depify xmlns="https://github.com/depify" ts="current datetime"><test xmlns=""/></depify>
       </x:document>
     </x:expect>
   </x:scenario>
@@ -37,7 +37,7 @@
         </x:input>        
         <x:input port="package">
           <x:document type="inline">
-  <dep xmlns="https://github.com/xquery/depify" path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"><title>FunctX library</title><desc>The FunctX function library is a set of useful functions on
+  <depify xmlns="https://github.com/depify" path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"><title>FunctX library</title><desc>The FunctX function library is a set of useful functions on
   XML documents and data. It comes in two flavors: XQuery 1.0 and
   XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
   function definitions as consistent as possible across the two
@@ -51,13 +51,12 @@
   provide feedback and/or contribute your own functions.
   </desc><license type="GNU-LGPL">
   <uri>?</uri>
-  </license><repo type="?">
-  <uri>?</uri>
-  </repo><author id="pwalmsley">Priscilla Walmsley</author><website>http://www.xqueryfunctions.com/</website><xquery version="1.0">
+  </license>
+  <author id="pwalmsley">Priscilla Walmsley</author><website>http://www.xqueryfunctions.com/</website><xquery version="1.0">
   <prefix>functx</prefix>
   <namespace>http://www.functx.com</namespace>
   <uri>functx.xq</uri>
-  </xquery></dep>
+  </xquery></depify>
           </x:document>
         </x:input>
       </x:call>
@@ -161,4 +160,3 @@
     -- End:    
     
 </x:description>
-

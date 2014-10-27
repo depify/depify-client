@@ -1,0 +1,84 @@
+apply plugin: 'izpack'
+
+defaultTasks 'assemble', 'test'
+
+ant.importBuild 'build.xml'
+
+buildscript {
+  repositories {
+    mavenCentral()
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'com.thaiopensource:jing:20091111'
+    classpath group: 'net.sf.saxon', name:'Saxon-HE', version:'9.5.1-6'
+    classpath group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.0.13-94'
+    classpath 'org.gradle.api.plugins:gradle-izpack-plugin:0.2.3'
+  }
+}
+
+dependencies {
+    izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
+}
+
+import org.gradle.api.DefaultTask
+import org.gradle.api.tasks.TaskAction
+import com.xmlcalabash.drivers.Main
+
+class CalabashClientTestTask extends DefaultTask {
+
+@TaskAction
+  def calabashAction() {
+    def args = [
+        "-isource=test/test.xprocspec",
+    	"-oresult=test/target/test.xml",
+    	"-ohtml=test/target/test.html",
+        "-ojunit=test/target/test-junit.xml",
+      	"test/xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl"
+    ]
+
+    Main.main(args as String[])
+    
+  }
+}
+
+class CalabashImplTestTask extends DefaultTask {
+
+@TaskAction
+  def calabashAction() {
+    def args = [
+        "-isource=test/impl.xprocspec",
+    	"-oresult=test/target/impl.xml",
+    	"-ohtml=test/target/impl.html",
+        "-ojunit=test/target/impl-junit.xml",
+      	"test/xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl"
+    ]
+
+    Main.main(args as String[])
+    
+  }
+}
+println '-----------------------------'
+println 'building depify-client'
+println '-----------------------------'
+
+task assemble() {
+    outputs.upToDateWhen { false }
+}
+
+task testClient(type: CalabashClientTestTask){
+    println 'running client unit tests'
+}
+
+task testImpl(type: CalabashImplTestTask){
+    println 'running impl unit tests'
+}
+
+task test(dependsOn: [testClient,testImpl]){
+    println 'starting test'
+}
+
+task buildInstaller(dependsOn: dist){
+
+}

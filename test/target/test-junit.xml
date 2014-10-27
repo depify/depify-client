@@ -1,47 +1,39 @@
-<testsuites tests="11" failures="3" time="6.262" errors="0" name="test"><testsuite timestamp="2014-09-18T12:18:17.852Z" hostname="localhost" tests="2" errors="0" failures="1" skipped="0" id="d4049e1" name="installPackage" package="https://github.com/xquery/depify" time="0.396">
+<testsuites tests="11" failures="0" time="9.669" errors="0" name="test"><testsuite timestamp="2014-10-27T06:16:32.257Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4047e1" name="installPackage" package="https://github.com/depify" time="2.143">
 <properties><property name="input: source" value="&lt;test xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="install"/>
-<property name="option: package" value="xquery.1.functx"/>
-<property name="option: version" value="1.0"/>
-<property name="option: app_dir" value="."/>
-<property name="option: app_dir_lib" value="lib"/>
-
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="FAILED"><failure message="the step should execute successfully without throwing any errors" type="count"/><system-out>the step should execute successfully without throwing any errors: FAILED</system-out>
-<system-err>Expected:
-At most 0 documents.
-
-Was:
-1</system-err></testcase><testcase name="ThePackageNameShouldBeXquery1Functx" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package name should be xquery.1.functx': SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-09-18T12:18:17.903Z" hostname="localhost" tests="2" errors="0" failures="1" skipped="0" id="d4061e1" name="repeatInstallPackageWithDefaults" package="https://github.com/xquery/depify" time="0.03">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
-
-<property name="option: command" value="install"/>
-<property name="option: package" value="xquery.1.functx"/>
-<property name="option: version" value="1.0"/>
-
-</properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="FAILED"><failure message="the step should execute successfully without throwing any errors" type="count"/><system-out>the step should execute successfully without throwing any errors: FAILED</system-out>
-<system-err>Expected:
-At most 0 documents.
-
-Was:
-1</system-err></testcase><testcase name="ThePackageNameShouldBeXquery1Functx" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package name should be xquery.1.functx': SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-09-18T12:18:17.936Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4072e1" name="removePackage" package="https://github.com/xquery/depify" time="0.031">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
-
-<property name="option: command" value="remove"/>
-<property name="option: package" value="xquery.1.functx"/>
+<property name="option: package" value="transform.xq"/>
 <property name="option: version" value="1.0"/>
 <property name="option: app_dir" value="."/>
 <property name="option: app_dir_lib" value="lib"/>
 
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="ThePackageXquery1FunctxShouldNotExist" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package xquery.1.functx' should not exist: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-09-18T12:18:17.967Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4079e1" name="listInstalledPackages" package="https://github.com/xquery/depify" time="0.037">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
+<system-err/></testcase><testcase name="ThePackageNameShouldBeTransformXq" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package name should be transform.xq: SUCCESS</system-out>
+<system-err/></testcase></testsuite><testsuite timestamp="2014-10-27T06:16:32.288Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4055e1" name="repeatInstallPackageWithDefaults" package="https://github.com/depify" time="0.873">
+<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
+
+<property name="option: command" value="install"/>
+<property name="option: package" value="transform.xq"/>
+<property name="option: version" value="1.0"/>
+
+</properties>
+<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
+<system-err/></testcase><testcase name="ThePackageNameShouldBeTransformXq" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package name should be transform.xq': SUCCESS</system-out>
+<system-err/></testcase></testsuite><testsuite timestamp="2014-10-27T06:16:32.315Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4062e1" name="removePackage" package="https://github.com/depify" time="0.03">
+<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
+
+<property name="option: command" value="remove"/>
+<property name="option: package" value="transform.xq"/>
+<property name="option: version" value="1.0"/>
+<property name="option: app_dir" value="."/>
+<property name="option: app_dir_lib" value="lib"/>
+
+</properties>
+<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
+<system-err/></testcase><testcase name="ThePackageTransformXqShouldNotExist" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package transform.xq' should not exist: SUCCESS</system-out>
+<system-err/></testcase></testsuite><testsuite timestamp="2014-10-27T06:16:32.341Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4069e1" name="listInstalledPackages" package="https://github.com/depify" time="0.036">
+<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="list"/>
 <property name="option: app_dir" value="."/>
@@ -49,9 +41,9 @@ Was:
 
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="ThePackageXquery1FunctxShouldNotExist" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package xquery.1.functx' should not exist: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-09-18T12:18:17.999Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4086e1" name="packageInfo" package="https://github.com/xquery/depify" time="0.028">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
+<system-err/></testcase><testcase name="ThePackageTransformXqShouldNotExist" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package transform.xq' should not exist: SUCCESS</system-out>
+<system-err/></testcase></testsuite><testsuite timestamp="2014-10-27T06:16:32.366Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4076e1" name="packageInfo" package="https://github.com/depify" time="0.038">
+<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="info"/>
 <property name="option: package" value="js.ecmascript.qunit"/>
@@ -62,8 +54,8 @@ Was:
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="ThePackageJsEcmascriptQunitShouldBePresent" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package js.ecmascript.qunit should be present: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-09-18T12:18:18.035Z" hostname="localhost" tests="1" errors="0" failures="1" skipped="0" id="d4093e1" name="installPackages" package="https://github.com/xquery/depify" time="0.028">
-<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/xquery/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
+<system-err/></testcase></testsuite><testsuite timestamp="2014-10-27T06:16:32.393Z" hostname="localhost" tests="1" errors="0" failures="0" skipped="0" id="d4083e1" name="installPackages" package="https://github.com/depify" time="0.035">
+<properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="install"/>
 <property name="option: package" value=""/>
@@ -72,9 +64,5 @@ Was:
 <property name="option: app_dir_lib" value="lib"/>
 
 </properties>
-<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="FAILED"><failure message="the step should execute successfully without throwing any errors" type="count"/><system-out>the step should execute successfully without throwing any errors: FAILED</system-out>
-<system-err>Expected:
-At most 0 documents.
-
-Was:
-1</system-err></testcase></testsuite></testsuites>
+<testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
+<system-err/></testcase></testsuite></testsuites>

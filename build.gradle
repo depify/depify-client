@@ -79,6 +79,10 @@ task test(dependsOn: [testClient,testImpl]){
     println 'starting test'
 }
 
+task check(dependsOn: [test]){
+    println 'starting build'
+}
+
 task buildInstaller(dependsOn: dist){
 
 }

@@ -1,0 +1,6 @@
+language: java
+
+env:
+  global:
+  -  secure: "VdEYsDzaQRfbEeB6xx9PKCh9HFyTIx1W1w+T6IBxREVeF+0V1XtHrMrA6JF/WFqO5YEP086kJN2Yxw6IOQl6DI/j5AdFtllzdbiwtbPI792kSCJpGZAIpD7Bshp7SqkbnF3SRpnWv6Q/EXgyfc8mYGtIagfd8aZWsEuu1kQS9x8="
+

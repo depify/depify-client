@@ -1,5 +1,8 @@
-<depify xmlns="https://github.com/depify" ts="current datetime">
-<depify name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
+<depify xmlns="https://github.com/depify">
+<depify 
+         name="transform.xq"
+         version="1.0"
+         repo-uri="https://github.com/jpcs/transform.xq.git">
    <title>transform.xq</title>
    <desc>An extensible transformation library for XQuery 3.0.</desc>
    <license type="APLV2.0">

@@ -2,12 +2,12 @@
 <?xml-model href="http://www.daisy.org/ns/xprocspec/xprocspec.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <x:description xmlns:x="http://www.daisy.org/ns/xprocspec"
                xmlns:depify="https://github.com/depify"
-               xmlns:impl="https://github.com/xquery/depify/impl"
-               script="../src/xproc/depify-impl.xpl">
+               xmlns:impl="https://github.com/depify/impl"
+               script="../src/client/xproc/depify-impl.xpl">
 
     <x:scenario label="impl:install invoke">
       <x:call step="impl:install">
-        <x:option name="package-name" select="'xquery.1.functx'"/>
+        <x:option name="package-name" select="'transform.xq'"/>
         <x:option name="package-version" select="'1.0'"/>
         <x:input port="source">
           <x:document type="file" href="data/depify.xml"/>
@@ -28,35 +28,29 @@
     </x:expect>
   </x:scenario>
 
-    <x:scenario label="impl:install functx package">
+    <x:scenario label="impl:install package">
       <x:call step="impl:install">
-        <x:option name="package-name" select="'xquery.1.functx'"/>
+        <x:option name="package-name" select="'transform.xq'"/>
         <x:option name="package-version" select="'1.0'"/>
         <x:input port="source">
           <x:document type="file" href="data/depify.xml"/>
         </x:input>        
         <x:input port="package">
           <x:document type="inline">
-  <depify xmlns="https://github.com/depify" path="/packages/master/xquery/1/functx/1.0/" name="xquery.1.functx" version="1.0"><title>FunctX library</title><desc>The FunctX function library is a set of useful functions on
-  XML documents and data. It comes in two flavors: XQuery 1.0 and
-  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
-  function definitions as consistent as possible across the two
-  languages. The source code for the functions is available under the
-  GNU-LGPL license. However, the longer descriptions of the functions
-  and the design of the FunctX Web sites is copyrighted and may only
-  be used with permission.This site also includes descriptions and
-  examples of the XQuery and XPath built-in functions, taken with
-  permission from the book XQuery (2007, O'Reilly Media).We hope you
-  find these functions useful and that you will take the time to
-  provide feedback and/or contribute your own functions.
-  </desc><license type="GNU-LGPL">
-  <uri>?</uri>
-  </license>
-  <author id="pwalmsley">Priscilla Walmsley</author><website>http://www.xqueryfunctions.com/</website><xquery version="1.0">
-  <prefix>functx</prefix>
-  <namespace>http://www.functx.com</namespace>
-  <uri>functx.xq</uri>
-  </xquery></depify>
+              <depify xmlns="https://github.com/depify" name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
+                <title>transform.xq</title>
+                <desc>An extensible transformation library for XQuery 3.0.</desc>
+                <license type="APLV2.0">
+                  <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+                </license>
+                <author id="jpcs">John Snelson</author>
+                <website>https://github.com/jpcs/transform.xq/</website>
+                <xquery version="3.0">
+                  <prefix>tfm</prefix>
+                  <namespace>http://snelson.org.uk/functions/transform</namespace>
+                  <uri>transform.xq</uri>
+                </xquery>
+              </depify>
           </x:document>
         </x:input>
       </x:call>
@@ -64,23 +58,23 @@
       <x:document type="port" port="result"/>
     </x:context>
     <x:expect type="compare" label="Check correct contents">
-      <x:document type="file" href="data/depify-functx.xml"/>
+      <x:document type="file" href="data/depify-transformxq.xml"/>
     </x:expect>
   </x:scenario>
 
-  <x:scenario label="impl:remove functx package">
+  <x:scenario label="impl:remove transform.xq package">
     <x:call step="impl:remove">
-      <x:option name="package-name" select="'xquery.1.functx'"/>
+      <x:option name="package-name" select="'transform.xq'"/>
       <x:option name="package-version" select="'1.0'"/>
       <x:input port="source">
-        <x:document type="file" href="data/depify-functx.xml"/>
+        <x:document type="file" href="data/depify-transformxq.xml"/>
       </x:input>        
     </x:call>
     <x:context label="the results">
       <x:document type="port" port="result"/>
     </x:context>
     <x:expect type="compare" label="Check correct contents">
-      <x:document type="file" href="data/depify-empty.xml"/>
+      <x:document type="file" href="data/depify-empty2.xml"/>
     </x:expect>
   </x:scenario>
 
@@ -89,30 +83,30 @@
       <x:option name="package-name" select="''"/>
       <x:option name="package-version" select="''"/>
       <x:input port="source">
-        <x:document type="file" href="data/depify-functx.xml"/>
+        <x:document type="file" href="data/depify-transformxq.xml"/>
       </x:input>        
     </x:call>
     <x:context label="the results">
       <x:document type="port" port="result"/>
     </x:context>
     <x:expect type="compare" label="Check correct contents">
-      <x:document type="file" href="data/depify-functx.xml"/>
+      <x:document type="file" href="data/depify-transformxq.xml"/>
     </x:expect>
   </x:scenario>
  
   <x:scenario label="impl:list-installed single package">
     <x:call step="impl:list-installed">
-      <x:option name="package-name" select="'xquery.1.functx'"/>
+      <x:option name="package-name" select="'transform.xq'"/>
       <x:option name="package-version" select="''"/>
       <x:input port="source">
-        <x:document type="file" href="data/depify-functx.xml"/>
+        <x:document type="file" href="data/depify-transformxq.xml"/>
       </x:input>        
     </x:call>
     <x:context label="the results">
       <x:document type="port" port="result"/>
     </x:context>
     <x:expect type="compare" label="Check correct contents">
-      <x:document type="file" href="data/depify-functx.xml"/>
+      <x:document type="file" href="data/depify-transformxq.xml"/>
     </x:expect>
   </x:scenario>
    
@@ -121,7 +115,7 @@
       <x:option name="package-name" select="''"/>
       <x:option name="package-version" select="''"/>
       <x:input port="source">
-        <x:document type="file" href="data/depify-functx.xml"/>
+        <x:document type="file" href="data/depify-empty.xml"/>
       </x:input>        
     </x:call>
     <x:context label="the results">
@@ -142,17 +136,6 @@
       <x:document type="port" port="result"/>
     </x:context>
   </x:scenario>
-
-  <x:scenario label="impl:get-package-from-depify-repo test">
-    <x:call step="impl:get-package-from-depify-repo">
-      <x:option name="depify-download-uri" select="'http://depify.com/downloads/js.ecmascript.prettify-1.0.zip'"/>
-      <x:option name="app_dir" select="'/tmp'"/>
-      <x:option name="app_dir_lib" select="'lib'"/>
-    </x:call>
-    <x:context label="the results">
-      <x:document type="port" port="result"/>
-    </x:context>
-  </x:scenario>  
 
   
     -- Local Variables:

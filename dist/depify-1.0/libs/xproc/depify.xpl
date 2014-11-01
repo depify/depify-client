@@ -280,7 +280,7 @@ limitations under the License.
   </p:store>
 
   <p:choose name="transform-output-step">
-    <p:when test="$command eq 'search' and $package eq ''">
+    <p:when test="$command eq 'search'">
       <p:xslt>
         <p:input port="source">
           <p:pipe step="main" port="packages"/>
@@ -291,15 +291,15 @@ limitations under the License.
     xmlns:depify="https://github.com/depify"
     version="2.0">
     <xsl:output method="xml" indent="no" encoding="UTF-8" />
-    <xsl:variable name="search"/>
-    <xsl:template match="*:depify"><search>
+    <xsl:param name="package"/>
+    <xsl:template match="/"><search>
       
-search depify packages: <xsl:value-of select="$search"/><xsl:text>
+search depify packages: <xsl:value-of select="$package"/><xsl:text>
 </xsl:text>
     <xsl:apply-templates/>
   </search>
     </xsl:template>
-    <xsl:template match="depify:depify">
+    <xsl:template match="*:depify[contains(@name,$package)]">
         <xsl:value-of select="@name"/>, v<xsl:value-of select="@version"/>, <xsl:value-of select="@repo-uri"/> <xsl:text>
 </xsl:text>
 

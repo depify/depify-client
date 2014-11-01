@@ -46,10 +46,10 @@ LIB_DIR=/lib/
 #####################################################################
 
 function usage(){
-    echo -e $'\e[34m'"depify 1.0, app dep management"
+    echo "depify 1.0, app dep management"
     echo "Copyright (c) 2014 Jim Fuller"
     echo "see https://github.com/depify"
-    echo -e $'\e[97m'
+    echo ""
     echo "see http://depify.com to search/review packages for installation"
     echo ""
     echo "advanced: depify [-c command (install|remove|list|refresh|init|register|search) ] [-p package name] [-v package version] [-r init repo uri] [-a application directory] "
@@ -84,22 +84,24 @@ if [ "$1" == "help" ]; then
     exit 1;
 fi
 
-echo $'\e[34m'"depify 1.0, app dep management"
+echo "---------------------------------"
+echo "depify 1.0, app dep management"
 echo "Copyright (c) 2014 Jim Fuller"
 echo "see https://github.com/depify"
-echo $'\e[97m'
-echo $'\e[34m'"depify command:"$'\e[97m' $COMMAND
-echo $'\e[34m'"package-name:$"$'\e[97m' $PACKAGE
-echo $'\e[34m'"package-version:"$'\e[97m' $VERSION
-if [ $COMMAND == "init" ]; then
-echo $'\e[34m'"init-repo-uri:"$'\e[97m' $INITREPO
-fi
-echo $'\e[34m'"app dir (current directory):"$'\e[97m' $APP_DIR
-echo $'\e[34m'"lib dir (where deps are installed):"$'\e[97m' $LIB_DIR
+echo "---------------------------------"
 echo ""
-echo $'\e[34m'"---------------------------------"
-echo "start depifying"
-echo "---------------------------------"$'\e[97m'
+echo "command:" $COMMAND
+echo "package:" $PACKAGE
+echo "version:" $VERSION
+if [ $COMMAND == "init" ]; then
+echo "init-repo-uri:" $INITREPO
+fi
+echo "current app dir:" $APP_DIR
+echo "current dep lib dir:" $LIB_DIR
+echo ""
+echo "---------------"
+echo "depifying ....."
+echo "---------------"
 echo ""
 
 # create lib directory if it does not exist
@@ -121,6 +123,6 @@ fi
 echo -e `java -jar $DEPX_DIR/deps/xmlcalabash/calabash.jar -isource=$CURRENTDIR/.depify.xml -oresult=- $DEPX_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR`    
 
 echo ""
-echo $'\e[34m'"---------------------------------"
-echo "done depifying"
-echo "---------------------------------"$'\e[97m'
+echo "---------------"
+echo "...... depified"
+echo "---------------"

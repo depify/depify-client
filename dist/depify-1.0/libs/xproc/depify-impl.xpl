@@ -42,13 +42,6 @@ limitations under the License.
       <p:when test="/depify:depify/depify:depify[@name eq $package-name]">
         <p:identity/>
       </p:when>
-      <p:when test="/depify:depify/depify:depify[@name ne $package-name]">  
-        <p:insert match="/depify:depify/depify:dep" position="after">
-          <p:input port="insertion">
-            <p:pipe port="package" step="install-step"/>
-          </p:input>
-        </p:insert>
-      </p:when>
       <p:when test="/depify:depify">
         <p:insert match="/depify:depify" position="last-child">
           <p:input port="insertion">
@@ -63,9 +56,8 @@ limitations under the License.
           </p:input>
         </p:wrap>
       </p:otherwise>
-    </p:choose>    
+    </p:choose>        
     <p:add-attribute name="update-timestamp" match="/depify:depify" attribute-name="ts" attribute-value="current datetime"/>
-    
   </p:declare-step>
 
   <p:declare-step type="impl:remove" name="remove-step">

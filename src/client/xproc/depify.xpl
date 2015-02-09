@@ -27,6 +27,8 @@ limitations under the License.
     type="depify:depify"
     exclude-inline-prefixes="cx c p cxf pxp impl depify">
 
+  <p:serialization port="result" media-type="text/plain" method="text" /> 
+
   <p:documentation>
     depify client written in xproc
   </p:documentation>
@@ -53,9 +55,9 @@ limitations under the License.
 
   <p:in-scope-names name="vars"/>
 
-  <!--p:try-->
-    
+  <p:try>
   <p:group>
+      
   <p:filter name="get-package">
     <p:with-option name="select" select="concat('/depify:packages/depify:depify[@name eq &quot;',$package,'&quot;]')"/>
     <p:input port="source">
@@ -63,14 +65,12 @@ limitations under the License.
     </p:input>
   </p:filter>
   
-
   <p:choose name="command-step">
     <p:when test="$command eq 'init' and not(doc-available( concat($app_dir,'.depify.xml') ))">
       <p:output port="result"/>
       <cx:message>
         <p:with-option name="message" select="'.depify.xml does not exist, creating now'"/>
       </cx:message>
-
       <p:xslt>
         <p:input port="source">
           <p:pipe step="main" port="packages"/>
@@ -109,9 +109,9 @@ limitations under the License.
           <p:variable name="package-repo-uri" select="$repo-uri">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
-          <cx:message>
+          <!--cx:message>
             <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
-          </cx:message>
+          </cx:message-->
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -123,9 +123,9 @@ limitations under the License.
           <p:variable name="package-repo-uri" select="concat(substring-before($repo-uri,'.git'),'/archive/master.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
-          <cx:message>
+          <!--cx:message>
             <p:with-option name="message" select="concat('depify downloading master ',$package-repo-uri)"/>
-          </cx:message>
+          </cx:message-->
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -136,9 +136,9 @@ limitations under the License.
           <p:variable name="package-repo-uri" select="concat(substring-before($repo-uri,'.git'),'/archive/v',$version,'.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
-          <cx:message>
+          <!--cx:message>
             <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
-          </cx:message>
+          </cx:message-->
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -149,9 +149,9 @@ limitations under the License.
           <p:variable name="package-repo-uri" select="concat('https:',substring-after(substring-before($repo-uri,'.git'),'git:'),'/archive/master.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
-          <cx:message>
+          <!--cx:message>
             <p:with-option name="message" select="concat('depify downloading master ',$package-repo-uri)"/>
-          </cx:message>
+          </cx:message-->
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -162,9 +162,9 @@ limitations under the License.
           <p:variable name="package-repo-uri" select="concat('https:',substring-after(substring-before($repo-uri,'.git'),'git'),'/archive/v',$version,'.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
-          <cx:message>
+          <!--cx:message>
             <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
-          </cx:message>
+          </cx:message-->
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -175,9 +175,9 @@ limitations under the License.
           <p:variable name="package-repo-uri" select="concat('https:',substring-after(substring-before($repo-uri,'.git'),'git:'),'/archive/master.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
-          <cx:message>
+          <!--cx:message>
             <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
-          </cx:message>
+          </cx:message-->
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -188,9 +188,9 @@ limitations under the License.
           <p:variable name="package-repo-uri" select="concat(substring-before($repo-uri,'.git'),'/archive/master.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
-          <cx:message>
+          <!--cx:message>
             <p:with-option name="message" select="concat('depify downloading master ',$package-repo-uri)"/>
-          </cx:message>
+          </cx:message-->
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -199,9 +199,9 @@ limitations under the License.
         </p:when>
         <p:otherwise>
           <p:variable name="package-repo-uri" select="concat('http://depify.com/downloads/',$package,'-',$version,'.zip')"/>
-          <cx:message>
+          <!--cx:message>
             <p:with-option name="message" select="concat('depify downloading master',$package-repo-uri)"/>
-          </cx:message>      
+          </cx:message-->      
           <impl:get-package-from-depify-repo>
             <p:with-option name="depify-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -223,9 +223,9 @@ limitations under the License.
         <p:xpath-context>
           <p:pipe step="get-package" port="result"/>          
         </p:xpath-context>
-        <p:when test="/depify:depify/depify:dep">  
+        <p:when test="/depify:depify/depify:depify">  
           <p:for-each>
-            <p:iteration-source select="/depify:depify/depify:dep">  
+            <p:iteration-source select="/depify:depify/depify:depify">  
               <p:pipe step="get-package" port="result"/>
             </p:iteration-source>
             <depify:depify>
@@ -262,7 +262,7 @@ limitations under the License.
        </p:input>
       </impl:remove>
     </p:when>
-    <p:when test="$command eq 'register'">
+    <p:when test="$command eq 'register'"> <!-- not needed //-->
       <p:output port="result"/>
       <p:identity>
         <p:input port="source">
@@ -312,89 +312,107 @@ limitations under the License.
         <p:input port="source">
           <p:pipe step="main" port="packages"/>
         </p:input> 
-         <p:input port="stylesheet">
-          <p:inline>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:depify="https://github.com/depify"
-    version="2.0">
-    <xsl:output method="xml" indent="no" encoding="UTF-8" />
-    <xsl:param name="package"/>
-    <xsl:template match="/"><search>
-      
-search depify packages: <xsl:value-of select="$package"/><xsl:text>
-</xsl:text>
-    <xsl:apply-templates/>
-  </search>
-    </xsl:template>
-    <xsl:template match="*:depify[contains(@name,$package)]">
-        <xsl:value-of select="@name"/>, v<xsl:value-of select="@version"/>, <xsl:value-of select="@repo-uri"/> <xsl:text>
-</xsl:text>
-
-    </xsl:template>
-    <xsl:template match="text()"/>
-</xsl:stylesheet>            
-          </p:inline>
+        <p:input port="stylesheet">
+          <p:document href="search.xsl"/>
         </p:input>
           <p:input port="parameters">
             <p:pipe step="vars" port="result"/>
           </p:input>
-      </p:xslt>
-      
+      </p:xslt>      
     </p:when>
     <p:when test="$command eq 'list' and $package eq ''">
-      <p:identity>
-         <p:input port="source">
-           <p:pipe step="main" port="source"/>
-       </p:input>
-      </p:identity>
-    </p:when>
-    <p:when test="$command eq 'info' and $package ne ''">
-      <p:identity>
-         <p:input port="source">
-           <p:pipe step="get-package" port="result"/>
-       </p:input>
-      </p:identity>
-    </p:when>
-    <p:when test="$command eq 'info' and $package eq ''">
-      <p:identity>
-         <p:input port="source">
-           <p:pipe step="main" port="packages"/>
-       </p:input>
-      </p:identity>
-    </p:when>
-    <p:when test="$command eq 'package'">
-      <p:identity>
-         <p:input port="source">
-           <p:pipe step="main" port="source"/>
-       </p:input>
-      </p:identity>
-    </p:when>
-    <p:when test="$command eq 'publish'">
-      <p:identity>
+      <p:xslt>
         <p:input port="source">
           <p:pipe step="main" port="source"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="list.xsl"/>
         </p:input>
-      </p:identity>
+          <p:input port="parameters">
+            <p:pipe step="vars" port="result"/>
+          </p:input>
+      </p:xslt>      
     </p:when>
-    <p:otherwise>
-      <p:identity>
+    <p:when test="$command eq 'info' and $package ne ''">
+      <p:xslt>
         <p:input port="source">
-          <p:pipe step="command-step" port="result"/>
+          <p:pipe step="main" port="packages"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="info.xsl"/>
         </p:input>
-      </p:identity>
+          <p:input port="parameters">
+            <p:pipe step="vars" port="result"/>
+          </p:input>
+      </p:xslt>      
+    </p:when>
+    <p:when test="$command eq 'info' and $package eq ''">
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="main" port="source"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="all-info.xsl"/>
+        </p:input>
+          <p:input port="parameters">
+            <p:pipe step="vars" port="result"/>
+          </p:input>
+      </p:xslt>    
+    </p:when>
+    <p:when test="$command eq 'install' and $package ne ''">
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="get-package" port="result"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="install.xsl"/>
+        </p:input>
+          <p:input port="parameters">
+            <p:pipe step="vars" port="result"/>
+          </p:input>
+      </p:xslt>    
+    </p:when>
+    <p:when test="$command eq 'remove' and $package ne ''">
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="get-package" port="result"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="remove.xsl"/>
+        </p:input>
+          <p:input port="parameters">
+            <p:pipe step="vars" port="result"/>
+          </p:input>
+      </p:xslt>    
+    </p:when>        
+    <p:otherwise> 
+    <p:identity>
+      <p:input port="source">
+        <p:inline>
+          <error>invalid command or package not found.</error>
+        </p:inline>
+      </p:input>
+    </p:identity>
     </p:otherwise>
   </p:choose>
   </p:group>
 
-  <!--p:catch>
+  <p:catch>
     <p:identity>
       <p:input port="source">
         <p:inline>
-          <error>DEPIFY {$package} package not found.</error>
+          <error>
+ -----------------------------
+ depify 1.0
+ copyright (c) 2015 Jim Fuller
+ see https://github.com/depify
+ -----------------------------
+
+ package not found.</error>
         </p:inline>
       </p:input>
     </p:identity>
   </p:catch>  
-</p:try-->
+</p:try>
 
 </p:declare-step>

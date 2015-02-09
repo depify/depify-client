@@ -1,4 +1,4 @@
-<testsuites tests="11" failures="2" time="6.748" errors="0" name="test"><testsuite timestamp="2014-11-02T21:41:59.297Z" hostname="localhost" tests="2" errors="0" failures="1" skipped="0" id="d4029e1" name="installPackage" package="https://github.com/depify" time="0.036">
+<testsuites tests="11" failures="0" time="9.788" errors="0" name="test"><testsuite timestamp="2015-02-09T10:46:29.767Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4199e1" name="installPackage" package="https://github.com/depify" time="2.282">
 <properties><property name="input: source" value="&lt;test xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="install"/>
@@ -9,14 +9,8 @@
 
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="ThePackageNameShouldBeTransformXq" classname="depify" assertions="1" time="0" status="FAILED"><failure message="The package name should be transform.xq" type="xpath"/><system-out>The package name should be transform.xq: FAILED</system-out>
-<system-err>Expected:
-XPath: 'transform.xq'
-Value: transform.xq
-
-Was:
-XPath: //depify:depify/@name
-Value: </system-err></testcase></testsuite><testsuite timestamp="2014-11-02T21:41:59.33Z" hostname="localhost" tests="2" errors="0" failures="1" skipped="0" id="d4037e1" name="repeatInstallPackageWithDefaults" package="https://github.com/depify" time="0.039">
+<system-err/></testcase><testcase name="ThePackageNameShouldBeTransformXq" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package name should be transform.xq: SUCCESS</system-out>
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-09T10:46:29.805Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4207e1" name="repeatInstallPackageWithDefaults" package="https://github.com/depify" time="1.346">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="install"/>
@@ -25,14 +19,8 @@ Value: </system-err></testcase></testsuite><testsuite timestamp="2014-11-02T21:4
 
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
-<system-err/></testcase><testcase name="ThePackageNameShouldBeTransformXq" classname="depify" assertions="1" time="0" status="FAILED"><failure message="The package name should be transform.xq'" type="xpath"/><system-out>The package name should be transform.xq': FAILED</system-out>
-<system-err>Expected:
-XPath: 'transform.xq'
-Value: transform.xq
-
-Was:
-XPath: //depify:depify/@name
-Value: </system-err></testcase></testsuite><testsuite timestamp="2014-11-02T21:41:59.359Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4044e1" name="removePackage" package="https://github.com/depify" time="0.033">
+<system-err/></testcase><testcase name="ThePackageNameShouldBeTransformXq" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package name should be transform.xq': SUCCESS</system-out>
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-09T10:46:29.837Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4214e1" name="removePackage" package="https://github.com/depify" time="0.027">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="remove"/>
@@ -44,7 +32,7 @@ Value: </system-err></testcase></testsuite><testsuite timestamp="2014-11-02T21:4
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="ThePackageTransformXqShouldNotExist" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package transform.xq' should not exist: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-11-02T21:41:59.388Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4051e1" name="listInstalledPackages" package="https://github.com/depify" time="0.043">
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-09T10:46:29.869Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4221e1" name="listInstalledPackages" package="https://github.com/depify" time="0.023">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="list"/>
@@ -54,7 +42,7 @@ Value: </system-err></testcase></testsuite><testsuite timestamp="2014-11-02T21:4
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="ThePackageTransformXqShouldNotExist" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package transform.xq' should not exist: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-11-02T21:41:59.414Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4058e1" name="packageInfo" package="https://github.com/depify" time="0.032">
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-09T10:46:29.901Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4228e1" name="packageInfo" package="https://github.com/depify" time="0.021">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="info"/>
@@ -66,7 +54,7 @@ Value: </system-err></testcase></testsuite><testsuite timestamp="2014-11-02T21:4
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="ThePackageJsEcmascriptQunitShouldBePresent" classname="depify" assertions="1" time="0" status="SUCCESS"><system-out>The package js.ecmascript.qunit should be present: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2014-11-02T21:41:59.439Z" hostname="localhost" tests="1" errors="0" failures="0" skipped="0" id="d4065e1" name="installPackages" package="https://github.com/depify" time="0.034">
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-09T10:46:29.932Z" hostname="localhost" tests="1" errors="0" failures="0" skipped="0" id="d4235e1" name="installPackages" package="https://github.com/depify" time="0.021">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/><property name="input: packages" value="&lt; xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/test.xprocspec)"/>
 
 <property name="option: command" value="install"/>

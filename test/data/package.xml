@@ -1,4 +1,4 @@
-<packages xmlns="https://github.com/depify" ts="2014-10-27T11:16:27.465Z"><depify path="/packages/master/xslt/2/Schematron/1.6/.depify.xml" version="1.6" repo-uri="http://www.schematron.com/tmp/iso-schematron-xslt2.zip" name="schematron">
+<packages xmlns="https://github.com/depify" ts="2015-02-06T19:14:06.954Z"><depify path="/packages/master/xslt/2/Schematron/1.6/.depify.xml" version="1.6" repo-uri="http://www.schematron.com/tmp/iso-schematron-xslt2.zip" name="schematron">
   <title>ISO SCHEMATRON 2010</title>
   <desc>ISO Schematron is a language for making assertion about the presence or absense
     of patterns in XML documents. It is typically used for as a schema language, or
@@ -73,7 +73,7 @@
   <website>https://github.com/marklogic/roxy</website>
 </depify><depify path="/packages/master/xquery/3/xqueryparser.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/xqueryparser.xq.git" version="1.0" name="xqueryparser.xq">
    <title>xqueryparser.xq</title>
-   <desc>An parser for XQuery 3.0 and MarkLogic extensions.</desc>
+   <desc>A parser for XQuery 3.0 and MarkLogic extensions.</desc>
    <license type="APLV2.0">
       <uri>https://github.com/jpcs/xqueryparser.xq/blob/master/LICENSE</uri>
    </license>

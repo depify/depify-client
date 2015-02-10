@@ -55,6 +55,10 @@
       <fileset file="LICENSE"/>
       <fileset file="src/client/commandline/depify"/>
       <fileset file="src/client/commandline/depify.bat"/>
+      <fileset file="etc/saxon.xml"/>
+      <fileset file="etc/xmlcalabash.xml"/>
+      <fileset file="etc/resolver.properties"/>
+      <fileset file="etc/catalog.xml"/>
      </copy>
 
      <!--copy todir="${dist.dir}/depify-${version}/libs/xquery">

@@ -262,36 +262,6 @@ limitations under the License.
        </p:input>
       </impl:remove>
     </p:when>
-    <p:when test="$command eq 'register'"> <!-- not needed //-->
-      <p:output port="result"/>
-      <p:identity>
-        <p:input port="source">
-           <p:pipe step="main" port="source"/>
-       </p:input>
-      </p:identity>
-      <p:wrap wrapper="c:body" match="/"/>
-      <p:add-attribute match="c:body"
-                 attribute-name="content-type"
-                 attribute-value="application/xml"/>
-      <p:wrap wrapper="c:request" match="/"/>
-      <p:add-attribute attribute-name="href" match="/c:request">
-        <p:with-option name="attribute-value"
-                       select="concat('http://www.webcomposite.com?package=',$package,'&amp;version=',$version,'&amp;repo=',$init-repo-uri)"/>
-      </p:add-attribute>
-      <p:set-attributes match="c:request">
-        <p:input port="attributes">
-          <p:inline>
-            <c:request method="post"/>
-          </p:inline>
-        </p:input>
-      </p:set-attributes>
-      <p:http-request/>
-      <p:identity>
-        <p:input port="source">
-          <p:pipe step="main" port="source"/>
-        </p:input>
-      </p:identity>  
-    </p:when>  
     <p:otherwise>
       <p:output port="result"/>
       <p:identity>
@@ -401,14 +371,14 @@ limitations under the License.
     <p:identity>
       <p:input port="source">
         <p:inline>
-          <error>
- -----------------------------
- depify 1.0
- copyright (c) 2015 Jim Fuller
- see https://github.com/depify
- -----------------------------
-
- package not found.</error>
+          <error>\n
+ -----------------------------\n
+ depify 1.0\n
+ copyright (c) 2015 Jim Fuller\n
+ see https://github.com/depify\n
+ -----------------------------\n
+\n
+ package not found.\n</error>
         </p:inline>
       </p:input>
     </p:identity>

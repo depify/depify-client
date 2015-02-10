@@ -2,9 +2,12 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>cx:message</title>
-      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.3" />
+      <meta charset="utf-8" />
+      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.6" />
       <link rel="stylesheet" type="text/css" href="css/default.css" />
-      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script></head>
+      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" />
+      <link href="css/db-prism.css" rel="stylesheet" />
+   </head>
    <body>
       <div class="page">
          <div class="content">
@@ -12,7 +15,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cx-java-properties.html" title="cx:java-properties"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="XML Calabash Extension Steps" href="cx-steps.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="cx:metadata-extractor" href="cx-metadata-extractor.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.10)
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.13)
                      </td>
                   </tr>
                </table>
@@ -25,7 +28,7 @@
                   </div>
                   <div class="refsynopsisdiv">
                      <h2>Synopsis</h2>
-                     <p class="element-syntax element-syntax-declare-step-opt"><span class="decl"><code>&lt;p:declare-step</code> <code class="attr type-attr">type</code><code>="</code><code class="value type-value">cx:message</code><code>"</code> <code class="attr xmlns-attr">xmlns:cx</code><code>="</code><code class="value xmlns-value">http://xmlcalabash.com/ns/extensions</code><code>"</code><code>&gt;</code></span><br />     <span class="input"><code>&lt;p:input</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">source</code><code>"</code> <code class="attr sequence-attr">sequence</code><code>="</code><code class="value sequence-value">true</code><code>"</code><code>/&gt;</code></span><br />     <span class="input"><code>&lt;p:output</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">result</code><code>"</code> <code class="attr sequence-attr">sequence</code><code>="</code><code class="value sequence-value">true</code><code>"</code><code>/&gt;</code></span><br />     <span class="opt-req"><code>&lt;p:option</code> <code class="attr name-attr">name</code><code>="</code><code class="value name-value">message</code><code>"</code> <code class="attr required-attr">required</code><code>="</code><code class="value required-value">true</code><code>"</code><code>/&gt;</code><code>                    </code><code class="comment">&lt;!-- </code><span class="opt-type">string</span><code class="comment"> --&gt;</code></span><br /><code>&lt;/p:declare-step&gt;</code></p>
+                     <p class="element-syntax element-syntax-declare-step-opt"><span class="decl"><code>&lt;p:declare-step</code> <code class="attr type-attr">type</code><code>="</code><code class="value type-value">cx:message</code><code>"</code> <code class="attr xmlns-attr">xmlns:cx</code><code>="</code><code class="value xmlns-value">http://xmlcalabash.com/ns/extensions</code><code>"</code><code>&gt;</code></span><br />     <span class="input"><code>&lt;p:input</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">source</code><code>"</code> <code class="attr sequence-attr">sequence</code><code>="</code><code class="value sequence-value">true</code><code>"</code><code>/&gt;</code></span><br />     <span class="input"><code>&lt;p:output</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">result</code><code>"</code> <code class="attr sequence-attr">sequence</code><code>="</code><code class="value sequence-value">true</code><code>"</code><code>/&gt;</code></span><br />     <span class="opt-opt"><code>&lt;p:option</code> <code class="attr name-attr">name</code><code>="</code><code class="value name-value">log</code><code>"</code><code>/&gt;</code><code>                                        </code><code class="comment">&lt;!-- </code><span class="opt-type">"error" | "warn" | "info" | "debug" | "trace"</span><code class="comment"> --&gt;</code></span><br />     <span class="opt-req"><code>&lt;p:option</code> <code class="attr name-attr">name</code><code>="</code><code class="value name-value">message</code><code>"</code> <code class="attr required-attr">required</code><code>="</code><code class="value required-value">true</code><code>"</code><code>/&gt;</code><code>                    </code><code class="comment">&lt;!-- </code><span class="opt-type">string</span><code class="comment"> --&gt;</code></span><br /><code>&lt;/p:declare-step&gt;</code></p>
                   </div>
                   <div class="refsection">
                      <div class="refsection-titlepage">
@@ -36,6 +39,13 @@
                      
                      <p>This step is mostly for debugging. It performs the identity step
                         with the side-effect of writing a message to the console.
+                     </p>
+                     
+                     
+                     <p>If you specify a value for the <code class="tag-attribute">log</code>
+                        option, the message is written to the log with the specified logging level
+                        instead of to the console.
+                        
                      </p>
                      
                      
@@ -59,7 +69,7 @@
             </table>
          </div>
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="copyrightfooter">
-            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013 Norman Walsh.
+            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013, 2014, 2015 Norman Walsh.
             </p>
          </div>
       </div>

@@ -25,8 +25,7 @@
         </x:context>
         <x:expect type="xpath"
                   label="The package name should be transform.xq"
-                  test="//depify:depify/@name"
-                  equals="'transform.xq'"/>
+                  test="/*:installremove"/>
       </x:scenario>
 
     <x:scenario label="repeat install package with defaults">
@@ -46,8 +45,7 @@
         </x:context>        
         <x:expect type="xpath"
                   label="The package name should be transform.xq'"
-                  test="//depify:depify/@name"
-                  equals="'transform.xq'"/>
+                  test="/*:installremove"/>
     </x:scenario>
     
     <x:scenario label="remove package">
@@ -90,8 +88,7 @@
         </x:context>        
         <x:expect type="xpath"
                   label="The package transform.xq' should not exist"
-                  test="exists(//depify:depify[@name eq 'transform.xq'])"
-                  equals="true()"/>
+                  test="/*:list"/>
     </x:scenario>
 
     <x:scenario label="package info">
@@ -113,8 +110,7 @@
       </x:context>        
       <x:expect type="xpath"
                 label="The package js.ecmascript.qunit should be present"
-                test="exists(//depify:depify[@name eq 'js.ecmascript.qunit'])"
-                equals="true()"/>
+                test="/*:info"/>
     </x:scenario>
 
     <x:scenario label="install packages">

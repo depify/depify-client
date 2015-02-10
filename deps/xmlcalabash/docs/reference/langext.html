@@ -2,9 +2,12 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>3. Language Extensions</title>
-      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.3" />
+      <meta charset="utf-8" />
+      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.6" />
       <link rel="stylesheet" type="text/css" href="css/default.css" />
-      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script></head>
+      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" />
+      <link href="css/db-prism.css" rel="stylesheet" />
+   </head>
    <body>
       <div class="page">
          <div class="content">
@@ -12,7 +15,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="extattr.html" title="2 .  Extension Attributes"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Chapter  4 .  Extensions" href="extensions.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="4 .  Extension functions" href="extfunc.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.10)
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.13)
                      </td>
                   </tr>
                </table>
@@ -20,7 +23,7 @@
             <div class="body">
                <section id="langext" class="section">
                   <div class="section-titlepage">
-                     <h3>3. Language Extensions</h3>
+                     <h2>3. Language Extensions</h2>
                   </div>
                   <p><em class="citetitle">XML Calabash</em> has three language extensions:
                      “general values”, “XPointer on text”, and “transparent JSON”. Enabling
@@ -31,7 +34,7 @@
                   </p>
                   <section id="ext.general-values" class="section">
                      <div class="section-titlepage">
-                        <h4>3.1. General values extension</h4>
+                        <h3>3.1. General values extension</h3>
                      </div>
                      <p>If the general values extension is enabled, variables, options,
                         and parameters are not limited to strings. If the select expression
@@ -39,11 +42,11 @@
                         nodes from a tree, then those node values will be passed along as the
                         value.
                      </p>
-                     <p>Consider the pipeline in <a href="langext.html#ex-gv-1">Example 4.1, “Pipeline that exploits the general values extension”</a>:
+                     <p>Consider the pipeline in <a href="langext.html#ex-gv-1" title="Pipeline that exploits the general values extension">Example 4.1, “Pipeline that exploits the general values extension”</a>:
                      </p>
                      <figure id="ex-gv-1" class="example-wrapper">
                         <div class="title">Example 4.1. Pipeline that exploits the general values extension</div>
-                        <div class="example"><pre class="programlisting brush: xml">&lt;p:declare-step xmlns:p="http://www.w3.org/ns/xproc" version="1.0"&gt;
+                        <div class="example"><pre class="programlisting language-xml line-numbers"><code>&lt;p:declare-step xmlns:p="http://www.w3.org/ns/xproc" version="1.0"&gt;
 &lt;p:input port="parameters" kind="parameter"/&gt;
 &lt;p:output port="result"/&gt;
 &lt;p:serialization port="result" indent="true"/&gt;
@@ -80,22 +83,19 @@
                 xmlns:cx="http://xmlcalabash.com/ns/extensions"/&gt;
 &lt;/p:xslt&gt;
 
-&lt;/p:declare-step&gt;
-</pre></div>
+&lt;/p:declare-step&gt;</code></pre></div>
                      </figure>
                      <p>In a conformant processor, the <em class="parameter"><code>text</code></em> parameter passed to the
                         <code class="tag-element">p:xslt</code> step is a string:
                      </p>
                      <figure id="ext.general-values.6" class="informalexample-wrapper">
-                        <div class="informalexample"><pre class="programlisting brush: xml">&lt;root general-values="false"&gt;Some text in a paragraph.&lt;/root&gt;
-</pre></div>
+                        <div class="informalexample"><pre class="programlisting language-xml line-numbers"><code>&lt;root general-values="false"&gt;Some text in a paragraph.&lt;/root&gt;</code></pre></div>
                      </figure>
                      <p>If the general values extension is enabled, the value contains the selected subtree:</p>
                      <figure id="ext.general-values.8" class="informalexample-wrapper">
-                        <div class="informalexample"><pre class="programlisting brush: xml">&lt;root general-values="true"&gt;
+                        <div class="informalexample"><pre class="programlisting language-xml line-numbers"><code>&lt;root general-values="true"&gt;
    &lt;para&gt;Some &lt;emph&gt;text&lt;/emph&gt; in a paragraph.&lt;/para&gt;
-&lt;/root&gt;
-</pre></div>
+&lt;/root&gt;</code></pre></div>
                      </figure>
                      <p>The general values extension can be enabled in three ways:</p>
                      <div class="orderedlist">
@@ -122,7 +122,7 @@
                   </section>
                   <section id="ext.xpointer-on-text" class="section">
                      <div class="section-titlepage">
-                        <h4>3.2. XPointer on text</h4>
+                        <h3>3.2. XPointer on text</h3>
                      </div>
                      <p>If the XPointer on text extension is enabled, the <code class="tag-attribute">xpointer</code>
                         attribute on an XInclude element can be used when <code class="literal">parse="text"</code>. The XPointer
@@ -130,13 +130,13 @@
                         <a href="https://tools.ietf.org/html/rfc5147">RFC 5147</a> fragment identifier.
                         Consider
                         the following DocBook XML fragment:
-                     </p><pre class="programlisting brush: xml">&lt;programlisting&gt;
+                     </p><pre class="programlisting language-xml line-numbers"><code>&lt;programlisting&gt;
 &lt;xi:include href="examples/general-values.xpl" parse="text"
             xpointer="text(line=6,15;length=1081)"/&gt;
-&lt;/programlisting&gt;</pre><p>If processed with the XPointer on text extension enabled, it would produce effectively
+&lt;/programlisting&gt;</code></pre><p>If processed with the XPointer on text extension enabled, it would produce effectively
                         the following
                         result:
-                     </p><pre class="programlisting brush: xml">&lt;programlisting&gt;&lt;![CDATA[
+                     </p><pre class="programlisting language-xml line-numbers"><code>&lt;programlisting&gt;&lt;![CDATA[
 &lt;p:identity&gt;
   &lt;p:input port="source"&gt;
     &lt;p:inline&gt;
@@ -145,8 +145,7 @@
       &lt;/doc&gt;
     &lt;/p:inline&gt;
   &lt;/p:input&gt;
-&lt;/p:identity&gt;
-]]&gt;&lt;/programlisting&gt;</pre><p>Only the “length” integrity check is supported.</p>
+&lt;/p:identity&gt;]]&gt;&lt;/programlisting&gt;</code></pre><p>Only the “length” integrity check is supported.</p>
                      <p>The XPointer on text extension can be enabled in three ways:</p>
                      <div class="orderedlist">
                         <ol style="list-style: decimal;">
@@ -173,7 +172,7 @@
                   </section>
                   <section id="ext.transparent-json" class="section">
                      <div class="section-titlepage">
-                        <h4>3.3. Transparent JSON</h4>
+                        <h3>3.3. Transparent JSON</h3>
                      </div>
                      <p>If the transparent JSON extension is enabled,
                         <code class="tag-element">p:http-request</code>, <code class="tag-element">p:store</code>, <code class="tag-element">p:document</code>,
@@ -182,7 +181,7 @@
                         into XML. If a JSON-in-XML document is sent or stored, it will be
                         turned into textual JSON first.
                      </p>
-                     <p>Consider this JSON object:</p><pre class="programlisting brush: javascript">{
+                     <p>Consider this JSON object:</p><pre class="programlisting language-javascript line-numbers"><code>{
   "id": "1234",
   "": "empty string",
   "foo$bar": "key contains non-name char",
@@ -199,12 +198,11 @@
   "&lt;crazy&amp;key&gt;": "sane value",
   "\"double quotes\"": "dquoted key",
   "'single quotes'": "squoted key"
-}
-</pre><p>It can be translated into any one of five XML representations:</p>
+}</code></pre><p>It can be translated into any one of five XML representations:</p>
                      <div class="variablelist">
                         <dl>
                            <dt><span class="term"><code class="literal">marklogic</code></span></dt>
-                           <dd><pre class="programlisting brush: xml">&lt;j:json xmlns:j="http://marklogic.com/json" type="object"&gt;
+                           <dd><pre class="programlisting language-xml line-numbers"><code>&lt;j:json xmlns:j="http://marklogic.com/json" type="object"&gt;
    &lt;j:_003ccrazy_0026key_003e type="string"&gt;sane value&lt;/j:_003ccrazy_0026key_003e&gt;
    &lt;j:_ type="string"&gt;empty string&lt;/j:_&gt;
    &lt;j:id type="string"&gt;1234&lt;/j:id&gt;
@@ -227,10 +225,9 @@
       &lt;j:item type="boolean"&gt;false&lt;/j:item&gt;
       &lt;j:item type="null"/&gt;
    &lt;/j:array&gt;
-&lt;/j:json&gt;
-</pre></dd>
+&lt;/j:json&gt;</code></pre></dd>
                            <dt><span class="term"><code class="literal"><a href="https://tools.ietf.org/html/draft-rsalz-jsonx-00">jsonx</a></code></span></dt>
-                           <dd><pre class="programlisting brush: xml">&lt;j:object xmlns:j="http://www.ibm.com/xmlns/prod/2009/jsonx"&gt;
+                           <dd><pre class="programlisting language-xml line-numbers"><code>&lt;j:object xmlns:j="http://www.ibm.com/xmlns/prod/2009/jsonx"&gt;
    &lt;j:string name="&amp;lt;crazy&amp;amp;key&amp;gt;"&gt;sane value&lt;/j:string&gt;
    &lt;j:string name=""&gt;empty string&lt;/j:string&gt;
    &lt;j:string name="id"&gt;1234&lt;/j:string&gt;
@@ -253,10 +250,9 @@
       &lt;j:boolean&gt;false&lt;/j:boolean&gt;
       &lt;j:null/&gt;
    &lt;/j:array&gt;
-&lt;/j:object&gt;
-</pre></dd>
+&lt;/j:object&gt;</code></pre></dd>
                            <dt><span class="term"><code class="literal"><a href="http://xml.calldei.com/JsonXML">jxml</a></code></span></dt>
-                           <dd><pre class="programlisting brush: xml">&lt;j:object xmlns:j="http://www.xmlsh.org/jxml"&gt;
+                           <dd><pre class="programlisting language-xml line-numbers"><code>&lt;j:object xmlns:j="http://www.xmlsh.org/jxml"&gt;
    &lt;j:member name="&amp;lt;crazy&amp;amp;key&amp;gt;"&gt;
       &lt;j:string&gt;sane value&lt;/j:string&gt;
    &lt;/j:member&gt;
@@ -309,10 +305,9 @@
          &lt;j:null/&gt;
       &lt;/j:array&gt;
    &lt;/j:member&gt;
-&lt;/j:object&gt;
-</pre></dd>
+&lt;/j:object&gt;</code></pre></dd>
                            <dt><span class="term"><code class="literal">calabash</code></span></dt>
-                           <dd><pre class="programlisting brush: xml">&lt;c:json xmlns:c="http://www.w3.org/ns/xproc-step" type="object"&gt;
+                           <dd><pre class="programlisting language-xml line-numbers"><code>&lt;c:json xmlns:c="http://www.w3.org/ns/xproc-step" type="object"&gt;
    &lt;c:pair name="&amp;lt;crazy&amp;amp;key&amp;gt;" type="string"&gt;sane value&lt;/c:pair&gt;
    &lt;c:pair name="" type="string"&gt;empty string&lt;/c:pair&gt;
    &lt;c:pair name="id" type="string"&gt;1234&lt;/c:pair&gt;
@@ -335,10 +330,9 @@
       &lt;c:item type="boolean"&gt;false&lt;/c:item&gt;
       &lt;c:item type="null"/&gt;
    &lt;/c:pair&gt;
-&lt;/c:json&gt;
-</pre></dd>
+&lt;/c:json&gt;</code></pre></dd>
                            <dt><span class="term"><code class="literal">calabash-deprecated</code></span></dt>
-                           <dd><pre class="programlisting brush: xml">&lt;json type="object"&gt;
+                           <dd><pre class="programlisting language-xml line-numbers"><code>&lt;json type="object"&gt;
    &lt;pair name="&amp;lt;crazy&amp;amp;key&amp;gt;" type="string"&gt;sane value&lt;/pair&gt;
    &lt;pair name="" type="string"&gt;empty string&lt;/pair&gt;
    &lt;pair name="id" type="string"&gt;1234&lt;/pair&gt;
@@ -361,8 +355,7 @@
       &lt;item type="boolean"&gt;false&lt;/item&gt;
       &lt;item type="null"/&gt;
    &lt;/pair&gt;
-&lt;/json&gt;
-</pre><p>This was the original format introduced when JSON support was added to
+&lt;/json&gt;</code></pre><p>This was the original format introduced when JSON support was added to
                                  <code class="tag-element">p:unescape-markup</code>. Don't use it. Automatic conversion from XML to JSON is not
                                  supported for this format.
                               </p>
@@ -424,12 +417,80 @@
                   </section>
                   <section id="ext.use-xslt-10" class="section">
                      <div class="section-titlepage">
-                        <h4>3.4. Use XSLT 1.0</h4>
+                        <h3>3.4. Use XSLT 1.0</h3>
                      </div>
                      <p>The “use XSLT 1.0” extension enables processing of XSLT 1.0 stylesheets
-                        with an XSLT 1.0 processor. See <a href="p-xslt.html#p-xslt-ext">the section called “Extensions”</a> in
+                        with an XSLT 1.0 processor. See <a href="p-xslt.html#p-xslt-ext" title="Extensions">the section called “Extensions”</a> in
                         <a href="p-xslt.html"><span class="refname">p:xslt</span></a>.
                      </p>
+                     <p>The XSLT 1.0 extension can be enabled in three ways:</p>
+                     <div class="orderedlist">
+                        <ol style="list-style: decimal;">
+                           <li>
+                              <p>With the <code class="literal">-Xuse-xslt-10</code> command-line option.
+                              </p>
+                           </li>
+                           <li>
+                              <p>With the <code class="literal">com.xmlcalabash.use-xslt-10</code> Java system property.
+                              </p>
+                           </li>
+                           <li>
+                              <p>Or with the <code class="literal">&lt;extension name="use-xslt-10" value="true"/&gt;</code>
+                                 configuration option.
+                              </p>
+                           </li>
+                        </ol>
+                     </div>
+                  </section>
+                  <section id="ext.html-serializer" class="section">
+                     <div class="section-titlepage">
+                        <h3>3.5. HTML serializer</h3>
+                     </div>
+                     <p>If the “HTML serializer” extension is used, then all documents
+                        that are serialized with the “html” method will be serialized with the
+                        <a href="http://about.validator.nu/">Validator.nu</a>
+                        HTML serializer.
+                     </p>
+                     <p>The HTML serializer extension can be enabled in three ways:</p>
+                     <div class="orderedlist">
+                        <ol style="list-style: decimal;">
+                           <li>
+                              <p>With the <code class="literal">-Xhtml-serializer</code> command-line option.
+                              </p>
+                           </li>
+                           <li>
+                              <p>With the <code class="literal">com.xmlcalabash.html-serializer</code> Java system property.
+                              </p>
+                           </li>
+                           <li>
+                              <p>Or with the <code class="literal">&lt;extension name="html-serializer" value="true"/&gt;</code>
+                                 configuration option.
+                              </p>
+                           </li>
+                        </ol>
+                     </div>
+                     <p>A few points:</p>
+                     <div class="orderedlist">
+                        <ol style="list-style: decimal;">
+                           <li>
+                              <p>This option serializes all HTML documents with the HTML serializer;
+                                 it pays no attention to the version.
+                              </p>
+                           </li>
+                           <li>
+                              <p>If the Saxon configured serializer doesn't have any output destination
+                                 (or if it has an unrecognized output destination), then this option has
+                                 no effect. (I'm not sure it's possible to configure the Saxon serializer
+                                 this way, but maybe if you're playing in the APIs…)
+                              </p>
+                           </li>
+                           <li>
+                              <p>None of the other output options (indent, doctype, etc.) have any
+                                 effect when the HTML serializer is used.
+                              </p>
+                           </li>
+                        </ol>
+                     </div>
                   </section>
                </section>
             </div>
@@ -450,7 +511,7 @@
             </table>
          </div>
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="copyrightfooter">
-            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013 Norman Walsh.
+            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013, 2014, 2015 Norman Walsh.
             </p>
          </div>
       </div>

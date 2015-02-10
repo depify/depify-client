@@ -2,9 +2,12 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>cx:metadata-extractor</title>
-      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.3" />
+      <meta charset="utf-8" />
+      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.6" />
       <link rel="stylesheet" type="text/css" href="css/default.css" />
-      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script></head>
+      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" />
+      <link href="css/db-prism.css" rel="stylesheet" />
+   </head>
    <body>
       <div class="page">
          <div class="content">
@@ -12,7 +15,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cx-message.html" title="cx:message"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="XML Calabash Extension Steps" href="cx-steps.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="cx:namespace-delete" href="cx-namespace-delete.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.10)
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.13)
                      </td>
                   </tr>
                </table>
@@ -37,14 +40,14 @@
                      <p>The <code class="tag-element">cx:metadata-extractor</code> step returns an XML description of
                         the metadata associated with an image. For example, the metadata associated with
                         the image in
-                        <a href="cx-metadata-extractor.html#fig.amaryllis">Figure 1, “Amaryllis”</a> is shown in
-                        <a href="cx-metadata-extractor.html#ex.amaryllis">Example 2, “Amaryllis metadata”</a>.
+                        <a href="cx-metadata-extractor.html#fig.amaryllis" title="Amaryllis">Figure 1, “Amaryllis”</a> is shown in
+                        <a href="cx-metadata-extractor.html#ex.amaryllis" title="Amaryllis metadata">Example 2, “Amaryllis metadata”</a>.
                      </p>
                      
                      
                      <figure id="fig.amaryllis" class="figure-wrapper">
                         <div class="figure">
-                           <div id="fig.amaryllis.2" class="mediaobject"><img src="img/amaryllis.jpg" /></div>
+                           <div id="fig.amaryllis.2" class="mediaobject"><img src="img/amaryllis.jpg" alt="Amaryllis" /></div>
                         </div>
                         <div class="title">Figure 1. Amaryllis</div>
                      </figure>
@@ -52,7 +55,7 @@
                      
                      <figure id="ex.amaryllis" class="example-wrapper">
                         <div class="title">Example 2. Amaryllis metadata</div>
-                        <div class="example"><pre class="programlisting brush: xml">&lt;c:metadata xmlns:c="http://www.w3.org/ns/xproc-step"
+                        <div class="example"><pre class="programlisting language-xml line-numbers"><code>&lt;c:metadata xmlns:c="http://www.w3.org/ns/xproc-step"
             href="amaryllis.jpg"&gt;
    &lt;c:tag dir="Jpeg" type="0x0000" name="Data Precision"&gt;8 bits&lt;/c:tag&gt;
    &lt;c:tag dir="Jpeg" type="0x0001" name="Image Height"&gt;336 pixels&lt;/c:tag&gt;
@@ -61,19 +64,19 @@
    &lt;c:tag dir="Jpeg" type="0x0006" name="Component 1"&gt;Y component: Quantization table 0, Sampling factors 1 horiz/1 vert&lt;/c:tag&gt;
    &lt;c:tag dir="Jpeg" type="0x0007" name="Component 2"&gt;Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert&lt;/c:tag&gt;
    &lt;c:tag dir="Jpeg" type="0x0008" name="Component 3"&gt;Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert&lt;/c:tag&gt;
-&lt;/c:metadata&gt;</pre></div>
+&lt;/c:metadata&gt;</code></pre></div>
                      </figure>
                      
                      
                      <p>In practice, the amount of metadata associated with an image is almost
-                        arbitrarily large. <a href="cx-metadata-extractor.html#ex.digicam">Example 3, “Digital Camera metadata”</a>, for example, shows the metadata
+                        arbitrarily large. <a href="cx-metadata-extractor.html#ex.digicam" title="Digital Camera metadata">Example 3, “Digital Camera metadata”</a>, for example, shows the metadata
                         associated with an image from a digital camera.
                      </p>
                      
                      
                      <figure id="ex.digicam" class="example-wrapper">
                         <div class="title">Example 3. Digital Camera metadata</div>
-                        <div class="example"><pre class="programlisting brush: xml">&lt;c:metadata xmlns:c="http://www.w3.org/ns/xproc-step"
+                        <div class="example"><pre class="programlisting language-xml line-numbers"><code>&lt;c:metadata xmlns:c="http://www.w3.org/ns/xproc-step"
             href="file:/Volumes/Data/Pictures/2012/01/14/20120114-085508.jpg"&gt;
    &lt;c:tag dir="Exif" type="0x010f" name="Make"&gt;Panasonic&lt;/c:tag&gt;
    &lt;c:tag dir="Exif" type="0x0110" name="Model"&gt;DMC-FS25&lt;/c:tag&gt;
@@ -136,7 +139,7 @@
    &lt;c:tag dir="Jpeg" type="0x0006" name="Component 1"&gt;Y component: Quantization table 0, Sampling factors 1 horiz/2 vert&lt;/c:tag&gt;
    &lt;c:tag dir="Jpeg" type="0x0007" name="Component 2"&gt;Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert&lt;/c:tag&gt;
    &lt;c:tag dir="Jpeg" type="0x0008" name="Component 3"&gt;Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert&lt;/c:tag&gt;
-&lt;/c:metadata&gt;</pre></div>
+&lt;/c:metadata&gt;</code></pre></div>
                      </figure>
                      
                      
@@ -145,18 +148,18 @@
                         <span class="application"><a href="http://drewnoakes.com/code/exif/">Metadata Extractor</a></span>
                         libraries. If the image identified is not a JPEG image, then the underlying Java
                         <code class="classname">Image</code> properties are returned, if possible. For example, a PNG image
-                        might return results such as those shown in <a href="cx-metadata-extractor.html#ex.png">Example 4, “PNG metadata”</a>.
+                        might return results such as those shown in <a href="cx-metadata-extractor.html#ex.png" title="PNG metadata">Example 4, “PNG metadata”</a>.
                      </p>
                      
                      
                      <figure id="ex.png" class="example-wrapper">
                         <div class="title">Example 4. PNG metadata</div>
-                        <div class="example"><pre class="programlisting brush: xml">&lt;c:metadata xmlns:c="http://www.w3.org/ns/xproc-step"
+                        <div class="example"><pre class="programlisting language-xml line-numbers"><code>&lt;c:metadata xmlns:c="http://www.w3.org/ns/xproc-step"
             href="cover.png"&gt;
    &lt;c:tag dir="Exif" type="0x9000" name="Exif Version"&gt;0&lt;/c:tag&gt;
    &lt;c:tag dir="Jpeg" type="0x0001" name="Image Height"&gt;480 pixels&lt;/c:tag&gt;
    &lt;c:tag dir="Jpeg" type="0x0003" name="Image Width"&gt;364 pixels&lt;/c:tag&gt;
-&lt;/c:metadata&gt;</pre></div>
+&lt;/c:metadata&gt;</code></pre></div>
                      </figure>
                      
                      
@@ -183,7 +186,7 @@
             </table>
          </div>
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="copyrightfooter">
-            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013 Norman Walsh.
+            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013, 2014, 2015 Norman Walsh.
             </p>
          </div>
       </div>

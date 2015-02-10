@@ -2,9 +2,12 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>XML Calabash Reference</title>
-      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.3" />
+      <meta charset="utf-8" />
+      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.6" />
       <link rel="stylesheet" type="text/css" href="css/default.css" />
-      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script></head>
+      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" />
+      <link href="css/db-prism.css" rel="stylesheet" />
+   </head>
    <body>
       <div class="page">
          <div class="content">
@@ -12,7 +15,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="#R.1"><img src="img/home.png" alt="Home" border="0" /></a> <img src="img/xprev.png" alt="Prev" border="0" /> <img src="img/xup.png" alt="Up" border="0" /> <a title="Preface" href="preface.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.10)
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.13)
                      </td>
                   </tr>
                </table>
@@ -27,10 +30,10 @@
                      <div class="author">
                         <h3><span class="personname"><span class="firstname">Norman</span> <span class="surname">Walsh</span></span></h3>
                      </div>
-                     <p xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="releaseinfo">Reference version 0.10</p>
-                     <p xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="releaseinfo">For XML Calabash version 1.0.x</p><span class="copyright">Copyright © <span class="years">2011, 2012, 2013</span> <span class="holders"><span class="holder">Norman Walsh</span></span></span><div>
+                     <p xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="releaseinfo">Reference version 0.13</p>
+                     <p xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="releaseinfo">For XML Calabash version 1.0.24</p><span class="copyright">Copyright © <span class="years">2011, 2012, 2013, 2014, 2015</span> <span class="holders"><span class="holder">Norman Walsh</span></span></span><div>
                         <p>
-                           <p xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="pubdate">Published 11 Dec 2013</p><br xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" clear="all" /></p>
+                           <p xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="pubdate">Published 05 Feb 2015</p><br xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" clear="all" /></p>
                      </div>
                   </header>
                   <hr />
@@ -49,40 +52,40 @@
                         </li>
                         <li><span><a href="anttask.html">2. Calabash Ant Task</a></span><ul class="toc">
                               <li><span><a href="antsetup.html">1. Setting up the Ant Task and Types</a></span></li>
-                              <li><span><a href="chunk-section-d17e1040.html">2. Description</a></span><ul class="toc">
-                                    <li><span><a href="chunk-section-d17e1040.html#anttask.4.4">2.1. Custom Task and Types</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1040.html#ant.input-and-output">2.2. Input and output files and filesets</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1040.html#anttask.4.6">2.3. Ports</a></span></li>
+                              <li><span><a href="antdesc.html">2. Description</a></span><ul class="toc">
+                                    <li><span><a href="antdesc.html#antdesc.4">2.1. Custom Task and Types</a></span></li>
+                                    <li><span><a href="antdesc.html#ant.input-and-output">2.2. Input and output files and filesets</a></span></li>
+                                    <li><span><a href="antdesc.html#antdesc.6">2.3. Ports</a></span></li>
                                  </ul>
                               </li>
-                              <li><span><a href="chunk-section-d17e1412.html">3. Parameters</a></span></li>
-                              <li><span><a href="chunk-section-d17e1964.html">4. Parameters specified as nested elements</a></span><ul class="toc">
-                                    <li><span><a href="chunk-section-d17e1964.html#ant.input">4.1. input</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#ant.pipeline">4.2. pipeline</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#ant.output">4.3. output</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#anttask.6.5">4.4. any Ant resource</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#anttask.6.6">4.5. mapper</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#anttask.6.7">4.6. namespace</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#ant.option">4.7. option</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#ant.parameter">4.8. parameter</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#anttask.6.10">4.9. sysproperty</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#anttask.6.11">4.10. syspropertyset</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#anttask.6.12">4.11. profile</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#anttask.6.13">4.12. saxonConfig</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#anttask.6.14">4.13. config</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#ant.library">4.14. library</a></span></li>
-                                    <li><span><a href="chunk-section-d17e1964.html#ant.step">4.15. step</a></span></li>
+                              <li><span><a href="antparam.html">3. Parameters</a></span></li>
+                              <li><span><a href="antparamnest.html">4. Parameters specified as nested elements</a></span><ul class="toc">
+                                    <li><span><a href="antparamnest.html#ant.input">4.1. input</a></span></li>
+                                    <li><span><a href="antparamnest.html#ant.pipeline">4.2. pipeline</a></span></li>
+                                    <li><span><a href="antparamnest.html#ant.output">4.3. output</a></span></li>
+                                    <li><span><a href="antparamnest.html#antparamnest.5">4.4. any Ant resource</a></span></li>
+                                    <li><span><a href="antparamnest.html#antparamnest.6">4.5. mapper</a></span></li>
+                                    <li><span><a href="antparamnest.html#antparamnest.7">4.6. namespace</a></span></li>
+                                    <li><span><a href="antparamnest.html#ant.option">4.7. option</a></span></li>
+                                    <li><span><a href="antparamnest.html#ant.parameter">4.8. parameter</a></span></li>
+                                    <li><span><a href="antparamnest.html#antparamnest.10">4.9. sysproperty</a></span></li>
+                                    <li><span><a href="antparamnest.html#antparamnest.11">4.10. syspropertyset</a></span></li>
+                                    <li><span><a href="antparamnest.html#antparamnest.12">4.11. profile</a></span></li>
+                                    <li><span><a href="antparamnest.html#antparamnest.13">4.12. saxonConfig</a></span></li>
+                                    <li><span><a href="antparamnest.html#antparamnest.14">4.13. config</a></span></li>
+                                    <li><span><a href="antparamnest.html#ant.library">4.14. library</a></span></li>
+                                    <li><span><a href="antparamnest.html#ant.step">4.15. step</a></span></li>
                                  </ul>
                               </li>
-                              <li><span><a href="chunk-section-d17e3218.html">5. Examples</a></span><ul class="toc">
-                                    <li><span><a href="chunk-section-d17e3218.html#anttask.7.2">5.1. Single input, single output</a></span></li>
-                                    <li><span><a href="chunk-section-d17e3218.html#anttask.7.3">5.2. <code class="tag-element">pipeline</code></a></span></li>
-                                    <li><span><a href="chunk-section-d17e3218.html#anttask.7.4">5.3. Implicit fileset plus mapper on additional input port</a></span></li>
-                                    <li><span><a href="chunk-section-d17e3218.html#anttask.7.5">5.4. Fixed input, multiple mapped outputs</a></span></li>
-                                    <li><span><a href="chunk-section-d17e3218.html#anttask.7.6">5.5. QNames</a></span></li>
+                              <li><span><a href="antexamples.html">5. Examples</a></span><ul class="toc">
+                                    <li><span><a href="antexamples.html#antexamples.2">5.1. Single input, single output</a></span></li>
+                                    <li><span><a href="antexamples.html#antexamples.3">5.2. <code class="tag-element">pipeline</code></a></span></li>
+                                    <li><span><a href="antexamples.html#antexamples.4">5.3. Implicit fileset plus mapper on additional input port</a></span></li>
+                                    <li><span><a href="antexamples.html#antexamples.5">5.4. Fixed input, multiple mapped outputs</a></span></li>
+                                    <li><span><a href="antexamples.html#antexamples.6">5.5. QNames</a></span></li>
                                  </ul>
                               </li>
-                              <li><span><a href="chunk-section-d17e3294.html">6. What not to do</a></span></li>
+                              <li><span><a href="antjustdont.html">6. What not to do</a></span></li>
                            </ul>
                         </li>
                         <li><span><a href="configuration.html">3. Configuration</a></span><ul class="toc">
@@ -128,6 +131,7 @@
                                     <li><span><a href="langext.html#ext.xpointer-on-text">3.2. XPointer on text</a></span></li>
                                     <li><span><a href="langext.html#ext.transparent-json">3.3. Transparent JSON</a></span></li>
                                     <li><span><a href="langext.html#ext.use-xslt-10">3.4. Use XSLT 1.0</a></span></li>
+                                    <li><span><a href="langext.html#ext.html-serializer">3.5. HTML serializer</a></span></li>
                                  </ul>
                               </li>
                               <li><span><a href="extfunc.html">4. Extension functions</a></span></li>
@@ -227,17 +231,20 @@
                               <li><span class="refentrytitle"><a href="cx-collection-manager.html">cx:collection-manager</a></span><span class="refpurpose"> - Associate documents with a collection URI</span></li>
                               <li><span class="refentrytitle"><a href="cx-css-formatter.html">cx:css-formatter</a></span><span class="refpurpose"> - Format a document using CSS</span></li>
                               <li><span class="refentrytitle"><a href="cx-delta-xml.html">cx:delta-xml</a></span><span class="refpurpose"> - Run the DeltaXML comparitor</span></li>
+                              <li><span class="refentrytitle"><a href="cx-ditaa.html">cx:ditaa</a></span><span class="refpurpose"> - Convert a “DIagrams Through ASCII Art” diagram into an image</span></li>
                               <li><span class="refentrytitle"><a href="cx-eval.html">cx:eval</a></span><span class="refpurpose"> - Evaluate a dynamically constructed pipeline</span></li>
                               <li><span class="refentrytitle"><a href="cx-get-cookies.html">cx:get-cookies</a></span><span class="refpurpose"> - Get the cookies returned by the previous HTTP request</span></li>
                               <li><span class="refentrytitle"><a href="cx-java-properties.html">cx:java-properties</a></span><span class="refpurpose"> - Reads a Java properties file</span></li>
                               <li><span class="refentrytitle"><a href="cx-message.html">cx:message</a></span><span class="refpurpose"> - Output a message each time a document is processed</span></li>
                               <li><span class="refentrytitle"><a href="cx-metadata-extractor.html">cx:metadata-extractor</a></span><span class="refpurpose"> - Extract metadata from images</span></li>
                               <li><span class="refentrytitle"><a href="cx-namespace-delete.html">cx:namespace-delete</a></span><span class="refpurpose"> - Delete namespace declarations</span></li>
+                              <li><span class="refentrytitle"><a href="cx-plantuml.html">cx:plantuml</a></span><span class="refpurpose"> - Convert an ASCII “PlantUML” diagram into an image</span></li>
                               <li><span class="refentrytitle"><a href="cx-pretty-print.html">cx:pretty-print</a></span><span class="refpurpose"> - Reformat whitespace in a document</span></li>
                               <li><span class="refentrytitle"><a href="cx-rdfa.html">cx:rdfa</a></span><span class="refpurpose"> - Extract RDF triples from RDFa encoded documents</span></li>
                               <li><span class="refentrytitle"><a href="cx-report-errors.html">cx:report-errors</a></span><span class="refpurpose"> - Send error report to the user</span></li>
                               <li><span class="refentrytitle"><a href="cx-send-mail.html">cx:send-mail</a></span><span class="refpurpose"> - Sends an email message</span></li>
                               <li><span class="refentrytitle"><a href="cx-set-cookies.html">cx:set-cookies</a></span><span class="refpurpose"> - Set cookies for subsequent HTTP requests</span></li>
+                              <li><span class="refentrytitle"><a href="cx-until-unchanged.html">cx:until-unchanged</a></span><span class="refpurpose"> - Iterates to a fixed point</span></li>
                               <li><span class="refentrytitle"><a href="cx-uri-info.html">cx:uri-info</a></span><span class="refpurpose"> - Information about a URI</span></li>
                               <li><span class="refentrytitle"><a href="cx-wait-for-update.html">cx:wait-for-update</a></span><span class="refpurpose"> - Pause execution until a URI has changed</span></li>
                               <li><span class="refentrytitle"><a href="cxu-compare.html">cxu:compare</a></span><span class="refpurpose"> - XML Unit comparison of two documents</span></li>
@@ -284,7 +291,7 @@
             </table>
          </div>
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="copyrightfooter">
-            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013 Norman Walsh.
+            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013, 2014, 2015 Norman Walsh.
             </p>
          </div>
       </div>

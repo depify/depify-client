@@ -15,7 +15,7 @@
 
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
-DEPX_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+DEPIFY_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 CURRENTDIR=`pwd`
 
@@ -95,5 +95,4 @@ if  [ ! -e "$CURRENTDIR/.depify.xml" ]; then
  echo '<depify xmlns="https://github.com/xquery/depify"/>' > $CURRENTDIR/.depify.xml
 fi
 # run xproc pipeline
-echo -e `java -jar $DEPX_DIR/deps/xmlcalabash/calabash.jar -isource=$CURRENTDIR/.depify.xml -oresult=- $DEPX_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR`    
-
+echo -e `java -cp "$DEPIFY_DIR/resolver.properties" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR/.depify.xml -oresult=- $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR`

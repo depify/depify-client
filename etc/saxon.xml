@@ -1,0 +1,3 @@
+<configuration xmlns="http://saxon.sf.net/ns/configuration" edition="HE">
+    <global uriResolver="org.xmlresolver.Resolver"/>
+</configuration>

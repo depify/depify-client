@@ -12,8 +12,8 @@
       </catalog>
     </xsl:template>
     <xsl:template match="depify:xproc">
-        <uri name="{depify:uri/@name}" 
-             uri=".{$app_dir_lib}{depify:uri/@uri}"/>
+        <uri name="{depify:catalog/@name}" 
+             uri=".{$app_dir_lib}{depify:catalog/@uri}"/>
     </xsl:template>
     <xsl:template match="text()"/>
 </xsl:stylesheet> 

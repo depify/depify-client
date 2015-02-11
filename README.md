@@ -15,6 +15,11 @@ remove package
 depify install xprocdoc
 ```
 
+info package
+```
+depify info xprocdoc
+```
+
 list installed packages
 ```
 depify list

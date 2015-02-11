@@ -119,13 +119,23 @@ limitations under the License.
           </impl:get-package-from-github-repo>
         </p:when>
         <!-- download from github release //-->
-        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version eq 'latest' or empty($version))">
+        <p:when test="starts-with($repo-uri,'https://github.com/') and ends-with($repo-uri,'.git') and ($version eq 'latest' or empty($version))">
           <p:variable name="package-repo-uri" select="concat(substring-before($repo-uri,'.git'),'/archive/master.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
           <!--cx:message>
             <p:with-option name="message" select="concat('depify downloading master ',$package-repo-uri)"/>
           </cx:message-->
+          <impl:get-package-from-github-repo>
+            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
+            <p:with-option name="app_dir" select="$app_dir"/>
+            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+          </impl:get-package-from-github-repo>
+        </p:when>
+        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version eq 'latest' or empty($version))">
+          <p:variable name="package-repo-uri" select="concat($repo-uri,'/archive/master.zip')">
+            <p:pipe step="get-package" port="result"/>
+          </p:variable>
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -276,6 +286,22 @@ limitations under the License.
     <p:with-option name="href" select="concat($app_dir,'/.depify.xml')"/>
   </p:store>
 
+  <p:xslt>
+    <p:input port="source">
+      <p:pipe step="command-step" port="result"/>
+    </p:input> 
+    <p:input port="stylesheet">
+      <p:document href="generate-catalog.xsl"/>
+    </p:input>
+    <p:input port="parameters">
+      <p:pipe step="vars" port="result"/>
+    </p:input>
+  </p:xslt>      
+
+  <p:store indent="true" name="save-catalog-step">
+    <p:with-option name="href" select="concat($app_dir,'/catalog.xml')"/>
+  </p:store>
+  
   <p:choose name="transform-output-step">
     <p:when test="$command eq 'search'">
       <p:xslt>

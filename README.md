@@ -12,7 +12,7 @@ depify install xprocdoc
 
 remove package
 ```
-depify install xprocdoc
+depify remove xprocdoc
 ```
 
 info package

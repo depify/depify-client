@@ -127,114 +127,54 @@ limitations under the License.
         <p:variable name="repo-uri" select="/depify:depify/@repo-uri/data(.)">
           <p:pipe step="get-package" port="result"/>
         </p:variable>
+        <p:variable name="package-repo-uri"
+                    select="concat(if(ends-with($repo-uri,'.git'))
+                            then substring-before($repo-uri,'.git') else $repo-uri,'/archive/master.zip')"/>
+
         <!-- download zip file //-->
         <p:when test="contains($repo-uri,'.zip')">
-          <p:variable name="package-repo-uri" select="$repo-uri">
-            <p:pipe step="get-package" port="result"/>
-          </p:variable>
-          <!--cx:message>
-            <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
-          </cx:message-->
+          <p:variable name="package-repo-uri" select="$repo-uri"/>
+          <cx:message>
+            <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
+          </cx:message>
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
             <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
           </impl:get-package-from-github-repo>
         </p:when>
-        <!-- download from github release //-->
-        <p:when test="starts-with($repo-uri,'https://github.com/') and ends-with($repo-uri,'.git') and ($version eq 'latest' or empty($version))">
-          <p:variable name="package-repo-uri" select="concat(substring-before($repo-uri,'.git'),'/archive/master.zip')">
-            <p:pipe step="get-package" port="result"/>
-          </p:variable>
-          <!--cx:message>
-            <p:with-option name="message" select="concat('depify downloading master ',$package-repo-uri)"/>
-          </cx:message-->
+        
+        <!-- download github latest release or master zip  //-->
+        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version eq 'latest' or empty($version))">
+          <cx:message>
+            <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
+          </cx:message>
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
             <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
           </impl:get-package-from-github-repo>
         </p:when>
-        <p:when test="starts-with($repo-uri,'https://github.com/')">
-          <p:variable name="package-repo-uri" select="concat($repo-uri,'/archive/master.zip')">
-            <p:pipe step="get-package" port="result"/>
-          </p:variable>
+
+        <!-- download github specific release //-->
+        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version ne 'latest' or not(empty($version))) and doc-available(concat($repo-uri,'/releases/tag/',$version))">
+          <p:variable name="package-repo-uri"
+                      select="concat(if(ends-with($repo-uri,'.git'))
+                              then substring-before($repo-uri,'.git') else $repo-uri,'/archive/v',$version,'.zip')"/>
+          <cx:message>
+            <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
+          </cx:message>
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
             <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
           </impl:get-package-from-github-repo>
         </p:when>
-        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version ne 'latest' or not(empty($version))) and doc-available(concat(substring-before($repo-uri,'.git'),'/releases/tag/',$version))">
-          <p:variable name="package-repo-uri" select="concat(substring-before($repo-uri,'.git'),'/archive/v',$version,'.zip')">
-            <p:pipe step="get-package" port="result"/>
-          </p:variable>
-          <!--cx:message>
-            <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
-          </cx:message-->
-          <impl:get-package-from-github-repo>
-            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
-            <p:with-option name="app_dir" select="$app_dir"/>
-            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-          </impl:get-package-from-github-repo>
-        </p:when>        
-        <p:when test="starts-with($repo-uri,'git://github.com/') and ($version eq 'latest' or empty($version))">
-          <p:variable name="package-repo-uri" select="concat('https:',substring-after(substring-before($repo-uri,'.git'),'git:'),'/archive/master.zip')">
-            <p:pipe step="get-package" port="result"/>
-          </p:variable>
-          <!--cx:message>
-            <p:with-option name="message" select="concat('depify downloading master ',$package-repo-uri)"/>
-          </cx:message-->
-          <impl:get-package-from-github-repo>
-            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
-            <p:with-option name="app_dir" select="$app_dir"/>
-            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-          </impl:get-package-from-github-repo>
-        </p:when>
-        <p:when test="starts-with($repo-uri,'git://github.com/') and ($version ne 'latest' or not(empty($version))) and doc-available(concat(substring-before($repo-uri,'.git'),'/releases/tag/',$version))">
-          <p:variable name="package-repo-uri" select="concat('https:',substring-after(substring-before($repo-uri,'.git'),'git'),'/archive/v',$version,'.zip')">
-            <p:pipe step="get-package" port="result"/>
-          </p:variable>
-          <!--cx:message>
-            <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
-          </cx:message-->
-          <impl:get-package-from-github-repo>
-            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
-            <p:with-option name="app_dir" select="$app_dir"/>
-            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-          </impl:get-package-from-github-repo>
-        </p:when>
-        <p:when test="starts-with($repo-uri,'git://github.com/') and $download_master_if_version_does_not_exist">
-          <p:variable name="package-repo-uri" select="concat('https:',substring-after(substring-before($repo-uri,'.git'),'git:'),'/archive/master.zip')">
-            <p:pipe step="get-package" port="result"/>
-          </p:variable>
-          <!--cx:message>
-            <p:with-option name="message" select="concat('depify downloading ',$package-repo-uri)"/>
-          </cx:message-->
-          <impl:get-package-from-github-repo>
-            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
-            <p:with-option name="app_dir" select="$app_dir"/>
-            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-          </impl:get-package-from-github-repo>
-        </p:when>        
-        <p:when test="starts-with($repo-uri,'https://github.com/') and $download_master_if_version_does_not_exist">
-          <p:variable name="package-repo-uri" select="concat(substring-before($repo-uri,'.git'),'/archive/master.zip')">
-            <p:pipe step="get-package" port="result"/>
-          </p:variable>
-          <!--cx:message>
-            <p:with-option name="message" select="concat('depify downloading master ',$package-repo-uri)"/>
-          </cx:message-->
-          <impl:get-package-from-github-repo>
-            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
-            <p:with-option name="app_dir" select="$app_dir"/>
-            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-          </impl:get-package-from-github-repo>
-        </p:when>
+        
         <p:otherwise>
-          <p:variable name="package-repo-uri" select="concat('http://depify.com/downloads/',$package,'-',$version,'.zip')"/>
-          <!--cx:message>
-            <p:with-option name="message" select="concat('depify downloading master',$package-repo-uri)"/>
-          </cx:message-->      
+          <cx:message>
+            <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
+          </cx:message>
           <impl:get-package-from-depify-repo>
             <p:with-option name="depify-download-uri" select="$package-repo-uri"/>
             <p:with-option name="app_dir" select="$app_dir"/>
@@ -242,6 +182,7 @@ limitations under the License.
           </impl:get-package-from-depify-repo>
         </p:otherwise>
       </p:choose>
+      
       <impl:install name="install">
        <p:with-option name="package-name" select="$package"/>
        <p:with-option name="package-version" select="$version"/>

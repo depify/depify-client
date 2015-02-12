@@ -12,7 +12,7 @@
       \n
       search results on '<xsl:value-of select="$package"/>':\n\n      
       <xsl:apply-templates>
-        <xsl:sort select="@name"/>
+        <xsl:sort select="*:depify/@name"/>
       </xsl:apply-templates>
   </search>
     </xsl:template>

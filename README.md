@@ -35,4 +35,10 @@ generate xmlresolver catalog
 depify catalog
 ```
 
+reinstall all packages
+```
+depify install
+```
+
+
 [Browse packages](http://depify.com)

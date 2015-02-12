@@ -3,9 +3,7 @@ depify-client
 
 [![Build Status](https://travis-ci.org/depify/depify-client.svg)](https://travis-ci.org/depify/depify-client)
 
-xproc dependency management
-
-Download [latest release](https://github.com/depify/depify-client/releases/latest).
+XProc dependency management. Download [latest release](https://github.com/depify/depify-client/releases/latest).
 
 install package
 ```

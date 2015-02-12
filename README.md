@@ -40,5 +40,9 @@ reinstall all packages
 depify install
 ```
 
+initialize .depify
+```
+depify init mypackage 1.0
+```
 
 [Browse packages](http://depify.com)

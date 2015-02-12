@@ -37,7 +37,7 @@ function usage(){
     echo "see https://github.com/depify"
     echo "-----------------------------"
     echo ""
-    echo "usage: depify [install|remove|list|info|search ] [package name] [package version]"
+    echo "usage: depify [install|remove|list|info|search|catalog ] [package name] [package version]"
     echo ""
     echo "  install package"
     echo "  ex. depify install functional.xq"

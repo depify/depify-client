@@ -97,7 +97,31 @@ limitations under the License.
             <p:pipe step="vars" port="result"/>
           </p:input>
       </p:xslt>
-    </p:when>  
+    </p:when>
+    <p:when test="$command eq 'install' and $package eq ''">
+      <p:output port="result"/>
+      <p:for-each>
+        <p:iteration-source select="/depify:depify/depify:depify">  
+          <p:pipe step="main" port="source"/>
+        </p:iteration-source>
+        <depify:depify>
+          <p:input port="source">
+            <p:pipe step="main" port="source"/>
+          </p:input>
+          <p:with-option name="depify-repo-download-url" select="$depify-repo-download-url"/>
+          <p:with-option name="command" select="'install'"/>
+          <p:with-option name="package" select="/depify:depify/@name"/>
+          <p:with-option name="version" select="/depify:depify/@version"/>
+          <p:with-option name="app_dir" select="$app_dir"/>
+          <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+        </depify:depify> 
+      </p:for-each>
+      <p:identity>
+        <p:input port="source">
+          <p:pipe step="main" port="source"/>
+        </p:input>
+      </p:identity>   
+    </p:when>
     <p:when test="$command eq 'install'">
       <p:output port="result"/>
       <p:choose>        
@@ -132,7 +156,7 @@ limitations under the License.
             <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
           </impl:get-package-from-github-repo>
         </p:when>
-        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version eq 'latest' or empty($version))">
+        <p:when test="starts-with($repo-uri,'https://github.com/')">
           <p:variable name="package-repo-uri" select="concat($repo-uri,'/archive/master.zip')">
             <p:pipe step="get-package" port="result"/>
           </p:variable>
@@ -285,24 +309,35 @@ limitations under the License.
   <p:store indent="true" name="save-depify-step">
     <p:with-option name="href" select="concat($app_dir,'/.depify.xml')"/>
   </p:store>
-
-  <p:xslt>
-    <p:input port="source">
-      <p:pipe step="command-step" port="result"/>
-    </p:input> 
-    <p:input port="stylesheet">
-      <p:document href="generate-catalog.xsl"/>
-    </p:input>
-    <p:input port="parameters">
-      <p:pipe step="vars" port="result"/>
-    </p:input>
-  </p:xslt>      
-
-  <p:store indent="true" name="save-catalog-step">
-    <p:with-option name="href" select="concat($app_dir,'/catalog.xml')"/>
-  </p:store>
   
   <p:choose name="transform-output-step">
+    <p:when test="$command eq 'catalog'">
+        <p:xslt>
+          <p:input port="source">
+            <p:pipe step="command-step" port="result"/>
+          </p:input> 
+          <p:input port="stylesheet">
+            <p:document href="generate-catalog.xsl"/>
+          </p:input>
+          <p:input port="parameters">
+            <p:pipe step="vars" port="result"/>
+          </p:input>
+        </p:xslt>        
+        <p:store indent="true" name="save-catalog-step">
+          <p:with-option name="href" select="concat($app_dir,'/catalog.xml')"/>
+        </p:store>
+        <p:xslt>
+          <p:input port="source">
+            <p:pipe step="main" port="source"/>
+          </p:input> 
+          <p:input port="stylesheet">
+            <p:document href="display-catalog.xsl"/>
+          </p:input>
+          <p:input port="parameters">
+            <p:pipe step="vars" port="result"/>
+          </p:input>
+        </p:xslt>   
+    </p:when>
     <p:when test="$command eq 'search'">
       <p:xslt>
         <p:input port="source">
@@ -317,6 +352,19 @@ limitations under the License.
       </p:xslt>      
     </p:when>
     <p:when test="$command eq 'list' and $package eq ''">
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="main" port="source"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="list.xsl"/>
+        </p:input>
+          <p:input port="parameters">
+            <p:pipe step="vars" port="result"/>
+          </p:input>
+      </p:xslt>      
+    </p:when>
+    <p:when test="$command eq 'install' and $package eq ''">
       <p:xslt>
         <p:input port="source">
           <p:pipe step="main" port="source"/>

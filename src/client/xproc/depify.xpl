@@ -68,14 +68,13 @@ limitations under the License.
   <p:choose name="command-step">
     <p:when test="$command eq 'init' and not(doc-available( concat($app_dir,'.depify.xml') ))">
       <p:output port="result"/>
-      <cx:message>
-        <p:with-option name="message" select="'.depify.xml does not exist, creating now'"/>
-      </cx:message>
       <p:xslt>
         <p:input port="source">
-          <p:pipe step="main" port="packages"/>
-       </p:input> 
-         <p:input port="stylesheet">
+          <p:inline>
+            <dummy/>
+          </p:inline>
+        </p:input>
+        <p:input port="stylesheet">
           <p:inline>
             <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                             xmlns="https://github.com/depify"
@@ -429,14 +428,39 @@ limitations under the License.
           </p:input>
       </p:xslt>    
     </p:when>        
+    <p:when test="$command eq 'init'">
+    <p:identity>
+      <p:input port="source">
+        <p:inline>
+          <error>\n
+ -----------------------------\n
+ depify 1.0\n
+ copyright (c) 2015 Jim Fuller\n
+ see https://github.com/depify\n
+ -----------------------------\n
+\n
+ .depify created.\n</error>
+        </p:inline>
+      </p:input>
+    </p:identity>
+      
+    </p:when>
     <p:otherwise> 
     <p:identity>
       <p:input port="source">
         <p:inline>
-          <error>invalid command or package not found.</error>
+          <error>\n
+ -----------------------------\n
+ depify 1.0\n
+ copyright (c) 2015 Jim Fuller\n
+ see https://github.com/depify\n
+ -----------------------------\n
+\n
+ invalid command.\n</error>
         </p:inline>
       </p:input>
     </p:identity>
+
     </p:otherwise>
   </p:choose>
   </p:group>

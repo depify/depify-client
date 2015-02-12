@@ -91,8 +91,8 @@ fi
 
 # create empty depify.xml if it does not exist (run depify init)
 if  [ ! -e "$CURRENTDIR/.depify.xml" ]; then
- # run xproc pipeline
- echo '<depify xmlns="https://github.com/xquery/depify"/>' > $CURRENTDIR/.depify.xml
+    # run xproc pipeline
+    echo '<depify xmlns="https://github.com/xquery/depify"/>' > $CURRENTDIR/.depify.xml    
 fi
 # run xproc pipeline
 echo -e `java -cp "$DEPIFY_DIR/resolver.properties" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR/.depify.xml -oresult=- $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR`

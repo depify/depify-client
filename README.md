@@ -46,3 +46,20 @@ depify init mypackage 1.0
 ```
 
 [Browse packages](http://depify.com)
+
+
+## Running manually
+
+still testing windows shellscript, so ... for those on windoze ...
+
+```
+java -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar -isource=$CURRENTDIR/.depify.xml -oresult=- $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION app_dir=$APP_DIR app_dir_lib=$LIB_DIR
+```
+
+* $COMMAND = install|remove|info|list|search|catalog
+* $PACKAGE = package name
+* $VERSION = package version
+* $APP_DIR = application directory
+* $LIB_DIR = dir where packages are stored, under application dir (ex. lib) 
+
+or review [script](https://github.com/depify/depify-client/blob/master/src/client/commandline/depify)

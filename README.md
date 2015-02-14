@@ -47,6 +47,15 @@ depify init mypackage 1.0
 
 [Browse packages](http://depify.com)
 
+## Using a package
+
+Import package as per normal (p:import) 
+
+Alternately you may generate a catalog.xml (depify catalog) though this depends on if the package author provided a catalog definition (example in [xprocdoc](https://github.com/depify/depify-packages/blob/master/packages/master/xproc/1/xprocdoc/1.0/.depify.xml)). 
+
+## Contribute a package
+
+You can [submit your own package](https://github.com/depify/depify-packages/tree/master/packages).
 
 ## Running manually
 

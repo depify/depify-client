@@ -72,3 +72,11 @@ java -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar -isource=$CURRENTDIR/.depify
 * $LIB_DIR = dir where packages are stored, under application dir (ex. lib) 
 
 or review [script](https://github.com/depify/depify-client/blob/master/src/client/commandline/depify)
+
+## useful links
+
+[submit](https://github.com/depify/depify-packages/tree/master/packages) a package to the master repo.
+
+[browse](http://depify.com) packages. 
+
+[download](https://github.com/depify/depify-client) depify client.

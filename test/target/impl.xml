@@ -1,4 +1,4 @@
-<x:test-report xmlns:x="http://www.daisy.org/ns/xprocspec"><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150207190613322/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:install" name="install-step" version="1.0" x:type="{https://github.com/depify/impl}install"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="package" kind="document" primary="false" sequence="false"/><p:output port="result" kind="document" sequence="false" primary="true"><p:pipe step="update-timestamp" port="result"/></p:output><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-07T18:06:14.507Z" label="impl:install invoke" start-time="2015-02-07T18:06:14.493Z"><x:call x:type="{https://github.com/depify/impl}install" step="impl:install"><x:option select="'transform.xq'" name="package-name" value="transform.xq"/><x:option select="'1.0'" name="package-version" value="1.0"/><x:input port="source">
+<x:test-report xmlns:x="http://www.daisy.org/ns/xprocspec"><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150218131627483/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:install" name="install-step" version="1.0" x:type="{https://github.com/depify/impl}install"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="package" kind="document" primary="false" sequence="false"/><p:output port="result" kind="document" sequence="false" primary="true"><p:pipe step="update-timestamp" port="result"/></p:output><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-18T12:16:28.964Z" label="impl:install invoke" start-time="2015-02-18T12:16:28.951Z"><x:call x:type="{https://github.com/depify/impl}install" step="impl:install"><x:option select="'transform.xq'" name="package-name" value="transform.xq"/><x:option select="'1.0'" name="package-version" value="1.0"/><x:input port="source">
           <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline"><depify:depify xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" ts="current datetime"/></x:document>
         </x:input><x:input port="package">
           <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline">
@@ -18,7 +18,7 @@
       </x:document>
     </x:expect></x:scenario><x:output port="result"><x:document xml:base="file:/Users/jfuller/Source/2_webcomposite/depify-client/test/data/depify.xml" xml:space="preserve" type="inline"><depify:depify xmlns:depify="https://github.com/depify" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" ts="current datetime"><test xmlns:impl="https://github.com/depify/impl"/></depify:depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context0" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150207190613322/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:install" name="install-step" version="1.0" x:type="{https://github.com/depify/impl}install"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="package" kind="document" primary="false" sequence="false"/><p:output port="result" kind="document" sequence="false" primary="true"><p:pipe step="update-timestamp" port="result"/></p:output><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-07T18:06:14.69Z" label="impl:install package" start-time="2015-02-07T18:06:14.679Z"><x:call x:type="{https://github.com/depify/impl}install" step="impl:install"><x:option select="'transform.xq'" name="package-name" value="transform.xq"/><x:option select="'1.0'" name="package-version" value="1.0"/><x:input port="source">
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context0" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150218131627483/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:install" name="install-step" version="1.0" x:type="{https://github.com/depify/impl}install"><p:input port="source" kind="document" primary="true" sequence="false"/><p:input port="package" kind="document" primary="false" sequence="false"/><p:output port="result" kind="document" sequence="false" primary="true"><p:pipe step="update-timestamp" port="result"/></p:output><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-18T12:16:29.184Z" label="impl:install package" start-time="2015-02-18T12:16:29.171Z"><x:call x:type="{https://github.com/depify/impl}install" step="impl:install"><x:option select="'transform.xq'" name="package-name" value="transform.xq"/><x:option select="'1.0'" name="package-version" value="1.0"/><x:input port="source">
           <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline"><depify:depify xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" ts="current datetime"/></x:document>
         </x:input><x:input port="package">
           <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline">
@@ -90,7 +90,7 @@
                 </xquery>
               </depify></depify:depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context1" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150207190613322/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:remove" name="remove-step" version="1.0" x:type="{https://github.com/depify/impl}remove"><p:input port="source" kind="document" primary="true" sequence="false"/><p:output port="result" kind="document" primary="true" sequence="false"/><p:option name="package-name" required="true"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-07T18:06:14.84Z" label="impl:remove transform.xq package" start-time="2015-02-07T18:06:14.832Z"><x:call x:type="{https://github.com/depify/impl}remove" step="impl:remove"><x:option select="'transform.xq'" name="package-name" value="transform.xq"/><x:option select="'1.0'" name="package-version" value="1.0"/><x:input port="source">
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context1" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150218131627483/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:remove" name="remove-step" version="1.0" x:type="{https://github.com/depify/impl}remove"><p:input port="source" kind="document" primary="true" sequence="false"/><p:output port="result" kind="document" primary="true" sequence="false"/><p:option name="package-name" required="true"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-18T12:16:29.359Z" label="impl:remove transform.xq package" start-time="2015-02-18T12:16:29.352Z"><x:call x:type="{https://github.com/depify/impl}remove" step="impl:remove"><x:option select="'transform.xq'" name="package-name" value="transform.xq"/><x:option select="'1.0'" name="package-version" value="1.0"/><x:input port="source">
         <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify" ts="current datetime">
 <depify name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
    <title>transform.xq</title>
@@ -125,7 +125,7 @@
 
 </depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context2" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150207190613322/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:list-installed" name="list-installed-step" version="1.0" x:type="{https://github.com/depify/impl}list-installed"><p:input port="source" kind="document" primary="true" sequence="false"/><p:output port="result" kind="document" primary="true" sequence="false"/><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-07T18:06:14.935Z" label="impl:list-installed all packages" start-time="2015-02-07T18:06:14.927Z"><x:call x:type="{https://github.com/depify/impl}list-installed" step="impl:list-installed"><x:option select="''" name="package-name" value=""/><x:option select="''" name="package-version" value=""/><x:input port="source">
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context2" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150218131627483/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:list-installed" name="list-installed-step" version="1.0" x:type="{https://github.com/depify/impl}list-installed"><p:input port="source" kind="document" primary="true" sequence="false"/><p:output port="result" kind="document" primary="true" sequence="false"/><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-18T12:16:29.5Z" label="impl:list-installed all packages" start-time="2015-02-18T12:16:29.492Z"><x:call x:type="{https://github.com/depify/impl}list-installed" step="impl:list-installed"><x:option select="''" name="package-name" value=""/><x:option select="''" name="package-version" value=""/><x:input port="source">
         <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify" ts="current datetime">
 <depify name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
    <title>transform.xq</title>
@@ -199,7 +199,7 @@
 </depify>
 </depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context3" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150207190613322/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:list-installed" name="list-installed-step" version="1.0" x:type="{https://github.com/depify/impl}list-installed"><p:input port="source" kind="document" primary="true" sequence="false"/><p:output port="result" kind="document" primary="true" sequence="false"/><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-07T18:06:15.032Z" label="impl:list-installed single package" start-time="2015-02-07T18:06:15.023Z"><x:call x:type="{https://github.com/depify/impl}list-installed" step="impl:list-installed"><x:option select="'transform.xq'" name="package-name" value="transform.xq"/><x:option select="''" name="package-version" value=""/><x:input port="source">
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context3" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150218131627483/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:list-installed" name="list-installed-step" version="1.0" x:type="{https://github.com/depify/impl}list-installed"><p:input port="source" kind="document" primary="true" sequence="false"/><p:output port="result" kind="document" primary="true" sequence="false"/><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-18T12:16:29.669Z" label="impl:list-installed single package" start-time="2015-02-18T12:16:29.647Z"><x:call x:type="{https://github.com/depify/impl}list-installed" step="impl:list-installed"><x:option select="'transform.xq'" name="package-name" value="transform.xq"/><x:option select="''" name="package-version" value=""/><x:input port="source">
         <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify" ts="current datetime">
 <depify name="transform.xq" version="1.0" repo-uri="https://github.com/jpcs/transform.xq.git">
    <title>transform.xq</title>
@@ -269,7 +269,7 @@
    </xquery>
 </depify></depify></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context4" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150207190613322/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:list-repo" name="list-repo-step" version="1.0" x:type="{https://github.com/depify/impl}list-repo"><p:input port="source" kind="document" primary="true" sequence="false"/><p:output port="result" kind="document" primary="true" sequence="false"/><p:option name="depify-repo-package-url"/><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-07T18:06:16.566Z" label="impl:list-repo packages" start-time="2015-02-07T18:06:15.127Z"><x:call x:type="{https://github.com/depify/impl}list-repo" step="impl:list-repo"><x:option select="''" name="package-name" value=""/><x:option select="''" name="package-version" value=""/><x:input port="source">
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context4" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150218131627483/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:list-repo" name="list-repo-step" version="1.0" x:type="{https://github.com/depify/impl}list-repo"><p:input port="source" kind="document" primary="true" sequence="false"/><p:output port="result" kind="document" primary="true" sequence="false"/><p:option name="depify-repo-package-url"/><p:option name="package-name"/><p:option name="package-version"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-18T12:16:30.585Z" label="impl:list-repo packages" start-time="2015-02-18T12:16:29.829Z"><x:call x:type="{https://github.com/depify/impl}list-repo" step="impl:list-repo"><x:option select="''" name="package-name" value=""/><x:option select="''" name="package-version" value=""/><x:input port="source">
         <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline"><depify xmlns="https://github.com/depify"/></x:document>
       </x:input></x:call>
                                                 <x:context label="errors" id="errors">
@@ -278,7 +278,154 @@
                                             
                                                 <x:expect type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors"/>
                                             <x:context label="the results" id="context5">
-      <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/" xml:space="preserve" type="inline"><packages xmlns="https://github.com/depify" ts="2015-02-06T19:14:06.954Z"><depify path="/packages/master/xslt/2/Schematron/1.6/.depify.xml" version="1.6" repo-uri="http://www.schematron.com/tmp/iso-schematron-xslt2.zip" name="schematron">
+      <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/" xml:space="preserve" type="inline"><packages xmlns="https://github.com/depify" ts="2015-02-15T07:27:39.329Z"><depify path="/packages/master/xquery/marklogic/rxq/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/xquery/rxq.git" name="rxq">
+</depify><depify path="/packages/master/xquery/marklogic/xray/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/robwhitby/xray.git" name="xray">
+  <title>xray</title>
+  <desc>xray is a framework for writing XQuery unit tests on MarkLogic
+  Server.</desc>
+  <license type="?"/>
+  <author id="rwhitby">Rob Whitby</author>
+  <website>https://github.com/robwhitby/xray</website>
+</depify><depify path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+   <depify name="rbtree.xq" version="1.0" repo-uri="https://github.com/jpcs/rbtree.xq.git"/>
+</depify><depify path="/packages/master/xquery/3/data.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/data.xq.git" version="1.0" name="data.xq">
+   <title>xqueryparser.xq</title>
+   <desc>An XQuery 3.0 library for defining algebraic data types, and performing structural pattern matching on them..</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/data.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/data.xq</website>
+</depify><depify path="/packages/master/xquery/3/xqueryparser.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/xqueryparser.xq.git" version="1.0" name="xqueryparser.xq">
+   <title>xqueryparser.xq</title>
+   <desc>A parser for XQuery 3.0 and MarkLogic extensions.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/xqueryparser.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/xqueryparser.xq</website>
+   <xquery version="3.0">
+      <prefix>xqp</prefix>
+      <namespace>http://github.com/jpcs/xqueryparser.xq</namespace>
+      <uri>xqueryparser.xq</uri>
+   </xquery>
+</depify><depify path="/packages/master/xquery/3/rbtree.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/rbtree.xq.git" version="1.0" name="rbtree.xq">
+  <title>rbtree.xq</title>
+  <desc>An implementation of a red/black tree built using XQuery 3.0 higher order functions, and an associative map library built on top of it..</desc>
+  <license type="APLV2.0">
+    <uri>https://github.com/jpcs/rbtree.xq/blob/master/LICENSE</uri>
+  </license>
+  <author id="jpcs">John Snelson</author>
+  <website>https://github.com/jpcs/rbtree.xq</website>
+  <xquery version="3.0">
+    <prefix>rbtree</prefix>
+    <namespace>http://snelson.org.uk/functions/rbtree</namespace>
+    <uri>transform.xq</uri>
+  </xquery>
+  <xquery version="3.0">
+    <prefix>map</prefix>
+    <namespace>http://snelson.org.uk/functions/map</namespace>
+    <uri>map.xq</uri>
+  </xquery>
+</depify><depify path="/packages/master/xquery/3/functional.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/functional.xq" version="1.0" name="functional.xq">
+  <title>functional.xq</title>
+  <desc>A library of useful functionality for working with XQuery 3.0 higher order functions.
+  Includes a number of functions from the standard Haskell prelude, as well as functions to
+  perform currying, function composition, and Y-combination.</desc>
+  <license type="APLV2">
+    <uri>https://github.com/jpcs/functional.xq/blob/master/LICENSE</uri>
+  </license>
+  <author id="jpcs">John Snelson</author>
+  <website>https://github.com/jpcs/functional.xq/</website>
+  <xquery version="3.0">
+    <prefix>func</prefix>
+    <namespace>http://snelson.org.uk/functions/functional</namespace>
+    <uri>functional.xq</uri>
+  </xquery>
+</depify><depify path="/packages/master/xquery/1/functx/1.0/.depify.xml" repo-uri="" version="1.0" name="xquery.1.functx">
+ <title>FunctX library</title>
+ <desc>The FunctX function library is a set of useful functions on
+  XML documents and data. It comes in two flavors: XQuery 1.0 and
+  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
+  function definitions as consistent as possible across the two
+  languages. The source code for the functions is available under the
+  GNU-LGPL license. However, the longer descriptions of the functions
+  and the design of the FunctX Web sites is copyrighted and may only
+  be used with permission.This site also includes descriptions and
+  examples of the XQuery and XPath built-in functions, taken with
+  permission from the book XQuery (2007, O'Reilly Media).We hope you
+  find these functions useful and that you will take the time to
+  provide feedback and/or contribute your own functions.
+ </desc>
+ <license type="GNU-LGPL">
+   <uri>?</uri>
+ </license>
+ <author id="pwalmsley">Priscilla Walmsley</author>
+ <website>http://www.xqueryfunctions.com/</website>
+ <xquery version="1.0">
+   <prefix>functx</prefix>
+   <namespace>http://www.functx.com</namespace>
+   <uri>functx.xq</uri>
+ </xquery>
+</depify><depify path="/packages/master/js/ecmascript/xqib/0.7.2/.depify.xml" repo-uri="http://www.xqib.org/download/xqib-js-0.8-beta.zip" version="0.7.2" name="xqib">
+   <title>xqib - xquery in the browser</title>
+   <desc>XQIB allows you to program client-side Web applications with XQuery instead of JavaScript. It works in most modern browsers (IE9, Firefox 3.6+, Chrome 8, Safari 5) and does not require the installation of any plugin.
+      XQuery is a W3C standard, just like HTML and XML, and is perfectly tailored for working with HTML, XML and REST. This means more elegant programs and less code. Moreover, by using an XQuery Web application server (such as MarkLogic or Sausalito) in conjunction with XQIB, having the same language on both the server and the client side allows you to reuse your code.
+   </desc>
+   <license type="APLV2">
+      <uri>NOTICE</uri>
+   </license>
+   <author id="">FLWOR Foundation, ETH Zurich Systems Group and Oracle</author>
+   <website>http://www.xqib.org/?page_id=2</website>
+   <js>
+      <uri>xqueryjs/mxqueryjs.nocache.js</uri>
+   </js>
+</depify><depify path="/packages/master/js/ecmascript/saxon-ce/1.1/.depify.xml" version="1.1" repo-uri="http://www.saxonica.com/ce/download/Saxon-CE_1.1.zip" name="saxon-ce">
+    <title>Saxon-CE</title>
+  <desc>Saxon-CE (client edition) is Saxonica's implementation of XSLT 2.0 for use on web browsers.
+The current release is Saxon-CE 1.1.
+Unlike previous releases, Saxon-CE 1.1 is open-source software.
+  </desc>
+  <license type="MPL-V2.0"/>
+  <author id="">Saxonica</author>
+  <website>http://www.saxonica.com/ce/index.xml/</website>
+</depify><depify path="/packages/master/schema/relaxng/1/xslt-relax-ng/1.0/.depify.xml" repo-uri="https://github.com/ndw/xslt-relax-ng.git" version="1.0" name="xslt-relax-ng">
+ <title>RelaxNG schemas for XSLT 1 &amp; XSLT 2</title>
+  <desc>
+    This project provides RELAX NG grammars for XSLT stylesheets. Because stylesheets are required to have a version number, it's straightforward for a RELAX NG validator to choose between the xslt10.rnc and xslt20.rnc grammars.
+    As work on XSLT 3.0 stabilizes, I plan to include support for that as well.
+    Having a RELAX NG grammar makes syntax directed editing of XSLT stylesheets much easier in tools like Emacs and oXygen that support RELAX NG. 
+  </desc>
+ <license type="MPL2"/>
+ <author id="ndw">Norm Walsh</author>
+  <website>https://github.com/ndw/xslt-relax-ng</website>
+ <schema type="relaxng">
+    <prefix/>
+    <namespace/>
+   <uri>xslt.rnc</uri>
+ </schema>
+</depify><depify path="/packages/master/xproc/1/xprocdoc/1.0/.depify.xml" repo-uri="https://github.com/vojtechtoman/xprocdoc" version="1.0" name="xprocdoc">
+   <title>xprocdoc</title>
+   <desc>A simple Javadoc-style XProc API documentation generator written in XProc and XSLT 2.0.</desc>
+   <license type="?"/>
+   <author id="vojtechtoman">Vojtech Toman</author>
+   <website>https://github.com/vojtechtoman/xprocdoc</website>
+   <xproc version="1.0">
+      <catalog name="urn:depify:xproc" uri="xprocdoc-master/xprocdoc.xpl"/>
+   </xproc>
+</depify><depify path="/packages/master/xslt/2/Schematron/1.6/.depify.xml" version="1.6" repo-uri="http://www.schematron.com/tmp/iso-schematron-xslt2.zip" name="schematron">
   <title>ISO SCHEMATRON 2010</title>
   <desc>ISO Schematron is a language for making assertion about the presence or absense
     of patterns in XML documents. It is typically used for as a schema language, or
@@ -333,221 +480,156 @@
    <namespace>http://www.functx.com</namespace>
    <uri>functx.xsl</uri>
  </xslt>
-</depify><depify path="/packages/master/xquery/marklogic/xray/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/robwhitby/xray.git" name="xray">
-  <title>xray</title>
-  <desc>xray is a framework for writing XQuery unit tests on MarkLogic
-  Server.</desc>
-  <license type="?"/>
-  <author id="rwhitby">Rob Whitby</author>
-  <website>https://github.com/robwhitby/xray</website>
-</depify><depify path="/packages/master/xquery/marklogic/rxq/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/xquery/rxq.git" name="rxq">
-</depify><depify path="/packages/master/xquery/marklogic/roxy/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/marklogic/roxy.git" name="roxy">
-  <title>Roxy</title>
-  <desc>Roxy (RObust XQuerY Framework) is a lightweight framework for quickly developing well-structured, 
-    easily maintained XQuery applications. Roxy was heavily inspired by Ruby On Rails and CakePHP.</desc>
-  <license type="APL-V2">
-    <uri>http://www.apache.org/licenses/LICENSE-2.0</uri>
-  </license>
-  <author id="paxtonhare">Paxton Hare</author>
-  <author id="dmcassel">Dan Cassel</author>
-  <website>https://github.com/marklogic/roxy</website>
-</depify><depify path="/packages/master/xquery/3/xqueryparser.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/xqueryparser.xq.git" version="1.0" name="xqueryparser.xq">
-   <title>xqueryparser.xq</title>
-   <desc>A parser for XQuery 3.0 and MarkLogic extensions.</desc>
-   <license type="APLV2.0">
-      <uri>https://github.com/jpcs/xqueryparser.xq/blob/master/LICENSE</uri>
-   </license>
-   <author id="jpcs">John Snelson</author>
-   <website>https://github.com/jpcs/xqueryparser.xq</website>
-   <xquery version="3.0">
-      <prefix>xqp</prefix>
-      <namespace>http://github.com/jpcs/xqueryparser.xq</namespace>
-      <uri>xqueryparser.xq</uri>
-   </xquery>
-</depify><depify path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
-   <title>transform.xq</title>
-   <desc>An extensible transformation library for XQuery 3.0.</desc>
-   <license type="APLV2.0">
-      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
-   </license>
-   <author id="jpcs">John Snelson</author>
-   <website>https://github.com/jpcs/transform.xq/</website>
-   <xquery version="3.0">
-      <prefix>tfm</prefix>
-      <namespace>http://snelson.org.uk/functions/transform</namespace>
-      <uri>transform.xq</uri>
-   </xquery>
-</depify><depify path="/packages/master/xquery/3/rbtree.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/rbtree.xq.git" version="1.0" name="rbtree.xq">
-  <title>rbtree.xq</title>
-  <desc>An implementation of a red/black tree built using XQuery 3.0 higher order functions, and an associative map library built on top of it..</desc>
-  <license type="APLV2.0">
-    <uri>https://github.com/jpcs/rbtree.xq/blob/master/LICENSE</uri>
-  </license>
-  <author id="jpcs">John Snelson</author>
-  <website>https://github.com/jpcs/rbtree.xq</website>
-  <xquery version="3.0">
-    <prefix>rbtree</prefix>
-    <namespace>http://snelson.org.uk/functions/rbtree</namespace>
-    <uri>transform.xq</uri>
-  </xquery>
-  <xquery version="3.0">
-    <prefix>map</prefix>
-    <namespace>http://snelson.org.uk/functions/map</namespace>
-    <uri>map.xq</uri>
-  </xquery>
-</depify><depify path="/packages/master/xquery/3/functional.xq/1.0/.depify.xml" repo-uri="git://github.com/jpcs/functional.xq.git" version="1.0" name="functional.xq">
-  <title>functional.xq</title>
-  <desc>A library of useful functionality for working with XQuery 3.0 higher order functions.
-  Includes a number of functions from the standard Haskell prelude, as well as functions to
-  perform currying, function composition, and Y-combination.</desc>
-  <license type="APLV2">
-    <uri>https://github.com/jpcs/functional.xq/blob/master/LICENSE</uri>
-  </license>
-  <author id="jpcs">John Snelson</author>
-  <website>https://github.com/jpcs/functional.xq/</website>
-  <xquery version="3.0">
-    <prefix>func</prefix>
-    <namespace>http://snelson.org.uk/functions/functional</namespace>
-    <uri>functional.xq</uri>
-  </xquery>
-</depify><depify path="/packages/master/xquery/3/data.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/data.xq.git" version="1.0" name="data.xq">
-   <title>xqueryparser.xq</title>
-   <desc>An XQuery 3.0 library for defining algebraic data types, and performing structural pattern matching on them..</desc>
-   <license type="APLV2.0">
-      <uri>https://github.com/jpcs/data.xq/blob/master/LICENSE</uri>
-   </license>
-   <author id="jpcs">John Snelson</author>
-   <website>https://github.com/jpcs/data.xq</website>
-</depify><depify path="/packages/master/xquery/1/functx/1.0/.depify.xml" repo-uri="" version="1.0" name="xquery.1.functx">
- <title>FunctX library</title>
- <desc>The FunctX function library is a set of useful functions on
-  XML documents and data. It comes in two flavors: XQuery 1.0 and
-  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
-  function definitions as consistent as possible across the two
-  languages. The source code for the functions is available under the
-  GNU-LGPL license. However, the longer descriptions of the functions
-  and the design of the FunctX Web sites is copyrighted and may only
-  be used with permission.This site also includes descriptions and
-  examples of the XQuery and XPath built-in functions, taken with
-  permission from the book XQuery (2007, O'Reilly Media).We hope you
-  find these functions useful and that you will take the time to
-  provide feedback and/or contribute your own functions.
- </desc>
- <license type="GNU-LGPL">
-   <uri>?</uri>
- </license>
- <author id="pwalmsley">Priscilla Walmsley</author>
- <website>http://www.xqueryfunctions.com/</website>
- <xquery version="1.0">
-   <prefix>functx</prefix>
-   <namespace>http://www.functx.com</namespace>
-   <uri>functx.xq</uri>
- </xquery>
-</depify><depify path="/packages/master/xproc/1/ml-xproc-library/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/philipfennell/xproc-libraries" name="ml-xproc-library">
- <title>ML XProc Libraries</title>
-  <desc xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  XProc libraries for working with MarkLogic.
-  </desc>
- <license type=""/>
-  <author id="philipfennell">Philip Fennell</author>
-  <website>https://github.com/philipfennell/xproc-libraries</website>
- <xproc vendor="xmlcalabash" version="1.0">
-   <source/>
-   <result/>
-   <uri>XprocCorb/pipelines/xproccorb.xpl</uri>
- </xproc>
-  <xproc vendor="xmlcalabash" version="1.0">
-    <source/>
-    <result/>
-    <uri>XprocLoader/pipelines/xprocloader.xpl</uri>
-  </xproc>
-  <xproc vendor="xmlcalabash" version="1.0">
-    <source/>
-    <result/>
-    <uri>XprocMLAdmin/build.xpl</uri>
-  </xproc>
-</depify><depify path="/packages/master/schema/relaxng/1/xslt-relax-ng/1.0/.depify.xml" repo-uri="https://github.com/ndw/xslt-relax-ng.git" version="1.0" name="xslt-relax-ng">
- <title>RelaxNG schemas for XSLT 1 &amp; XSLT 2</title>
-  <desc>
-    This project provides RELAX NG grammars for XSLT stylesheets. Because stylesheets are required to have a version number, it's straightforward for a RELAX NG validator to choose between the xslt10.rnc and xslt20.rnc grammars.
-    As work on XSLT 3.0 stabilizes, I plan to include support for that as well.
-    Having a RELAX NG grammar makes syntax directed editing of XSLT stylesheets much easier in tools like Emacs and oXygen that support RELAX NG. 
-  </desc>
- <license type="MPL2"/>
- <author id="ndw">Norm Walsh</author>
-  <website>https://github.com/ndw/xslt-relax-ng</website>
- <schema type="relaxng">
-    <prefix/>
-    <namespace/>
-   <uri>xslt.rnc</uri>
- </schema>
-</depify><depify path="/packages/master/js/ecmascript/xqib/0.7.2/.depify.xml" repo-uri="http://www.xqib.org/download/xqib-js-0.8-beta.zip" version="0.7.2" name="xqib">
-   <title>xqib - xquery in the browser</title>
-   <desc>XQIB allows you to program client-side Web applications with XQuery instead of JavaScript. It works in most modern browsers (IE9, Firefox 3.6+, Chrome 8, Safari 5) and does not require the installation of any plugin.
-      XQuery is a W3C standard, just like HTML and XML, and is perfectly tailored for working with HTML, XML and REST. This means more elegant programs and less code. Moreover, by using an XQuery Web application server (such as MarkLogic or Sausalito) in conjunction with XQIB, having the same language on both the server and the client side allows you to reuse your code.
-   </desc>
-   <license type="APLV2">
-      <uri>NOTICE</uri>
-   </license>
-   <author id="">FLWOR Foundation, ETH Zurich Systems Group and Oracle</author>
-   <website>http://www.xqib.org/?page_id=2</website>
-   <js>
-      <uri>xqueryjs/mxqueryjs.nocache.js</uri>
-   </js>
-</depify><depify path="/packages/master/js/ecmascript/saxon-ce/1.1/.depify.xml" version="1.1" repo-uri="http://www.saxonica.com/ce/download/Saxon-CE_1.1.zip" name="saxon-ce">
-    <title>Saxon-CE</title>
-  <desc>Saxon-CE (client edition) is Saxonica's implementation of XSLT 2.0 for use on web browsers.
-The current release is Saxon-CE 1.1.
-Unlike previous releases, Saxon-CE 1.1 is open-source software.
-  </desc>
-  <license type="MPL-V2.0"/>
-  <author id="">Saxonica</author>
-  <website>http://www.saxonica.com/ce/index.xml/</website>
-</depify><depify path="/packages/master/js/ecmascript/qunit/1.0/.depify.xml" repo-uri="https://github.com/jquery/qunit.git" version="1.0" name="qunit">
-  <title>QUnit - A JavaScript Unit Testing Framework</title>
-  <desc>A JavaScript Unit Testing Framework</desc>
-  <license type="GPL/MIT">
-    <uri>?</uri>
-  </license>
-  <author id="">John Resig</author>
-  <author id="">Joern Zaefferer</author>
-  <website>http://docs.jquery.com/QUnit</website>
-  <js required="true">
-    <uri>js/qunit.js</uri>
-  </js>
-  <js required="true">
-    <uri>js/jquery.js</uri>
-  </js>
-  <js required="true">
-    <uri>js/common.js</uri>
-  </js>
-  <css required="true">
-    <type>text/css</type>
-    <rel>stylesheet</rel>
-    <uri>css/qunit.css</uri>
-  </css>
-</depify><depify path="/packages/master/js/ecmascript/prettify/1.0/.depify.xml" repo-uri="https://github.com/michaek/google-code-prettify-small.git" version="1.0" name="prettify">
- <title>Prettify.js library</title>
-  <desc>A Javascript module and CSS file that allows syntax highlighting of source code snippets in an html page. </desc>
- <license type="APLV2">
-   <uri>http://google-code-prettify.googlecode.com/svn/trunk/COPYING</uri>
- </license>
- <author id="">Mike Samuel</author>
- <website>http://code.google.com/p/google-code-prettify/</website>
- <js required="true">
-   <uri>prettify.js</uri>
- </js>
-  <js required="true">    
-   <uri>lang-xq.js</uri>
-  </js>
-  <css required="true">
-   <type>text/css</type> 
-   <rel>stylesheet</rel>
-   <uri>prettify.css</uri>
- </css>
 </depify></packages></x:document>
     </x:context><x:expect type="compare" label="Check correct contents" normalize-space="true" contextref="context5">
-      <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline"><packages xmlns="https://github.com/depify" ts="2015-02-06T19:14:06.954Z"><depify path="/packages/master/xslt/2/Schematron/1.6/.depify.xml" version="1.6" repo-uri="http://www.schematron.com/tmp/iso-schematron-xslt2.zip" name="schematron">
+      <x:document xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" xml:space="preserve" type="inline"><packages xmlns="https://github.com/depify" ts="2015-02-15T07:27:39.329Z"><depify path="/packages/master/xquery/marklogic/rxq/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/xquery/rxq.git" name="rxq">
+</depify><depify path="/packages/master/xquery/marklogic/xray/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/robwhitby/xray.git" name="xray">
+  <title>xray</title>
+  <desc>xray is a framework for writing XQuery unit tests on MarkLogic
+  Server.</desc>
+  <license type="?"/>
+  <author id="rwhitby">Rob Whitby</author>
+  <website>https://github.com/robwhitby/xray</website>
+</depify><depify path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+   <depify name="rbtree.xq" version="1.0" repo-uri="https://github.com/jpcs/rbtree.xq.git"/>
+</depify><depify path="/packages/master/xquery/3/data.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/data.xq.git" version="1.0" name="data.xq">
+   <title>xqueryparser.xq</title>
+   <desc>An XQuery 3.0 library for defining algebraic data types, and performing structural pattern matching on them..</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/data.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/data.xq</website>
+</depify><depify path="/packages/master/xquery/3/xqueryparser.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/xqueryparser.xq.git" version="1.0" name="xqueryparser.xq">
+   <title>xqueryparser.xq</title>
+   <desc>A parser for XQuery 3.0 and MarkLogic extensions.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/xqueryparser.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/xqueryparser.xq</website>
+   <xquery version="3.0">
+      <prefix>xqp</prefix>
+      <namespace>http://github.com/jpcs/xqueryparser.xq</namespace>
+      <uri>xqueryparser.xq</uri>
+   </xquery>
+</depify><depify path="/packages/master/xquery/3/rbtree.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/rbtree.xq.git" version="1.0" name="rbtree.xq">
+  <title>rbtree.xq</title>
+  <desc>An implementation of a red/black tree built using XQuery 3.0 higher order functions, and an associative map library built on top of it..</desc>
+  <license type="APLV2.0">
+    <uri>https://github.com/jpcs/rbtree.xq/blob/master/LICENSE</uri>
+  </license>
+  <author id="jpcs">John Snelson</author>
+  <website>https://github.com/jpcs/rbtree.xq</website>
+  <xquery version="3.0">
+    <prefix>rbtree</prefix>
+    <namespace>http://snelson.org.uk/functions/rbtree</namespace>
+    <uri>transform.xq</uri>
+  </xquery>
+  <xquery version="3.0">
+    <prefix>map</prefix>
+    <namespace>http://snelson.org.uk/functions/map</namespace>
+    <uri>map.xq</uri>
+  </xquery>
+</depify><depify path="/packages/master/xquery/3/functional.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/functional.xq" version="1.0" name="functional.xq">
+  <title>functional.xq</title>
+  <desc>A library of useful functionality for working with XQuery 3.0 higher order functions.
+  Includes a number of functions from the standard Haskell prelude, as well as functions to
+  perform currying, function composition, and Y-combination.</desc>
+  <license type="APLV2">
+    <uri>https://github.com/jpcs/functional.xq/blob/master/LICENSE</uri>
+  </license>
+  <author id="jpcs">John Snelson</author>
+  <website>https://github.com/jpcs/functional.xq/</website>
+  <xquery version="3.0">
+    <prefix>func</prefix>
+    <namespace>http://snelson.org.uk/functions/functional</namespace>
+    <uri>functional.xq</uri>
+  </xquery>
+</depify><depify path="/packages/master/xquery/1/functx/1.0/.depify.xml" repo-uri="" version="1.0" name="xquery.1.functx">
+ <title>FunctX library</title>
+ <desc>The FunctX function library is a set of useful functions on
+  XML documents and data. It comes in two flavors: XQuery 1.0 and
+  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
+  function definitions as consistent as possible across the two
+  languages. The source code for the functions is available under the
+  GNU-LGPL license. However, the longer descriptions of the functions
+  and the design of the FunctX Web sites is copyrighted and may only
+  be used with permission.This site also includes descriptions and
+  examples of the XQuery and XPath built-in functions, taken with
+  permission from the book XQuery (2007, O'Reilly Media).We hope you
+  find these functions useful and that you will take the time to
+  provide feedback and/or contribute your own functions.
+ </desc>
+ <license type="GNU-LGPL">
+   <uri>?</uri>
+ </license>
+ <author id="pwalmsley">Priscilla Walmsley</author>
+ <website>http://www.xqueryfunctions.com/</website>
+ <xquery version="1.0">
+   <prefix>functx</prefix>
+   <namespace>http://www.functx.com</namespace>
+   <uri>functx.xq</uri>
+ </xquery>
+</depify><depify path="/packages/master/js/ecmascript/xqib/0.7.2/.depify.xml" repo-uri="http://www.xqib.org/download/xqib-js-0.8-beta.zip" version="0.7.2" name="xqib">
+   <title>xqib - xquery in the browser</title>
+   <desc>XQIB allows you to program client-side Web applications with XQuery instead of JavaScript. It works in most modern browsers (IE9, Firefox 3.6+, Chrome 8, Safari 5) and does not require the installation of any plugin.
+      XQuery is a W3C standard, just like HTML and XML, and is perfectly tailored for working with HTML, XML and REST. This means more elegant programs and less code. Moreover, by using an XQuery Web application server (such as MarkLogic or Sausalito) in conjunction with XQIB, having the same language on both the server and the client side allows you to reuse your code.
+   </desc>
+   <license type="APLV2">
+      <uri>NOTICE</uri>
+   </license>
+   <author id="">FLWOR Foundation, ETH Zurich Systems Group and Oracle</author>
+   <website>http://www.xqib.org/?page_id=2</website>
+   <js>
+      <uri>xqueryjs/mxqueryjs.nocache.js</uri>
+   </js>
+</depify><depify path="/packages/master/js/ecmascript/saxon-ce/1.1/.depify.xml" version="1.1" repo-uri="http://www.saxonica.com/ce/download/Saxon-CE_1.1.zip" name="saxon-ce">
+    <title>Saxon-CE</title>
+  <desc>Saxon-CE (client edition) is Saxonica's implementation of XSLT 2.0 for use on web browsers.
+The current release is Saxon-CE 1.1.
+Unlike previous releases, Saxon-CE 1.1 is open-source software.
+  </desc>
+  <license type="MPL-V2.0"/>
+  <author id="">Saxonica</author>
+  <website>http://www.saxonica.com/ce/index.xml/</website>
+</depify><depify path="/packages/master/schema/relaxng/1/xslt-relax-ng/1.0/.depify.xml" repo-uri="https://github.com/ndw/xslt-relax-ng.git" version="1.0" name="xslt-relax-ng">
+ <title>RelaxNG schemas for XSLT 1 &amp; XSLT 2</title>
+  <desc>
+    This project provides RELAX NG grammars for XSLT stylesheets. Because stylesheets are required to have a version number, it's straightforward for a RELAX NG validator to choose between the xslt10.rnc and xslt20.rnc grammars.
+    As work on XSLT 3.0 stabilizes, I plan to include support for that as well.
+    Having a RELAX NG grammar makes syntax directed editing of XSLT stylesheets much easier in tools like Emacs and oXygen that support RELAX NG. 
+  </desc>
+ <license type="MPL2"/>
+ <author id="ndw">Norm Walsh</author>
+  <website>https://github.com/ndw/xslt-relax-ng</website>
+ <schema type="relaxng">
+    <prefix/>
+    <namespace/>
+   <uri>xslt.rnc</uri>
+ </schema>
+</depify><depify path="/packages/master/xproc/1/xprocdoc/1.0/.depify.xml" repo-uri="https://github.com/vojtechtoman/xprocdoc" version="1.0" name="xprocdoc">
+   <title>xprocdoc</title>
+   <desc>A simple Javadoc-style XProc API documentation generator written in XProc and XSLT 2.0.</desc>
+   <license type="?"/>
+   <author id="vojtechtoman">Vojtech Toman</author>
+   <website>https://github.com/vojtechtoman/xprocdoc</website>
+   <xproc version="1.0">
+      <catalog name="urn:depify:xproc" uri="xprocdoc-master/xprocdoc.xpl"/>
+   </xproc>
+</depify><depify path="/packages/master/xslt/2/Schematron/1.6/.depify.xml" version="1.6" repo-uri="http://www.schematron.com/tmp/iso-schematron-xslt2.zip" name="schematron">
   <title>ISO SCHEMATRON 2010</title>
   <desc>ISO Schematron is a language for making assertion about the presence or absense
     of patterns in XML documents. It is typically used for as a schema language, or
@@ -602,220 +684,155 @@ Unlike previous releases, Saxon-CE 1.1 is open-source software.
    <namespace>http://www.functx.com</namespace>
    <uri>functx.xsl</uri>
  </xslt>
-</depify><depify path="/packages/master/xquery/marklogic/xray/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/robwhitby/xray.git" name="xray">
-  <title>xray</title>
-  <desc>xray is a framework for writing XQuery unit tests on MarkLogic
-  Server.</desc>
-  <license type="?"/>
-  <author id="rwhitby">Rob Whitby</author>
-  <website>https://github.com/robwhitby/xray</website>
-</depify><depify path="/packages/master/xquery/marklogic/rxq/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/xquery/rxq.git" name="rxq">
-</depify><depify path="/packages/master/xquery/marklogic/roxy/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/marklogic/roxy.git" name="roxy">
-  <title>Roxy</title>
-  <desc>Roxy (RObust XQuerY Framework) is a lightweight framework for quickly developing well-structured, 
-    easily maintained XQuery applications. Roxy was heavily inspired by Ruby On Rails and CakePHP.</desc>
-  <license type="APL-V2">
-    <uri>http://www.apache.org/licenses/LICENSE-2.0</uri>
-  </license>
-  <author id="paxtonhare">Paxton Hare</author>
-  <author id="dmcassel">Dan Cassel</author>
-  <website>https://github.com/marklogic/roxy</website>
-</depify><depify path="/packages/master/xquery/3/xqueryparser.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/xqueryparser.xq.git" version="1.0" name="xqueryparser.xq">
-   <title>xqueryparser.xq</title>
-   <desc>A parser for XQuery 3.0 and MarkLogic extensions.</desc>
-   <license type="APLV2.0">
-      <uri>https://github.com/jpcs/xqueryparser.xq/blob/master/LICENSE</uri>
-   </license>
-   <author id="jpcs">John Snelson</author>
-   <website>https://github.com/jpcs/xqueryparser.xq</website>
-   <xquery version="3.0">
-      <prefix>xqp</prefix>
-      <namespace>http://github.com/jpcs/xqueryparser.xq</namespace>
-      <uri>xqueryparser.xq</uri>
-   </xquery>
-</depify><depify path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
-   <title>transform.xq</title>
-   <desc>An extensible transformation library for XQuery 3.0.</desc>
-   <license type="APLV2.0">
-      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
-   </license>
-   <author id="jpcs">John Snelson</author>
-   <website>https://github.com/jpcs/transform.xq/</website>
-   <xquery version="3.0">
-      <prefix>tfm</prefix>
-      <namespace>http://snelson.org.uk/functions/transform</namespace>
-      <uri>transform.xq</uri>
-   </xquery>
-</depify><depify path="/packages/master/xquery/3/rbtree.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/rbtree.xq.git" version="1.0" name="rbtree.xq">
-  <title>rbtree.xq</title>
-  <desc>An implementation of a red/black tree built using XQuery 3.0 higher order functions, and an associative map library built on top of it..</desc>
-  <license type="APLV2.0">
-    <uri>https://github.com/jpcs/rbtree.xq/blob/master/LICENSE</uri>
-  </license>
-  <author id="jpcs">John Snelson</author>
-  <website>https://github.com/jpcs/rbtree.xq</website>
-  <xquery version="3.0">
-    <prefix>rbtree</prefix>
-    <namespace>http://snelson.org.uk/functions/rbtree</namespace>
-    <uri>transform.xq</uri>
-  </xquery>
-  <xquery version="3.0">
-    <prefix>map</prefix>
-    <namespace>http://snelson.org.uk/functions/map</namespace>
-    <uri>map.xq</uri>
-  </xquery>
-</depify><depify path="/packages/master/xquery/3/functional.xq/1.0/.depify.xml" repo-uri="git://github.com/jpcs/functional.xq.git" version="1.0" name="functional.xq">
-  <title>functional.xq</title>
-  <desc>A library of useful functionality for working with XQuery 3.0 higher order functions.
-  Includes a number of functions from the standard Haskell prelude, as well as functions to
-  perform currying, function composition, and Y-combination.</desc>
-  <license type="APLV2">
-    <uri>https://github.com/jpcs/functional.xq/blob/master/LICENSE</uri>
-  </license>
-  <author id="jpcs">John Snelson</author>
-  <website>https://github.com/jpcs/functional.xq/</website>
-  <xquery version="3.0">
-    <prefix>func</prefix>
-    <namespace>http://snelson.org.uk/functions/functional</namespace>
-    <uri>functional.xq</uri>
-  </xquery>
-</depify><depify path="/packages/master/xquery/3/data.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/data.xq.git" version="1.0" name="data.xq">
-   <title>xqueryparser.xq</title>
-   <desc>An XQuery 3.0 library for defining algebraic data types, and performing structural pattern matching on them..</desc>
-   <license type="APLV2.0">
-      <uri>https://github.com/jpcs/data.xq/blob/master/LICENSE</uri>
-   </license>
-   <author id="jpcs">John Snelson</author>
-   <website>https://github.com/jpcs/data.xq</website>
-</depify><depify path="/packages/master/xquery/1/functx/1.0/.depify.xml" repo-uri="" version="1.0" name="xquery.1.functx">
- <title>FunctX library</title>
- <desc>The FunctX function library is a set of useful functions on
-  XML documents and data. It comes in two flavors: XQuery 1.0 and
-  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
-  function definitions as consistent as possible across the two
-  languages. The source code for the functions is available under the
-  GNU-LGPL license. However, the longer descriptions of the functions
-  and the design of the FunctX Web sites is copyrighted and may only
-  be used with permission.This site also includes descriptions and
-  examples of the XQuery and XPath built-in functions, taken with
-  permission from the book XQuery (2007, O'Reilly Media).We hope you
-  find these functions useful and that you will take the time to
-  provide feedback and/or contribute your own functions.
- </desc>
- <license type="GNU-LGPL">
-   <uri>?</uri>
- </license>
- <author id="pwalmsley">Priscilla Walmsley</author>
- <website>http://www.xqueryfunctions.com/</website>
- <xquery version="1.0">
-   <prefix>functx</prefix>
-   <namespace>http://www.functx.com</namespace>
-   <uri>functx.xq</uri>
- </xquery>
-</depify><depify path="/packages/master/xproc/1/ml-xproc-library/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/philipfennell/xproc-libraries" name="ml-xproc-library">
- <title>ML XProc Libraries</title>
-  <desc xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  XProc libraries for working with MarkLogic.
-  </desc>
- <license type=""/>
-  <author id="philipfennell">Philip Fennell</author>
-  <website>https://github.com/philipfennell/xproc-libraries</website>
- <xproc vendor="xmlcalabash" version="1.0">
-   <source/>
-   <result/>
-   <uri>XprocCorb/pipelines/xproccorb.xpl</uri>
- </xproc>
-  <xproc vendor="xmlcalabash" version="1.0">
-    <source/>
-    <result/>
-    <uri>XprocLoader/pipelines/xprocloader.xpl</uri>
-  </xproc>
-  <xproc vendor="xmlcalabash" version="1.0">
-    <source/>
-    <result/>
-    <uri>XprocMLAdmin/build.xpl</uri>
-  </xproc>
-</depify><depify path="/packages/master/schema/relaxng/1/xslt-relax-ng/1.0/.depify.xml" repo-uri="https://github.com/ndw/xslt-relax-ng.git" version="1.0" name="xslt-relax-ng">
- <title>RelaxNG schemas for XSLT 1 &amp; XSLT 2</title>
-  <desc>
-    This project provides RELAX NG grammars for XSLT stylesheets. Because stylesheets are required to have a version number, it's straightforward for a RELAX NG validator to choose between the xslt10.rnc and xslt20.rnc grammars.
-    As work on XSLT 3.0 stabilizes, I plan to include support for that as well.
-    Having a RELAX NG grammar makes syntax directed editing of XSLT stylesheets much easier in tools like Emacs and oXygen that support RELAX NG. 
-  </desc>
- <license type="MPL2"/>
- <author id="ndw">Norm Walsh</author>
-  <website>https://github.com/ndw/xslt-relax-ng</website>
- <schema type="relaxng">
-    <prefix/>
-    <namespace/>
-   <uri>xslt.rnc</uri>
- </schema>
-</depify><depify path="/packages/master/js/ecmascript/xqib/0.7.2/.depify.xml" repo-uri="http://www.xqib.org/download/xqib-js-0.8-beta.zip" version="0.7.2" name="xqib">
-   <title>xqib - xquery in the browser</title>
-   <desc>XQIB allows you to program client-side Web applications with XQuery instead of JavaScript. It works in most modern browsers (IE9, Firefox 3.6+, Chrome 8, Safari 5) and does not require the installation of any plugin.
-      XQuery is a W3C standard, just like HTML and XML, and is perfectly tailored for working with HTML, XML and REST. This means more elegant programs and less code. Moreover, by using an XQuery Web application server (such as MarkLogic or Sausalito) in conjunction with XQIB, having the same language on both the server and the client side allows you to reuse your code.
-   </desc>
-   <license type="APLV2">
-      <uri>NOTICE</uri>
-   </license>
-   <author id="">FLWOR Foundation, ETH Zurich Systems Group and Oracle</author>
-   <website>http://www.xqib.org/?page_id=2</website>
-   <js>
-      <uri>xqueryjs/mxqueryjs.nocache.js</uri>
-   </js>
-</depify><depify path="/packages/master/js/ecmascript/saxon-ce/1.1/.depify.xml" version="1.1" repo-uri="http://www.saxonica.com/ce/download/Saxon-CE_1.1.zip" name="saxon-ce">
-    <title>Saxon-CE</title>
-  <desc>Saxon-CE (client edition) is Saxonica's implementation of XSLT 2.0 for use on web browsers.
-The current release is Saxon-CE 1.1.
-Unlike previous releases, Saxon-CE 1.1 is open-source software.
-  </desc>
-  <license type="MPL-V2.0"/>
-  <author id="">Saxonica</author>
-  <website>http://www.saxonica.com/ce/index.xml/</website>
-</depify><depify path="/packages/master/js/ecmascript/qunit/1.0/.depify.xml" repo-uri="https://github.com/jquery/qunit.git" version="1.0" name="qunit">
-  <title>QUnit - A JavaScript Unit Testing Framework</title>
-  <desc>A JavaScript Unit Testing Framework</desc>
-  <license type="GPL/MIT">
-    <uri>?</uri>
-  </license>
-  <author id="">John Resig</author>
-  <author id="">Joern Zaefferer</author>
-  <website>http://docs.jquery.com/QUnit</website>
-  <js required="true">
-    <uri>js/qunit.js</uri>
-  </js>
-  <js required="true">
-    <uri>js/jquery.js</uri>
-  </js>
-  <js required="true">
-    <uri>js/common.js</uri>
-  </js>
-  <css required="true">
-    <type>text/css</type>
-    <rel>stylesheet</rel>
-    <uri>css/qunit.css</uri>
-  </css>
-</depify><depify path="/packages/master/js/ecmascript/prettify/1.0/.depify.xml" repo-uri="https://github.com/michaek/google-code-prettify-small.git" version="1.0" name="prettify">
- <title>Prettify.js library</title>
-  <desc>A Javascript module and CSS file that allows syntax highlighting of source code snippets in an html page. </desc>
- <license type="APLV2">
-   <uri>http://google-code-prettify.googlecode.com/svn/trunk/COPYING</uri>
- </license>
- <author id="">Mike Samuel</author>
- <website>http://code.google.com/p/google-code-prettify/</website>
- <js required="true">
-   <uri>prettify.js</uri>
- </js>
-  <js required="true">    
-   <uri>lang-xq.js</uri>
-  </js>
-  <css required="true">
-   <type>text/css</type> 
-   <rel>stylesheet</rel>
-   <uri>prettify.css</uri>
- </css>
 </depify></packages></x:document>
-    </x:expect></x:scenario><x:output port="result"><x:document xml:base="" xml:space="preserve" type="inline"><packages xmlns="https://github.com/depify" ts="2015-02-06T19:14:06.954Z"><depify path="/packages/master/xslt/2/Schematron/1.6/.depify.xml" version="1.6" repo-uri="http://www.schematron.com/tmp/iso-schematron-xslt2.zip" name="schematron">
+    </x:expect></x:scenario><x:output port="result"><x:document xml:base="" xml:space="preserve" type="inline"><packages xmlns="https://github.com/depify" ts="2015-02-15T07:27:39.329Z"><depify path="/packages/master/xquery/marklogic/rxq/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/xquery/rxq.git" name="rxq">
+</depify><depify path="/packages/master/xquery/marklogic/xray/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/robwhitby/xray.git" name="xray">
+  <title>xray</title>
+  <desc>xray is a framework for writing XQuery unit tests on MarkLogic
+  Server.</desc>
+  <license type="?"/>
+  <author id="rwhitby">Rob Whitby</author>
+  <website>https://github.com/robwhitby/xray</website>
+</depify><depify path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
+   <title>transform.xq</title>
+   <desc>An extensible transformation library for XQuery 3.0.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/transform.xq/</website>
+   <xquery version="3.0">
+      <prefix>tfm</prefix>
+      <namespace>http://snelson.org.uk/functions/transform</namespace>
+      <uri>transform.xq</uri>
+   </xquery>
+   <depify name="rbtree.xq" version="1.0" repo-uri="https://github.com/jpcs/rbtree.xq.git"/>
+</depify><depify path="/packages/master/xquery/3/data.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/data.xq.git" version="1.0" name="data.xq">
+   <title>xqueryparser.xq</title>
+   <desc>An XQuery 3.0 library for defining algebraic data types, and performing structural pattern matching on them..</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/data.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/data.xq</website>
+</depify><depify path="/packages/master/xquery/3/xqueryparser.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/xqueryparser.xq.git" version="1.0" name="xqueryparser.xq">
+   <title>xqueryparser.xq</title>
+   <desc>A parser for XQuery 3.0 and MarkLogic extensions.</desc>
+   <license type="APLV2.0">
+      <uri>https://github.com/jpcs/xqueryparser.xq/blob/master/LICENSE</uri>
+   </license>
+   <author id="jpcs">John Snelson</author>
+   <website>https://github.com/jpcs/xqueryparser.xq</website>
+   <xquery version="3.0">
+      <prefix>xqp</prefix>
+      <namespace>http://github.com/jpcs/xqueryparser.xq</namespace>
+      <uri>xqueryparser.xq</uri>
+   </xquery>
+</depify><depify path="/packages/master/xquery/3/rbtree.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/rbtree.xq.git" version="1.0" name="rbtree.xq">
+  <title>rbtree.xq</title>
+  <desc>An implementation of a red/black tree built using XQuery 3.0 higher order functions, and an associative map library built on top of it..</desc>
+  <license type="APLV2.0">
+    <uri>https://github.com/jpcs/rbtree.xq/blob/master/LICENSE</uri>
+  </license>
+  <author id="jpcs">John Snelson</author>
+  <website>https://github.com/jpcs/rbtree.xq</website>
+  <xquery version="3.0">
+    <prefix>rbtree</prefix>
+    <namespace>http://snelson.org.uk/functions/rbtree</namespace>
+    <uri>transform.xq</uri>
+  </xquery>
+  <xquery version="3.0">
+    <prefix>map</prefix>
+    <namespace>http://snelson.org.uk/functions/map</namespace>
+    <uri>map.xq</uri>
+  </xquery>
+</depify><depify path="/packages/master/xquery/3/functional.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/functional.xq" version="1.0" name="functional.xq">
+  <title>functional.xq</title>
+  <desc>A library of useful functionality for working with XQuery 3.0 higher order functions.
+  Includes a number of functions from the standard Haskell prelude, as well as functions to
+  perform currying, function composition, and Y-combination.</desc>
+  <license type="APLV2">
+    <uri>https://github.com/jpcs/functional.xq/blob/master/LICENSE</uri>
+  </license>
+  <author id="jpcs">John Snelson</author>
+  <website>https://github.com/jpcs/functional.xq/</website>
+  <xquery version="3.0">
+    <prefix>func</prefix>
+    <namespace>http://snelson.org.uk/functions/functional</namespace>
+    <uri>functional.xq</uri>
+  </xquery>
+</depify><depify path="/packages/master/xquery/1/functx/1.0/.depify.xml" repo-uri="" version="1.0" name="xquery.1.functx">
+ <title>FunctX library</title>
+ <desc>The FunctX function library is a set of useful functions on
+  XML documents and data. It comes in two flavors: XQuery 1.0 and
+  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
+  function definitions as consistent as possible across the two
+  languages. The source code for the functions is available under the
+  GNU-LGPL license. However, the longer descriptions of the functions
+  and the design of the FunctX Web sites is copyrighted and may only
+  be used with permission.This site also includes descriptions and
+  examples of the XQuery and XPath built-in functions, taken with
+  permission from the book XQuery (2007, O'Reilly Media).We hope you
+  find these functions useful and that you will take the time to
+  provide feedback and/or contribute your own functions.
+ </desc>
+ <license type="GNU-LGPL">
+   <uri>?</uri>
+ </license>
+ <author id="pwalmsley">Priscilla Walmsley</author>
+ <website>http://www.xqueryfunctions.com/</website>
+ <xquery version="1.0">
+   <prefix>functx</prefix>
+   <namespace>http://www.functx.com</namespace>
+   <uri>functx.xq</uri>
+ </xquery>
+</depify><depify path="/packages/master/js/ecmascript/xqib/0.7.2/.depify.xml" repo-uri="http://www.xqib.org/download/xqib-js-0.8-beta.zip" version="0.7.2" name="xqib">
+   <title>xqib - xquery in the browser</title>
+   <desc>XQIB allows you to program client-side Web applications with XQuery instead of JavaScript. It works in most modern browsers (IE9, Firefox 3.6+, Chrome 8, Safari 5) and does not require the installation of any plugin.
+      XQuery is a W3C standard, just like HTML and XML, and is perfectly tailored for working with HTML, XML and REST. This means more elegant programs and less code. Moreover, by using an XQuery Web application server (such as MarkLogic or Sausalito) in conjunction with XQIB, having the same language on both the server and the client side allows you to reuse your code.
+   </desc>
+   <license type="APLV2">
+      <uri>NOTICE</uri>
+   </license>
+   <author id="">FLWOR Foundation, ETH Zurich Systems Group and Oracle</author>
+   <website>http://www.xqib.org/?page_id=2</website>
+   <js>
+      <uri>xqueryjs/mxqueryjs.nocache.js</uri>
+   </js>
+</depify><depify path="/packages/master/js/ecmascript/saxon-ce/1.1/.depify.xml" version="1.1" repo-uri="http://www.saxonica.com/ce/download/Saxon-CE_1.1.zip" name="saxon-ce">
+    <title>Saxon-CE</title>
+  <desc>Saxon-CE (client edition) is Saxonica's implementation of XSLT 2.0 for use on web browsers.
+The current release is Saxon-CE 1.1.
+Unlike previous releases, Saxon-CE 1.1 is open-source software.
+  </desc>
+  <license type="MPL-V2.0"/>
+  <author id="">Saxonica</author>
+  <website>http://www.saxonica.com/ce/index.xml/</website>
+</depify><depify path="/packages/master/schema/relaxng/1/xslt-relax-ng/1.0/.depify.xml" repo-uri="https://github.com/ndw/xslt-relax-ng.git" version="1.0" name="xslt-relax-ng">
+ <title>RelaxNG schemas for XSLT 1 &amp; XSLT 2</title>
+  <desc>
+    This project provides RELAX NG grammars for XSLT stylesheets. Because stylesheets are required to have a version number, it's straightforward for a RELAX NG validator to choose between the xslt10.rnc and xslt20.rnc grammars.
+    As work on XSLT 3.0 stabilizes, I plan to include support for that as well.
+    Having a RELAX NG grammar makes syntax directed editing of XSLT stylesheets much easier in tools like Emacs and oXygen that support RELAX NG. 
+  </desc>
+ <license type="MPL2"/>
+ <author id="ndw">Norm Walsh</author>
+  <website>https://github.com/ndw/xslt-relax-ng</website>
+ <schema type="relaxng">
+    <prefix/>
+    <namespace/>
+   <uri>xslt.rnc</uri>
+ </schema>
+</depify><depify path="/packages/master/xproc/1/xprocdoc/1.0/.depify.xml" repo-uri="https://github.com/vojtechtoman/xprocdoc" version="1.0" name="xprocdoc">
+   <title>xprocdoc</title>
+   <desc>A simple Javadoc-style XProc API documentation generator written in XProc and XSLT 2.0.</desc>
+   <license type="?"/>
+   <author id="vojtechtoman">Vojtech Toman</author>
+   <website>https://github.com/vojtechtoman/xprocdoc</website>
+   <xproc version="1.0">
+      <catalog name="urn:depify:xproc" uri="xprocdoc-master/xprocdoc.xpl"/>
+   </xproc>
+</depify><depify path="/packages/master/xslt/2/Schematron/1.6/.depify.xml" version="1.6" repo-uri="http://www.schematron.com/tmp/iso-schematron-xslt2.zip" name="schematron">
   <title>ISO SCHEMATRON 2010</title>
   <desc>ISO Schematron is a language for making assertion about the presence or absense
     of patterns in XML documents. It is typically used for as a schema language, or
@@ -870,221 +887,9 @@ Unlike previous releases, Saxon-CE 1.1 is open-source software.
    <namespace>http://www.functx.com</namespace>
    <uri>functx.xsl</uri>
  </xslt>
-</depify><depify path="/packages/master/xquery/marklogic/xray/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/robwhitby/xray.git" name="xray">
-  <title>xray</title>
-  <desc>xray is a framework for writing XQuery unit tests on MarkLogic
-  Server.</desc>
-  <license type="?"/>
-  <author id="rwhitby">Rob Whitby</author>
-  <website>https://github.com/robwhitby/xray</website>
-</depify><depify path="/packages/master/xquery/marklogic/rxq/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/xquery/rxq.git" name="rxq">
-</depify><depify path="/packages/master/xquery/marklogic/roxy/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/marklogic/roxy.git" name="roxy">
-  <title>Roxy</title>
-  <desc>Roxy (RObust XQuerY Framework) is a lightweight framework for quickly developing well-structured, 
-    easily maintained XQuery applications. Roxy was heavily inspired by Ruby On Rails and CakePHP.</desc>
-  <license type="APL-V2">
-    <uri>http://www.apache.org/licenses/LICENSE-2.0</uri>
-  </license>
-  <author id="paxtonhare">Paxton Hare</author>
-  <author id="dmcassel">Dan Cassel</author>
-  <website>https://github.com/marklogic/roxy</website>
-</depify><depify path="/packages/master/xquery/3/xqueryparser.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/xqueryparser.xq.git" version="1.0" name="xqueryparser.xq">
-   <title>xqueryparser.xq</title>
-   <desc>A parser for XQuery 3.0 and MarkLogic extensions.</desc>
-   <license type="APLV2.0">
-      <uri>https://github.com/jpcs/xqueryparser.xq/blob/master/LICENSE</uri>
-   </license>
-   <author id="jpcs">John Snelson</author>
-   <website>https://github.com/jpcs/xqueryparser.xq</website>
-   <xquery version="3.0">
-      <prefix>xqp</prefix>
-      <namespace>http://github.com/jpcs/xqueryparser.xq</namespace>
-      <uri>xqueryparser.xq</uri>
-   </xquery>
-</depify><depify path="/packages/master/xquery/3/transform.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/transform.xq.git" version="1.0" name="transform.xq">
-   <title>transform.xq</title>
-   <desc>An extensible transformation library for XQuery 3.0.</desc>
-   <license type="APLV2.0">
-      <uri>https://github.com/jpcs/transform.xq/blob/master/LICENSE</uri>
-   </license>
-   <author id="jpcs">John Snelson</author>
-   <website>https://github.com/jpcs/transform.xq/</website>
-   <xquery version="3.0">
-      <prefix>tfm</prefix>
-      <namespace>http://snelson.org.uk/functions/transform</namespace>
-      <uri>transform.xq</uri>
-   </xquery>
-</depify><depify path="/packages/master/xquery/3/rbtree.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/rbtree.xq.git" version="1.0" name="rbtree.xq">
-  <title>rbtree.xq</title>
-  <desc>An implementation of a red/black tree built using XQuery 3.0 higher order functions, and an associative map library built on top of it..</desc>
-  <license type="APLV2.0">
-    <uri>https://github.com/jpcs/rbtree.xq/blob/master/LICENSE</uri>
-  </license>
-  <author id="jpcs">John Snelson</author>
-  <website>https://github.com/jpcs/rbtree.xq</website>
-  <xquery version="3.0">
-    <prefix>rbtree</prefix>
-    <namespace>http://snelson.org.uk/functions/rbtree</namespace>
-    <uri>transform.xq</uri>
-  </xquery>
-  <xquery version="3.0">
-    <prefix>map</prefix>
-    <namespace>http://snelson.org.uk/functions/map</namespace>
-    <uri>map.xq</uri>
-  </xquery>
-</depify><depify path="/packages/master/xquery/3/functional.xq/1.0/.depify.xml" repo-uri="git://github.com/jpcs/functional.xq.git" version="1.0" name="functional.xq">
-  <title>functional.xq</title>
-  <desc>A library of useful functionality for working with XQuery 3.0 higher order functions.
-  Includes a number of functions from the standard Haskell prelude, as well as functions to
-  perform currying, function composition, and Y-combination.</desc>
-  <license type="APLV2">
-    <uri>https://github.com/jpcs/functional.xq/blob/master/LICENSE</uri>
-  </license>
-  <author id="jpcs">John Snelson</author>
-  <website>https://github.com/jpcs/functional.xq/</website>
-  <xquery version="3.0">
-    <prefix>func</prefix>
-    <namespace>http://snelson.org.uk/functions/functional</namespace>
-    <uri>functional.xq</uri>
-  </xquery>
-</depify><depify path="/packages/master/xquery/3/data.xq/1.0/.depify.xml" repo-uri="https://github.com/jpcs/data.xq.git" version="1.0" name="data.xq">
-   <title>xqueryparser.xq</title>
-   <desc>An XQuery 3.0 library for defining algebraic data types, and performing structural pattern matching on them..</desc>
-   <license type="APLV2.0">
-      <uri>https://github.com/jpcs/data.xq/blob/master/LICENSE</uri>
-   </license>
-   <author id="jpcs">John Snelson</author>
-   <website>https://github.com/jpcs/data.xq</website>
-</depify><depify path="/packages/master/xquery/1/functx/1.0/.depify.xml" repo-uri="" version="1.0" name="xquery.1.functx">
- <title>FunctX library</title>
- <desc>The FunctX function library is a set of useful functions on
-  XML documents and data. It comes in two flavors: XQuery 1.0 and
-  XSLT 2.0. Where possible, XPath 2.0 is is used in order to keep the
-  function definitions as consistent as possible across the two
-  languages. The source code for the functions is available under the
-  GNU-LGPL license. However, the longer descriptions of the functions
-  and the design of the FunctX Web sites is copyrighted and may only
-  be used with permission.This site also includes descriptions and
-  examples of the XQuery and XPath built-in functions, taken with
-  permission from the book XQuery (2007, O'Reilly Media).We hope you
-  find these functions useful and that you will take the time to
-  provide feedback and/or contribute your own functions.
- </desc>
- <license type="GNU-LGPL">
-   <uri>?</uri>
- </license>
- <author id="pwalmsley">Priscilla Walmsley</author>
- <website>http://www.xqueryfunctions.com/</website>
- <xquery version="1.0">
-   <prefix>functx</prefix>
-   <namespace>http://www.functx.com</namespace>
-   <uri>functx.xq</uri>
- </xquery>
-</depify><depify path="/packages/master/xproc/1/ml-xproc-library/1.0/.depify.xml" version="1.0" repo-uri="https://github.com/philipfennell/xproc-libraries" name="ml-xproc-library">
- <title>ML XProc Libraries</title>
-  <desc xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  XProc libraries for working with MarkLogic.
-  </desc>
- <license type=""/>
-  <author id="philipfennell">Philip Fennell</author>
-  <website>https://github.com/philipfennell/xproc-libraries</website>
- <xproc vendor="xmlcalabash" version="1.0">
-   <source/>
-   <result/>
-   <uri>XprocCorb/pipelines/xproccorb.xpl</uri>
- </xproc>
-  <xproc vendor="xmlcalabash" version="1.0">
-    <source/>
-    <result/>
-    <uri>XprocLoader/pipelines/xprocloader.xpl</uri>
-  </xproc>
-  <xproc vendor="xmlcalabash" version="1.0">
-    <source/>
-    <result/>
-    <uri>XprocMLAdmin/build.xpl</uri>
-  </xproc>
-</depify><depify path="/packages/master/schema/relaxng/1/xslt-relax-ng/1.0/.depify.xml" repo-uri="https://github.com/ndw/xslt-relax-ng.git" version="1.0" name="xslt-relax-ng">
- <title>RelaxNG schemas for XSLT 1 &amp; XSLT 2</title>
-  <desc>
-    This project provides RELAX NG grammars for XSLT stylesheets. Because stylesheets are required to have a version number, it's straightforward for a RELAX NG validator to choose between the xslt10.rnc and xslt20.rnc grammars.
-    As work on XSLT 3.0 stabilizes, I plan to include support for that as well.
-    Having a RELAX NG grammar makes syntax directed editing of XSLT stylesheets much easier in tools like Emacs and oXygen that support RELAX NG. 
-  </desc>
- <license type="MPL2"/>
- <author id="ndw">Norm Walsh</author>
-  <website>https://github.com/ndw/xslt-relax-ng</website>
- <schema type="relaxng">
-    <prefix/>
-    <namespace/>
-   <uri>xslt.rnc</uri>
- </schema>
-</depify><depify path="/packages/master/js/ecmascript/xqib/0.7.2/.depify.xml" repo-uri="http://www.xqib.org/download/xqib-js-0.8-beta.zip" version="0.7.2" name="xqib">
-   <title>xqib - xquery in the browser</title>
-   <desc>XQIB allows you to program client-side Web applications with XQuery instead of JavaScript. It works in most modern browsers (IE9, Firefox 3.6+, Chrome 8, Safari 5) and does not require the installation of any plugin.
-      XQuery is a W3C standard, just like HTML and XML, and is perfectly tailored for working with HTML, XML and REST. This means more elegant programs and less code. Moreover, by using an XQuery Web application server (such as MarkLogic or Sausalito) in conjunction with XQIB, having the same language on both the server and the client side allows you to reuse your code.
-   </desc>
-   <license type="APLV2">
-      <uri>NOTICE</uri>
-   </license>
-   <author id="">FLWOR Foundation, ETH Zurich Systems Group and Oracle</author>
-   <website>http://www.xqib.org/?page_id=2</website>
-   <js>
-      <uri>xqueryjs/mxqueryjs.nocache.js</uri>
-   </js>
-</depify><depify path="/packages/master/js/ecmascript/saxon-ce/1.1/.depify.xml" version="1.1" repo-uri="http://www.saxonica.com/ce/download/Saxon-CE_1.1.zip" name="saxon-ce">
-    <title>Saxon-CE</title>
-  <desc>Saxon-CE (client edition) is Saxonica's implementation of XSLT 2.0 for use on web browsers.
-The current release is Saxon-CE 1.1.
-Unlike previous releases, Saxon-CE 1.1 is open-source software.
-  </desc>
-  <license type="MPL-V2.0"/>
-  <author id="">Saxonica</author>
-  <website>http://www.saxonica.com/ce/index.xml/</website>
-</depify><depify path="/packages/master/js/ecmascript/qunit/1.0/.depify.xml" repo-uri="https://github.com/jquery/qunit.git" version="1.0" name="qunit">
-  <title>QUnit - A JavaScript Unit Testing Framework</title>
-  <desc>A JavaScript Unit Testing Framework</desc>
-  <license type="GPL/MIT">
-    <uri>?</uri>
-  </license>
-  <author id="">John Resig</author>
-  <author id="">Joern Zaefferer</author>
-  <website>http://docs.jquery.com/QUnit</website>
-  <js required="true">
-    <uri>js/qunit.js</uri>
-  </js>
-  <js required="true">
-    <uri>js/jquery.js</uri>
-  </js>
-  <js required="true">
-    <uri>js/common.js</uri>
-  </js>
-  <css required="true">
-    <type>text/css</type>
-    <rel>stylesheet</rel>
-    <uri>css/qunit.css</uri>
-  </css>
-</depify><depify path="/packages/master/js/ecmascript/prettify/1.0/.depify.xml" repo-uri="https://github.com/michaek/google-code-prettify-small.git" version="1.0" name="prettify">
- <title>Prettify.js library</title>
-  <desc>A Javascript module and CSS file that allows syntax highlighting of source code snippets in an html page. </desc>
- <license type="APLV2">
-   <uri>http://google-code-prettify.googlecode.com/svn/trunk/COPYING</uri>
- </license>
- <author id="">Mike Samuel</author>
- <website>http://code.google.com/p/google-code-prettify/</website>
- <js required="true">
-   <uri>prettify.js</uri>
- </js>
-  <js required="true">    
-   <uri>lang-xq.js</uri>
-  </js>
-  <css required="true">
-   <type>text/css</type> 
-   <rel>stylesheet</rel>
-   <uri>prettify.css</uri>
- </css>
 </depify></packages></x:document></x:output><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="count" label="the step should execute successfully without throwing any errors" max="0" contextref="errors" result="passed">
                                                         <x:expected>At most 0 documents.</x:expected>
-                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context5" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150207190613322/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:get-package-from-github-repo" version="1.0" x:type="{https://github.com/depify/impl}get-package-from-github-repo"><p:option name="github-download-uri"/><p:option name="app_dir"/><p:option name="app_dir_lib"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-07T18:06:18.967Z" label="impl:get-package-from-github-repo test" start-time="2015-02-07T18:06:16.685Z"><x:call x:type="{https://github.com/depify/impl}get-package-from-github-repo" step="impl:get-package-from-github-repo"><x:option select="'https://github.com/koppor/xmltree.git'" name="github-download-uri" value="https://github.com/koppor/xmltree.git"/><x:option select="'/tmp'" name="app_dir" value="/tmp"/><x:option select="'lib'" name="app_dir_lib" value="lib"/></x:call>
+                                                    <x:was>0</x:was></x:test-result><x:test-result xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" type="compare" label="Check correct contents" normalize-space="true" contextref="context5" result="passed"/></x:description><x:description xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:c="http://www.w3.org/ns/xproc-step" xml:base="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" test-base-uri="file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec" script="file:/Users/jfuller/Source/2_webcomposite/depify-client/src/client/xproc/depify-impl.xpl" test-grammar="xprocspec" temp-dir="file:/tmp/xprocspec-20150218131627483/"><x:step-declaration><p:declare-step xmlns:p="http://www.w3.org/ns/xproc" xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils" xmlns:pxp="http://exproc.org/proposed/steps" xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://marklogic.com/json" type="impl:get-package-from-github-repo" version="1.0" x:type="{https://github.com/depify/impl}get-package-from-github-repo"><p:option name="github-download-uri"/><p:option name="app_dir"/><p:option name="app_dir_lib"/></p:declare-step></x:step-declaration><x:scenario xmlns:depify="https://github.com/depify" xmlns:impl="https://github.com/depify/impl" end-time="2015-02-18T12:16:32.223Z" label="impl:get-package-from-github-repo test" start-time="2015-02-18T12:16:30.746Z"><x:call x:type="{https://github.com/depify/impl}get-package-from-github-repo" step="impl:get-package-from-github-repo"><x:option select="'https://github.com/koppor/xmltree.git'" name="github-download-uri" value="https://github.com/koppor/xmltree.git"/><x:option select="'/tmp'" name="app_dir" value="/tmp"/><x:option select="'lib'" name="app_dir_lib" value="lib"/></x:call>
                                                 <x:context label="errors" id="errors">
                                                     
                                                 </x:context>

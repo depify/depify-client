@@ -1,4 +1,4 @@
-<testsuites tests="13" failures="0" time="10.751" errors="0" name="impl"><testsuite timestamp="2015-02-07T18:06:21.966Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4898e1" name="implinstallInvoke" package="https://github.com/depify/impl" time="0.014">
+<testsuites tests="13" failures="0" time="11.198" errors="0" name="impl"><testsuite timestamp="2015-02-18T12:16:35.585Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4905e1" name="implinstallInvoke" package="https://github.com/depify/impl" time="0.013">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec)"/><property name="input: package" value="&lt;test xmlns=&#34;&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec)"/>
 
 <property name="option: package-name" value="transform.xq"/>
@@ -7,7 +7,7 @@
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="install" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="CheckCorrectContents" classname="install" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2015-02-07T18:06:22.002Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4904e1" name="implinstallPackage" package="https://github.com/depify/impl" time="0.011">
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-18T12:16:35.618Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4911e1" name="implinstallPackage" package="https://github.com/depify/impl" time="0.013">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec)"/><property name="input: package" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec)"/>
 
 <property name="option: package-name" value="transform.xq"/>
@@ -16,7 +16,7 @@
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="install" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="CheckCorrectContents" classname="install" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2015-02-07T18:06:22.025Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4909e1" name="implremoveTransformXqPackage" package="https://github.com/depify/impl" time="0.008">
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-18T12:16:35.645Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4916e1" name="implremoveTransformXqPackage" package="https://github.com/depify/impl" time="0.007">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec)"/>
 
 <property name="option: package-name" value="transform.xq"/>
@@ -25,7 +25,7 @@
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="remove" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="CheckCorrectContents" classname="remove" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2015-02-07T18:06:22.049Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4914e1" name="impllistinstalledAllPackages" package="https://github.com/depify/impl" time="0.008">
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-18T12:16:35.673Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4921e1" name="impllistinstalledAllPackages" package="https://github.com/depify/impl" time="0.008">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec)"/>
 
 <property name="option: package-name" value=""/>
@@ -34,7 +34,7 @@
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="list-installed" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="CheckCorrectContents" classname="list-installed" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2015-02-07T18:06:22.073Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4919e1" name="impllistinstalledSinglePackage" package="https://github.com/depify/impl" time="0.009">
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-18T12:16:35.702Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4926e1" name="impllistinstalledSinglePackage" package="https://github.com/depify/impl" time="0.022">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; ...&gt;...&lt;/depify&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec)"/>
 
 <property name="option: package-name" value="transform.xq"/>
@@ -43,7 +43,7 @@
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="list-installed" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="CheckCorrectContents" classname="list-installed" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2015-02-07T18:06:22.107Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4924e1" name="impllistrepoPackages" package="https://github.com/depify/impl" time="1.439">
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-18T12:16:35.739Z" hostname="localhost" tests="2" errors="0" failures="0" skipped="0" id="d4931e1" name="impllistrepoPackages" package="https://github.com/depify/impl" time="0.756">
 <properties><property name="input: source" value="&lt;depify xmlns=&#34;https://github.com/depify&#34; .../&gt; (Base URI: file:///Users/jfuller/Source/2_webcomposite/depify-client/test/impl.xprocspec)"/>
 
 <property name="option: package-name" value=""/>
@@ -52,7 +52,7 @@
 </properties>
 <testcase name="theStepShouldExecuteSuccessfullyWithoutThrowingAnyErrors" classname="list-repo" assertions="1" time="0" status="SUCCESS"><system-out>the step should execute successfully without throwing any errors: SUCCESS</system-out>
 <system-err/></testcase><testcase name="CheckCorrectContents" classname="list-repo" assertions="1" time="0" status="SUCCESS"><system-out>Check correct contents: SUCCESS</system-out>
-<system-err/></testcase></testsuite><testsuite timestamp="2015-02-07T18:06:22.13Z" hostname="localhost" tests="1" errors="0" failures="0" skipped="0" id="d4929e1" name="implgetpackagefromgithubrepoTest" package="https://github.com/depify/impl" time="2.282">
+<system-err/></testcase></testsuite><testsuite timestamp="2015-02-18T12:16:35.766Z" hostname="localhost" tests="1" errors="0" failures="0" skipped="0" id="d4936e1" name="implgetpackagefromgithubrepoTest" package="https://github.com/depify/impl" time="1.477">
 <properties>
 
 <property name="option: github-download-uri" value="https://github.com/koppor/xmltree.git"/>

@@ -12,8 +12,16 @@
       </catalog>
     </xsl:template>
     <xsl:template match="depify:xproc">
-        <uri name="{depify:catalog/@name}" 
-             uri=".{$app_dir_lib}{depify:catalog/@uri}"/>
+      <uri name="{depify:catalog/@name}">
+        <xsl:choose>
+          <xsl:when test="depify:catalog/@jar">
+            <xsl:attribute name="uri" select="concat('jar:file:',replace($app_dir_lib,'/',''),'/',depify:catalog/@jar,'!',depify:catalog/@uri)"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:attribute name="uri" select="concat('.',$app_dir_lib,depify:catalog/@uri)"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </uri>
     </xsl:template>
     <xsl:template match="text()"/>
 </xsl:stylesheet> 

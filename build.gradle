@@ -5,6 +5,7 @@ defaultTasks 'assemble', 'test'
 ant.importBuild 'build.xml'
 
 buildscript {
+
   repositories {
     mavenCentral()
     jcenter()
@@ -84,5 +85,6 @@ task check(dependsOn: [test]){
 }
 
 task buildInstaller(dependsOn: dist){
-
+     println "building the installer"
+     println "name: " + project.name
 }

@@ -60,9 +60,9 @@
       <description>The base files</description>
       <fileset dir="depify-1.0" targetdir="$INSTALL_PATH"/>
       <parsable type="shell" targetfile="$INSTALL_PATH/depify"/>
-      <parsable type="shell" targetfile="$INSTALL_PATH/depify.bat"/>
+      <!--parsable type="shell" targetfile="$INSTALL_PATH/depify.bat"/-->
       <executable targetfile="$INSTALL_PATH/depify" stage="never"/>
-      <executable targetfile="$INSTALL_PATH/depify.bat" stage="never"/>
+      <!--executable targetfile="$INSTALL_PATH/depify.bat" stage="never"/-->
       <executable targetfile="$INSTALL_PATH/deps/xmlcalabash/calabash" stage="never"/>      
     </pack>
   </packs>

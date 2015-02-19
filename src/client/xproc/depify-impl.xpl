@@ -256,9 +256,46 @@ limitations under the License.
           <p:with-option name="href" select="concat($app_dir,$app_dir_lib,'/',$file)"/>
         </p:store>
       </p:for-each>
-            
-      
+                  
     </p:declare-step>
     
-
+    <p:declare-step name="catalog" type="impl:generate-catalog">
+      <p:input port="source"/>
+      <p:input port="parameters"/>      
+      <p:option name="app_dir"/>
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="catalog" port="source"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="generate-catalog.xsl"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="catalog" port="parameters"/>
+        </p:input>
+      </p:xslt>        
+      <p:store indent="true" name="save-catalog-step">
+        <p:with-option name="href" select="concat($app_dir,'/catalog.xml')"/>
+      </p:store>
+    </p:declare-step>
+    
+    <p:declare-step name="library" type="impl:generate-xproc-library">
+      <p:input port="source"/>
+      <p:input port="parameters"/>      
+      <p:option name="app_dir"/>
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="library" port="source"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="generate-xproc-library.xsl"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="library" port="parameters"/>
+        </p:input>
+      </p:xslt>        
+      <p:store indent="true" name="save-library-step">
+        <p:with-option name="href" select="concat($app_dir,'/library.xpl')"/>
+      </p:store>
+    </p:declare-step>
 </p:library>

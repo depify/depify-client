@@ -252,31 +252,48 @@ limitations under the License.
   
   <p:choose name="transform-output-step">
     <p:when test="$command eq 'catalog'">
-        <p:xslt>
-          <p:input port="source">
-            <p:pipe step="command-step" port="result"/>
-          </p:input> 
-          <p:input port="stylesheet">
-            <p:document href="generate-catalog.xsl"/>
-          </p:input>
-          <p:input port="parameters">
-            <p:pipe step="vars" port="result"/>
-          </p:input>
-        </p:xslt>        
-        <p:store indent="true" name="save-catalog-step">
-          <p:with-option name="href" select="concat($app_dir,'/catalog.xml')"/>
-        </p:store>
-        <p:xslt>
-          <p:input port="source">
-            <p:pipe step="main" port="source"/>
-          </p:input> 
-          <p:input port="stylesheet">
-            <p:document href="display-catalog.xsl"/>
-          </p:input>
-          <p:input port="parameters">
-            <p:pipe step="vars" port="result"/>
-          </p:input>
-        </p:xslt>   
+      <impl:generate-catalog>
+        <p:input port="source">
+          <p:pipe step="command-step" port="result"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+        <p:with-option name="app_dir" select="$app_dir"/>
+      </impl:generate-catalog>    
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="main" port="source"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="display-catalog.xsl"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+      </p:xslt>   
+    </p:when>
+    <p:when test="$command eq 'library'">
+      <impl:generate-xproc-library>
+        <p:input port="source">
+          <p:pipe step="command-step" port="result"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+        <p:with-option name="app_dir" select="$app_dir"/>
+      </impl:generate-xproc-library>    
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="main" port="source"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="display-library.xsl"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+      </p:xslt>   
     </p:when>
     <p:when test="$command eq 'search'">
       <p:xslt>

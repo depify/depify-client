@@ -30,35 +30,6 @@ APP_DIR=$CURRENTDIR
 LIB_DIR=/lib/
 #####################################################################
 
-function usage(){
-    echo "-----------------------------"
-    echo "depify 1.0"
-    echo "Copyright (c)2015 Jim Fuller"
-    echo "see https://github.com/depify"
-    echo "-----------------------------"
-    echo ""
-    echo "usage: depify [install|remove|list|info|search|catalog ] [package name] [package version]"
-    echo ""
-    echo "  install package"
-    echo "  ex. depify install functional.xq"
-    echo ""
-    echo "  install specific package version"
-    echo "  ex. depify install functional.xq 1.0"
-    echo ""
-    echo "  remove package"
-    echo "  ex. depify install functional.xq"
-    echo ""
-    echo "  list installed packages"
-    echo "  ex. depify list"
-    echo ""
-    echo "  package info"
-    echo "  ex. depify info prettify"
-    echo ""
-    echo "  package search"
-    echo "  ex. depify search schema"
-    exit 1
-}
-
 while getopts 'c:p:v:a::l:h' OPTION
 do
 case $OPTION in
@@ -75,13 +46,15 @@ case $OPTION in
 done
 
 if [[ $# -eq 0 ]] ; then
-    usage
-    exit 1;
+    COMMAND="usage"
+    PACKAGE=""
+    VERSION=""
 fi
 
 if [ "$1" == "help" ]; then
-    usage
-    exit 1;
+    COMMAND="usage"
+    PACKAGE=""
+    VERSION=""
 fi
 
 # create lib directory if it does not exist
@@ -95,4 +68,4 @@ if  [ ! -e "$CURRENTDIR/.depify.xml" ]; then
     echo '<depify xmlns="https://github.com/xquery/depify"/>' > $CURRENTDIR/.depify.xml    
 fi
 # run xproc pipeline
-echo -e `java -cp "$DEPIFY_DIR/resolver.properties" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR/.depify.xml -oresult=- $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR`
+echo -e `java  -cp "$DEPIFY_DIR/resolver.properties" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR/.depify.xml -oresult=- -Xtransparent-json $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR`

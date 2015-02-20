@@ -21,6 +21,7 @@ limitations under the License.
     xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils"
     xmlns:pxp="http://exproc.org/proposed/steps"
     xmlns:depify="https://github.com/depify"
+    xmlns:j="http://marklogic.com/json"
     xmlns:impl="https://github.com/depify/impl"
     version="1.0"
     name="main"
@@ -123,19 +124,39 @@ limitations under the License.
     </p:when>
     <p:when test="$command eq 'install'">
       <p:output port="result"/>
-      <p:choose>        
+      <p:variable name="repo-uri" select="/depify:depify/@repo-uri/data(.)"/>
+      <p:variable name="github-release-uri" select="concat('https://api.github.com/repos/',substring-after($repo-uri,'https://github.com/'),'/releases')"/>
+      <p:in-scope-names name="github-vars"/>
+      <p:template>
+        <p:input port="template">
+          <p:inline>
+            <c:request method="GET" href="{$github-release-uri}"/>
+          </p:inline>
+        </p:input>
+        <p:input port="source">
+          <p:empty/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="github-vars" port="result"/>
+        </p:input>
+      </p:template>
+      <p:http-request/>
+      <p:identity name="github"/>
+      <p:choose>
+        <p:variable name="specific-asset" select="/j:json/j:item[j:tag_005fname eq $version]/j:assets/j:item/j:browser_005fdownload_005furl"/>
+        <p:variable name="latest-asset" select="/j:json/j:item[1]/j:assets/j:item/j:browser_005fdownload_005furl"/>
         <p:variable name="repo-uri" select="/depify:depify/@repo-uri/data(.)">
           <p:pipe step="get-package" port="result"/>
         </p:variable>
         <p:variable name="package-repo-uri"
                     select="concat(if(ends-with($repo-uri,'.git'))
                             then substring-before($repo-uri,'.git') else $repo-uri,'/archive/master.zip')"/>
-
+      
         <!-- download zip file //-->
         <p:when test="contains($repo-uri,'.zip')">
           <p:variable name="package-repo-uri" select="$repo-uri"/>
           <cx:message>
-            <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
+            <p:with-option name="message" select="concat('downloading ',$package,' (zip) from ',$package-repo-uri)"/>
           </cx:message>
           <impl:get-package-from-github-repo>
             <p:with-option name="github-download-uri" select="$package-repo-uri"/>
@@ -145,41 +166,80 @@ limitations under the License.
         </p:when>
         
         <!-- download github latest release or master zip  //-->
-        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version eq 'latest' or empty($version))">
-          <cx:message>
-            <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
-          </cx:message>
-          <impl:get-package-from-github-repo>
-            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
-            <p:with-option name="app_dir" select="$app_dir"/>
-            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-          </impl:get-package-from-github-repo>
+        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version eq 'latest' or empty($version))">        
+          <p:choose>
+            <p:when test="$latest-asset ne ''">
+              <cx:message>
+                <p:with-option name="message" select="concat('downloading ',$package,' from ',$latest-asset)"/>
+              </cx:message>
+              <impl:get-package-from-github-repo>
+                <p:with-option name="github-download-uri" select="$latest-asset"/>
+                <p:with-option name="app_dir" select="$app_dir"/>
+                <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+              </impl:get-package-from-github-repo>
+            </p:when>
+            <p:otherwise>
+              <cx:message>
+                <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
+              </cx:message>
+              <impl:get-package-from-github-repo>
+                <p:with-option name="github-download-uri" select="$package-repo-uri"/>
+                <p:with-option name="app_dir" select="$app_dir"/>
+                <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+              </impl:get-package-from-github-repo>
+            </p:otherwise>  
+          </p:choose>
         </p:when>
 
         <!-- download github specific release //-->
-        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version ne 'latest' or not(empty($version))) and doc-available(concat($repo-uri,'/releases/tag/',$version))">
-          <p:variable name="package-repo-uri"
-                      select="concat(if(ends-with($repo-uri,'.git'))
-                              then substring-before($repo-uri,'.git') else $repo-uri,'/archive/v',$version,'.zip')"/>
-          <cx:message>
-            <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
-          </cx:message>
-          <impl:get-package-from-github-repo>
-            <p:with-option name="github-download-uri" select="$package-repo-uri"/>
-            <p:with-option name="app_dir" select="$app_dir"/>
-            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-          </impl:get-package-from-github-repo>
+        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version ne 'latest' or not(empty($version)))">
+          <p:choose>
+            <p:when test="$specific-asset ne ''">
+              <cx:message>
+                <p:with-option name="message" select="concat('downloading ',$package,' ',$version,' from ',$specific-asset)"/>
+              </cx:message>              
+              <impl:get-package-from-github-repo>
+                <p:with-option name="github-download-uri" select="$specific-asset"/>
+                <p:with-option name="app_dir" select="$app_dir"/>
+                <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+              </impl:get-package-from-github-repo>
+            </p:when>
+            <p:otherwise>
+              <cx:message>
+                <p:with-option name="message" select="concat('downloading ',$package,' ',$version,' from ',$package-repo-uri)"/>
+              </cx:message>
+              <impl:get-package-from-github-repo>
+                <p:with-option name="github-download-uri" select="$package-repo-uri"/>
+                <p:with-option name="app_dir" select="$app_dir"/>
+                <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+              </impl:get-package-from-github-repo>              
+            </p:otherwise>  
+          </p:choose>
         </p:when>
         
         <p:otherwise>
-          <cx:message>
-            <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
-          </cx:message>
-          <impl:get-package-from-depify-repo>
-            <p:with-option name="depify-download-uri" select="$package-repo-uri"/>
-            <p:with-option name="app_dir" select="$app_dir"/>
-            <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-          </impl:get-package-from-depify-repo>
+          <p:choose>
+            <p:when test="$latest-asset ne ''">
+              <cx:message>
+                <p:with-option name="message" select="concat('downloading ',$package,' from ',$latest-asset)"/>
+              </cx:message>
+              <impl:get-package-from-github-repo>
+                <p:with-option name="github-download-uri" select="$latest-asset"/>
+                <p:with-option name="app_dir" select="$app_dir"/>
+                <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+              </impl:get-package-from-github-repo>
+            </p:when>
+            <p:otherwise>
+              <cx:message>
+                <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
+              </cx:message>
+              <impl:get-package-from-github-repo>
+                <p:with-option name="github-download-uri" select="$package-repo-uri"/>
+                <p:with-option name="app_dir" select="$app_dir"/>
+                <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
+              </impl:get-package-from-github-repo>
+            </p:otherwise>  
+          </p:choose>
         </p:otherwise>
       </p:choose>
       
@@ -386,6 +446,54 @@ limitations under the License.
           </p:input>
       </p:xslt>    
     </p:when>        
+    <p:when test="$command eq 'usage'">
+      <p:identity>
+      <p:input port="source">
+        <p:inline>
+          <usage>\n
+ -----------------------------\n
+ depify 1.0\n
+ copyright (c) 2015 Jim Fuller\n
+ see https://github.com/depify\n
+ -----------------------------\n
+\n
+usage: depify [install|remove|list|info|search|catalog|library|upgrade|usage ] [package name] [package version]"\n
+\n
+install package\n
+>depify install xprocdoc\n
+\n
+remove package\n
+>depify remove xprocdoc\n
+\n
+info package\n
+>depify info xprocdoc\n
+\n
+list installed packages\n
+>depify list\n
+\n
+search all packages\n
+>depify search xproc\n
+\n
+generate xmlresolver catalog\n
+>depify catalog\n
+\n
+generate xproc library\n
+>depify library\n
+\n
+reinstall all packages\n
+>depify install\n
+\n
+initialize .depify\n
+>depify init mypackage 1.0\n
+
+
+          </usage>
+        </p:inline>
+      </p:input>
+    </p:identity>
+
+
+    </p:when>        
     <p:when test="$command eq 'init'">
     <p:identity>
       <p:input port="source">
@@ -404,17 +512,47 @@ limitations under the License.
       
     </p:when>
     <p:otherwise> 
-    <p:identity>
+      <p:identity>
       <p:input port="source">
         <p:inline>
-          <error>\n
+          <usage>\n
  -----------------------------\n
  depify 1.0\n
  copyright (c) 2015 Jim Fuller\n
  see https://github.com/depify\n
  -----------------------------\n
 \n
- invalid command.\n</error>
+usage: depify [install|remove|list|info|search|catalog|library|upgrade|usage ] [package name] [package version]"\n
+\n
+install package\n
+>depify install xprocdoc\n
+\n
+remove package\n
+>depify remove xprocdoc\n
+\n
+info package\n
+>depify info xprocdoc\n
+\n
+list installed packages\n
+>depify list\n
+\n
+search all packages\n
+>depify search xproc\n
+\n
+generate xmlresolver catalog\n
+>depify catalog\n
+\n
+generate xproc library\n
+>depify library\n
+\n
+reinstall all packages\n
+>depify install\n
+\n
+initialize .depify\n
+>depify init mypackage 1.0\n
+
+
+          </usage>
         </p:inline>
       </p:input>
     </p:identity>
@@ -423,7 +561,7 @@ limitations under the License.
   </p:choose>
   </p:group>
 
-  <p:catch>
+  <p:catch name="catch">
     <p:identity>
       <p:input port="source">
         <p:inline>
@@ -434,8 +572,9 @@ limitations under the License.
  see https://github.com/depify\n
  -----------------------------\n
 \n
- package not found.\n</error>
+ package or version not found.\n</error>
         </p:inline>
+        <p:pipe step="catch" port="error"/>
       </p:input>
     </p:identity>
   </p:catch>  

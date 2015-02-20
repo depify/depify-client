@@ -35,6 +35,11 @@ generate xmlresolver catalog
 depify catalog
 ```
 
+generate xproc library
+```
+depify library
+```
+
 reinstall all packages
 ```
 depify install

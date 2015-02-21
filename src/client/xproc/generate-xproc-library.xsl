@@ -11,7 +11,11 @@
       </p:library>
     </xsl:template>
     <xsl:template match="depify:xproc">
-      <p:import href="{depify:catalog/@name}"/>
+      <xsl:if test="@ns"><p:import href="{@ns}#library.xpl"/></xsl:if>
+      <xsl:apply-templates select="depify:catalog"/>
+    </xsl:template>
+    <xsl:template match="depify:catalog">
+      <p:import href="{@name}"/>
     </xsl:template>
     <xsl:template match="text()"/>
 </xsl:stylesheet> 

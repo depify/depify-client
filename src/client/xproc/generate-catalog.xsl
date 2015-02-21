@@ -12,13 +12,19 @@
       </catalog>
     </xsl:template>
     <xsl:template match="depify:xproc">
-      <uri name="{depify:catalog/@name}">
+      <uri name="{@ns}#library.xpl">
+            <xsl:attribute name="uri" select="concat('jar:file:',replace($app_dir_lib,'/',''),'/',@jar,'!',@library-uri)"/>
+      </uri> 
+      <xsl:apply-templates select="depify:catalog"/>
+    </xsl:template>
+    <xsl:template match="depify:catalog">
+      <uri name="{@name}">
         <xsl:choose>
-          <xsl:when test="depify:catalog/@jar">
-            <xsl:attribute name="uri" select="concat('jar:file:',replace($app_dir_lib,'/',''),'/',depify:catalog/@jar,'!',depify:catalog/@uri)"/>
+          <xsl:when test="@jar">
+            <xsl:attribute name="uri" select="concat('jar:file:',replace($app_dir_lib,'/',''),'/',@jar,'!',@uri)"/>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:attribute name="uri" select="concat('.',$app_dir_lib,depify:catalog/@uri)"/>
+            <xsl:attribute name="uri" select="concat('.',$app_dir_lib,@uri)"/>
           </xsl:otherwise>
         </xsl:choose>
       </uri>

@@ -18,11 +18,12 @@
     <xsl:template match="*:depify[contains(@name,$package)]">
 
       \033[1;34m<xsl:value-of select="*:title"/>\033[0m\n
-      <xsl:value-of select="*:desc"/>\n\n
+      <xsl:value-of select="*:desc"/>\n
+      <xsl:if test="depify:depify"> - deps: [<xsl:value-of select="string-join(depify:depify/@name,',')"/>]</xsl:if>\n
       package-name: <xsl:value-of select="@name"/>\n
       latest-version: <xsl:value-of select="@version"/>\n
       repo-uri: <xsl:value-of select="@repo-uri"/>\n
-      path: <xsl:value-of select="@path"/>\n
+      depify path: <xsl:value-of select="@path"/>\n
       license: <xsl:value-of select="*:license/@type"/>\n
        author: <xsl:value-of select="*:author"/>\n
        website: <xsl:value-of select="*:website"/>\n

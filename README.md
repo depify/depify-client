@@ -30,22 +30,27 @@ search all packages
 depify search xproc
 ```
 
-generate xmlresolver catalog
-```
-depify catalog
-```
-
-generate xproc library
-```
-depify library
-```
-
 reinstall all packages
 ```
 depify install
 ```
 
-initialize .depify
+generate xproc run script (experimental)
+```
+depify xproc
+```
+
+generate xmlresolver catalogy (experimental)
+```
+depify catalog
+```
+
+generate xproc libraryy (experimental)
+```
+depify library
+```
+
+initialize .depify (experimental)
 ```
 depify init mypackage 1.0
 ```

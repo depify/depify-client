@@ -50,6 +50,7 @@ limitations under the License.
   <p:option name="package" select="''"/>
   <p:option name="version" select="'latest'"/>
   <p:option name="init-repo-uri" select="''"/>
+  <p:option name="depify_config" select="'.depify.xml'"/>
   <p:option name="app_dir" select="'.'"/>
   <p:option name="app_dir_lib" select="'lib'"/>
   <p:option name="download_master_if_version_does_not_exist" select="true()"/>
@@ -67,7 +68,7 @@ limitations under the License.
   </p:filter>
   
   <p:choose name="command-step">
-    <p:when test="$command eq 'init' and not(doc-available( concat($app_dir,'.depify.xml') ))">
+    <p:when test="$command eq 'init' and not(doc-available( concat($app_dir,'/',$depify_config) ))">
       <p:output port="result"/>
       <p:xslt>
         <p:input port="source">
@@ -143,7 +144,7 @@ limitations under the License.
       <p:http-request/>
       <p:identity name="github"/>
       <p:choose>
-        <p:variable name="specific-asset" select="/j:json/j:item[j:tag_005fname eq $version]/j:assets/j:item/j:browser_005fdownload_005furl"/>
+        <p:variable name="specific-asset" select="(/j:json/j:item[j:tag_005fname eq $version]/j:assets/j:item/j:browser_005fdownload_005furl,'')[1]"/>
         <p:variable name="latest-asset" select="/j:json/j:item[1]/j:assets/j:item/j:browser_005fdownload_005furl"/>
         <p:variable name="repo-uri" select="/depify:depify/@repo-uri/data(.)">
           <p:pipe step="get-package" port="result"/>
@@ -163,8 +164,7 @@ limitations under the License.
             <p:with-option name="app_dir" select="$app_dir"/>
             <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
           </impl:get-package-from-github-repo>
-        </p:when>
-        
+        </p:when>        
         <!-- download github latest release or master zip  //-->
         <p:when test="starts-with($repo-uri,'https://github.com/') and ($version eq 'latest' or empty($version))">        
           <p:choose>
@@ -180,7 +180,7 @@ limitations under the License.
             </p:when>
             <p:otherwise>
               <cx:message>
-                <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
+                <p:with-option name="message" select="concat('release package ',$package,' ',$version,' does not exist downloading master repo instead.')"/>
               </cx:message>
               <impl:get-package-from-github-repo>
                 <p:with-option name="github-download-uri" select="$package-repo-uri"/>
@@ -190,9 +190,8 @@ limitations under the License.
             </p:otherwise>  
           </p:choose>
         </p:when>
-
         <!-- download github specific release //-->
-        <p:when test="starts-with($repo-uri,'https://github.com/') and ($version ne 'latest' or not(empty($version)))">
+         <p:otherwise>
           <p:choose>
             <p:when test="$specific-asset ne ''">
               <cx:message>
@@ -206,38 +205,13 @@ limitations under the License.
             </p:when>
             <p:otherwise>
               <cx:message>
-                <p:with-option name="message" select="concat('downloading ',$package,' ',$version,' from ',$package-repo-uri)"/>
+                <p:with-option name="message" select="concat('specific release package ',$package,' ',$version,' does not exist downloading master repo instead.')"/>
               </cx:message>
               <impl:get-package-from-github-repo>
                 <p:with-option name="github-download-uri" select="$package-repo-uri"/>
                 <p:with-option name="app_dir" select="$app_dir"/>
                 <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-              </impl:get-package-from-github-repo>              
-            </p:otherwise>  
-          </p:choose>
-        </p:when>
-        
-        <p:otherwise>
-          <p:choose>
-            <p:when test="$latest-asset ne ''">
-              <cx:message>
-                <p:with-option name="message" select="concat('downloading ',$package,' from ',$latest-asset)"/>
-              </cx:message>
-              <impl:get-package-from-github-repo>
-                <p:with-option name="github-download-uri" select="$latest-asset"/>
-                <p:with-option name="app_dir" select="$app_dir"/>
-                <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-              </impl:get-package-from-github-repo>
-            </p:when>
-            <p:otherwise>
-              <cx:message>
-                <p:with-option name="message" select="concat('downloading ',$package,' from ',$package-repo-uri)"/>
-              </cx:message>
-              <impl:get-package-from-github-repo>
-                <p:with-option name="github-download-uri" select="$package-repo-uri"/>
-                <p:with-option name="app_dir" select="$app_dir"/>
-                <p:with-option name="app_dir_lib" select="$app_dir_lib"/>
-              </impl:get-package-from-github-repo>
+                </impl:get-package-from-github-repo>
             </p:otherwise>  
           </p:choose>
         </p:otherwise>
@@ -307,10 +281,50 @@ limitations under the License.
   </p:choose>
 
   <p:store indent="true" name="save-depify-step">
-    <p:with-option name="href" select="concat($app_dir,'/.depify.xml')"/>
+    <p:with-option name="href" select="concat($app_dir,'/',$depify_config)"/>
   </p:store>
   
   <p:choose name="transform-output-step">
+    <p:when test="$command eq 'xproc'">
+      <impl:generate-xproc>
+        <p:input port="source">
+          <p:pipe step="command-step" port="result"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+        <p:with-option name="app_dir" select="$app_dir"/>
+      </impl:generate-xproc>
+      <impl:generate-catalog>
+        <p:input port="source">
+          <p:pipe step="command-step" port="result"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+        <p:with-option name="app_dir" select="$app_dir"/>
+      </impl:generate-catalog>    
+      <impl:generate-xproc-library>
+        <p:input port="source">
+          <p:pipe step="command-step" port="result"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+        <p:with-option name="app_dir" select="$app_dir"/>
+      </impl:generate-xproc-library>
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="main" port="source"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="display-xproc.xsl"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+      </p:xslt>   
+    </p:when>
     <p:when test="$command eq 'catalog'">
       <impl:generate-catalog>
         <p:input port="source">

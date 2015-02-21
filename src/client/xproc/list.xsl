@@ -9,15 +9,17 @@
       copyright (c)2015 Jim Fuller \n
       see https://github.com/depify \n
       -----------------------------\n
-      \n      
+      \n
       installed packages:\n\n
-      <xsl:apply-templates select="*/*:depify">
+      <xsl:apply-templates select="/depify:depify/depify:depify">
         <xsl:sort select="@name"/>
       </xsl:apply-templates>
   </list>
     </xsl:template>
-    <xsl:template match="*:depify">
-      \033[1;34m<xsl:value-of select="@name"/>\033[0m [v<xsl:value-of select="@version"/>] - <xsl:value-of select="@repo-uri"/>\n
+    <xsl:template match="depify:depify">
+      \033[1;34m<xsl:value-of select="@name"/>\033[0m [v<xsl:value-of select="@version"/>] - <xsl:value-of select="@repo-uri"/>
+      <xsl:if test="depify:depify"> - deps: [<xsl:value-of select="string-join(depify:depify/@name,',')"/>]</xsl:if>
+      \n
     </xsl:template>
     <xsl:template match="text()"/>
 </xsl:stylesheet> 

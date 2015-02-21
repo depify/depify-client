@@ -28,6 +28,7 @@ VERSION=${VERSION:-latest}
 INITREPO=$4
 APP_DIR=$CURRENTDIR
 LIB_DIR=/lib/
+DEPIFY_CONFIG=.depify.xml
 #####################################################################
 
 while getopts 'c:p:v:a::l:h' OPTION
@@ -57,6 +58,8 @@ if [ "$1" == "help" ]; then
     VERSION=""
 fi
 
+depify_run="java -cp "$DEPIFY_DIR/resolver.properties" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR/.depify.xml -oresult=- -Xtransparent-json $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR depify_config=$DEPIFY_CONFIG"
+
 # create lib directory if it does not exist
 if [ ! -d ".$LIB_DIR" ]; then
 mkdir .$LIB_DIR
@@ -67,5 +70,6 @@ if  [ ! -e "$CURRENTDIR/.depify.xml" ]; then
     # run xproc pipeline
     echo '<depify xmlns="https://github.com/xquery/depify"/>' > $CURRENTDIR/.depify.xml    
 fi
+
 # run xproc pipeline
-echo -e `java  -cp "$DEPIFY_DIR/resolver.properties" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR/.depify.xml -oresult=- -Xtransparent-json $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR`
+echo -e `$depify_run`

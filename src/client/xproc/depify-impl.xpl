@@ -298,4 +298,24 @@ limitations under the License.
         <p:with-option name="href" select="concat($app_dir,'/library.xpl')"/>
       </p:store>
     </p:declare-step>
-</p:library>
+    <p:declare-step name="xproc" type="impl:generate-xproc">
+      <p:input port="source"/>
+      <p:input port="parameters"/>      
+      <p:option name="app_dir"/>
+      <p:xslt>
+        <p:input port="source">
+          <p:pipe step="xproc" port="source"/>
+        </p:input> 
+        <p:input port="stylesheet">
+          <p:document href="generate-xproc.xsl"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="xproc" port="parameters"/>
+        </p:input>
+      </p:xslt>        
+      <p:store indent="true" name="save-xproc-step"  method="text" media-type="text/plain" encoding="utf-8">
+        <p:with-option name="href" select="concat($app_dir,'/xproc.sh')"/>
+      </p:store>
+    </p:declare-step>
+    
+  </p:library>

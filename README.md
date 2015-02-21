@@ -35,22 +35,22 @@ reinstall all packages
 depify install
 ```
 
-generate xproc run script (experimental)
+(experimental) generate xproc run script
 ```
 depify xproc
 ```
 
-generate xmlresolver catalogy (experimental)
+(experimental) generate xmlresolver catalog
 ```
 depify catalog
 ```
 
-generate xproc libraryy (experimental)
+(experimental) generate xproc library
 ```
 depify library
 ```
 
-initialize .depify (experimental)
+(experimental) initialize .depify
 ```
 depify init mypackage 1.0
 ```

@@ -4,12 +4,6 @@
     <xsl:output method="text" indent="no" encoding="UTF-8" />
     <xsl:param name="package"/>
     <xsl:template match="/"><list>
-       -----------------------------\n
-      depify 1.0 \n
-      copyright (c)2015 Jim Fuller \n
-      see https://github.com/depify \n
-      -----------------------------\n
-      \n
       installed packages:\n\n
       <xsl:apply-templates select="/depify:depify/depify:depify">
         <xsl:sort select="@name"/>

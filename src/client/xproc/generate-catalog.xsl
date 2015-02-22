@@ -11,9 +11,9 @@
         </xsl:for-each>
       </catalog>
     </xsl:template>
-    <xsl:template match="depify:xproc">
+    <xsl:template match="depify:xproc[@jar][starts-with(@library-uri,'!')]">
       <uri name="{@ns}#library.xpl">
-            <xsl:attribute name="uri" select="concat('jar:file:',replace($app_dir_lib,'/',''),'/',@jar,'!',@library-uri)"/>
+            <xsl:attribute name="uri" select="concat('jar:file:',replace($app_dir_lib,'/',''),'/',@jar,@library-uri)"/>
       </uri> 
       <xsl:apply-templates select="depify:catalog"/>
     </xsl:template>

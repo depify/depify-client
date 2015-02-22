@@ -3,12 +3,6 @@
     version="2.0">
     <xsl:output method="text" indent="no" encoding="UTF-8" />
     <xsl:template match="/"><info>
-       -----------------------------\n
-      depify 1.0 \n
-      copyright (c)2015 Jim Fuller \n
-      see https://github.com/depify \n
-      -----------------------------\n
-      \n
       package info:\n\n
       <xsl:apply-templates>
         <xsl:sort select="@name"/>

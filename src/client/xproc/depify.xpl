@@ -51,6 +51,7 @@ limitations under the License.
   <p:option name="version" select="'latest'"/>
   <p:option name="init-repo-uri" select="''"/>
   <p:option name="depify_config" select="'.depify.xml'"/>
+  <p:option name="depify_dir" select="''"/>
   <p:option name="app_dir" select="'.'"/>
   <p:option name="app_dir_lib" select="'lib'"/>
   <p:option name="download_master_if_version_does_not_exist" select="true()"/>
@@ -152,7 +153,6 @@ limitations under the License.
         <p:variable name="package-repo-uri"
                     select="concat(if(ends-with($repo-uri,'.git'))
                             then substring-before($repo-uri,'.git') else $repo-uri,'/archive/master.zip')"/>
-      
         <!-- download zip file //-->
         <p:when test="contains($repo-uri,'.zip')">
           <p:variable name="package-repo-uri" select="$repo-uri"/>
@@ -170,7 +170,7 @@ limitations under the License.
           <p:choose>
             <p:when test="$latest-asset ne ''">
               <cx:message>
-                <p:with-option name="message" select="concat('downloading ',$package,' from ',$latest-asset)"/>
+                <p:with-option name="message" select="concat('downloading latest release ',$package,' from ',$latest-asset)"/>
               </cx:message>
               <impl:get-package-from-github-repo>
                 <p:with-option name="github-download-uri" select="$latest-asset"/>
@@ -195,7 +195,7 @@ limitations under the License.
           <p:choose>
             <p:when test="$specific-asset ne ''">
               <cx:message>
-                <p:with-option name="message" select="concat('downloading ',$package,' ',$version,' from ',$specific-asset)"/>
+                <p:with-option name="message" select="concat('downloading specific release ',$package,' ',$version,' from ',$specific-asset)"/>
               </cx:message>              
               <impl:get-package-from-github-repo>
                 <p:with-option name="github-download-uri" select="$specific-asset"/>

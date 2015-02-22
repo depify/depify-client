@@ -3,12 +3,6 @@
     version="2.0">
     <xsl:output method="text" indent="no" encoding="UTF-8" />
     <xsl:template match="/"><installremove>
-       -----------------------------\n
-      depify 1.0 \n
-      copyright (c)2015 Jim Fuller \n
-      see https://github.com/depify \n
-      -----------------------------\n
-      \n
       installed package:
       
       <xsl:text>
@@ -16,10 +10,17 @@
     <xsl:apply-templates/>
   </installremove>
     </xsl:template>
-    <xsl:template match="*:depify">
+    <xsl:template match="depify:depify">
       \n\n
-\033[1;34m<xsl:value-of select="@name"/>\033[0m [v<xsl:value-of select="@version"/>] - <xsl:value-of select="@repo-uri"/><xsl:text>
-</xsl:text>
+\033[1;34m<xsl:value-of select="@name"/>\033[0m [v<xsl:value-of select="@version"/>] - <xsl:value-of select="@repo-uri"/>\n
+
+      <xsl:if test="depify:xproc">\n
+      package contains xproc library\n  
+      xproc version <xsl:value-of select="depify:xproc/@version"/>\n
+      library - <xsl:value-of select="depify:xproc/@library-uri"/>\n   
+      ns - <xsl:value-of select="depify:xproc/@ns"/>\n
+      jar - <xsl:value-of select="depify:xproc/@jar"/>\n
+      </xsl:if>
 
     </xsl:template>
     <xsl:template match="text()"/>

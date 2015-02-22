@@ -5,9 +5,9 @@
                 version="2.0">
   <xsl:output method="xml" indent="no" encoding="UTF-8" />
   <xsl:param name="app_dir_lib"/>
-    <xsl:template match="depify:depify[depify:xproc]">
+    <xsl:template match="/">
       <p:library version="1.0">
-          <xsl:apply-templates select="depify:xproc"/>
+          <xsl:apply-templates/>
       </p:library>
     </xsl:template>
     <xsl:template match="depify:xproc">

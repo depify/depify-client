@@ -29,6 +29,8 @@ INITREPO=$4
 APP_DIR=$CURRENTDIR
 LIB_DIR=/lib/
 DEPIFY_CONFIG=.depify.xml
+LOG4J= #-Dlog4j.configurationFile=/Users/jfuller/test/log4j.xml
+QUIET=0
 #####################################################################
 
 while getopts 'c:p:v:a::l:h' OPTION
@@ -58,7 +60,7 @@ if [ "$1" == "help" ]; then
     VERSION=""
 fi
 
-depify_run="java -cp "$DEPIFY_DIR/resolver.properties" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR/.depify.xml -oresult=- -Xtransparent-json $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR depify_config=$DEPIFY_CONFIG"
+depify_run="java $LOG4J -cp "$DEPIFY_DIR/resolver.properties:lib/example-library-ext.jar" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR/.depify.xml -oresult=- -Xtransparent-json $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR depify_config=$DEPIFY_CONFIG depify_dir=$DEPIFY_DIR"
 
 # create lib directory if it does not exist
 if [ ! -d ".$LIB_DIR" ]; then
@@ -71,5 +73,8 @@ if  [ ! -e "$CURRENTDIR/.depify.xml" ]; then
     echo '<depify xmlns="https://github.com/xquery/depify"/>' > $CURRENTDIR/.depify.xml    
 fi
 
+if [[ $QUIET -eq 0 ]] ; then
+    echo "depify 1.0 | copyright (c)2015 Jim Fuller | see https://github.com/depify"
+fi
 # run xproc pipeline
 echo -e `$depify_run`

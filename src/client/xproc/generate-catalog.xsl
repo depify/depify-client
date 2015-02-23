@@ -17,6 +17,12 @@
       </uri> 
       <xsl:apply-templates select="depify:catalog"/>
     </xsl:template>
+    <xsl:template match="depify:xproc">
+      <uri name="{@ns}#library.xpl">
+            <xsl:attribute name="uri" select="concat(replace($app_dir_lib,'/',''),'/',@library-uri)"/>
+      </uri> 
+      <xsl:apply-templates select="depify:catalog"/>
+    </xsl:template>
     <xsl:template match="depify:catalog">
       <uri name="{@name}">
         <xsl:choose>

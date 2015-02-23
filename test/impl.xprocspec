@@ -122,7 +122,7 @@
       <x:document type="port" port="result"/>
     </x:context>
     <x:expect type="compare" label="Check correct contents">
-      <x:document type="file" href="data/package.xml"/>
+      <x:document type="file" href="http://depify.com/packages/package.xml"/>
     </x:expect>
   </x:scenario>
 

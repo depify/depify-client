@@ -13,11 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
-DEPIFY_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+if [ -z "$JAVA" ]; then
+    JAVA=java
+fi
 
-CURRENTDIR=`pwd`
+function real_dir() {
+  MYDIR=$(echo "${1%/*}")
+  if [ "$MYDIR" = "$1" ]; then MYDIR="."; fi
+  (cd "$MYDIR" && echo "$(pwd -P)")
+}
+
+DEPIFY_DIR=$(real_dir "${BASH_SOURCE[0]}")
+CURRENTDIR=$(real_dir .)
 
 #default values
 #####################################################################
@@ -60,7 +67,26 @@ if [ "$1" == "help" ]; then
     VERSION=""
 fi
 
-depify_run="java $LOG4J -cp "$DEPIFY_DIR/resolver.properties:lib/example-library-ext.jar" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR/.depify.xml -oresult=- -Xtransparent-json $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR depify_config=$DEPIFY_CONFIG depify_dir=$DEPIFY_DIR"
+CLASSPATH="$DEPIFY_DIR/resolver.properties:lib/example-library-ext.jar"
+
+CURRENTDIR_URI=file:"$CURRENTDIR"
+
+# Are we on cygwin?
+cygwin=false;
+case "`uname`" in
+  CYGWIN*) cygwin=true;
+esac
+# Is it a Windows Java binary?
+javawin0=$("$JAVA" -XshowSettings:properties 2>&1 |grep 'os\.name' | grep Windows > /dev/null; echo $?)
+
+if [[ $cygwin && $javawin0 -eq 0 ]]; then
+  CLASSPATH=$(cygpath -map $CLASSPATH)
+  DEPIFY_DIR=$(cygpath -ma $DEPIFY_DIR)
+  CURRENTDIR_URI=file:/$(cygpath -ma $CURRENTDIR)
+fi
+
+# Put it in a list so that we can haz whitespace in the expanded variables:
+depify_run=("$JAVA" $LOG4J -cp "$CLASSPATH" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR_URI/.depify.xml -oresult=- -Xtransparent-json $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR depify_config=$DEPIFY_CONFIG depify_dir=$DEPIFY_DIR)
 
 # create lib directory if it does not exist
 if [ ! -d ".$LIB_DIR" ]; then
@@ -76,5 +102,6 @@ fi
 if [[ $QUIET -eq 0 ]] ; then
     echo "depify 1.0 | copyright (c)2015 Jim Fuller | see https://github.com/depify"
 fi
+
 # run xproc pipeline
-echo -e `$depify_run`
+echo -e $("${depify_run[@]}")

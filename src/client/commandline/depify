@@ -13,6 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#identify env
+darwin=false;
+cygwin=false;
+case "`uname`" in
+  DARWIN*) darwin=true;;
+  CYGWIN*) cygwin=true;;
+esac
+
 if [ -z "$JAVA" ]; then
     JAVA=java
 fi
@@ -23,7 +31,18 @@ function real_dir() {
   (cd "$MYDIR" && echo "$(pwd -P)")
 }
 
-DEPIFY_DIR=$(real_dir "${BASH_SOURCE[0]}")
+if [[ $darwin -eq 0 ]]; then
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DEPIFY_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+else
+    DEPIFY_DIR=$(real_dir "${BASH_SOURCE[0]}")
+fi
+
 CURRENTDIR=$(real_dir .)
 
 #default values
@@ -71,11 +90,6 @@ CLASSPATH="$DEPIFY_DIR/resolver.properties:lib/example-library-ext.jar"
 
 CURRENTDIR_URI=file:"$CURRENTDIR"
 
-# Are we on cygwin?
-cygwin=false;
-case "`uname`" in
-  CYGWIN*) cygwin=true;
-esac
 # Is it a Windows Java binary?
 javawin0=$("$JAVA" -XshowSettings:properties 2>&1 |grep 'os\.name' | grep Windows > /dev/null; echo $?)
 

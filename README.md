@@ -59,7 +59,9 @@ depify init mypackage 1.0
 
 ## Using a package
 
-Import package as per normal (p:import) 
+Directly import package as per normal (p:import) 
+
+You may generate a top level library.xpl (p:library) with ```depify xproc``` and import that.
 
 Alternately you may generate a catalog.xml (depify catalog) though this depends on if the package author provided a catalog definition (example in [xprocdoc](https://github.com/depify/depify-packages/blob/master/packages/master/xproc/1/xprocdoc/1.0/.depify.xml)). 
 

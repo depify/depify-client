@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>5. Examples</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.6" />
+      <link rel="stylesheet" type="text/css" href="css/default.css" />
+      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" />
+      <link href="css/db-prism.css" rel="stylesheet" />
+   </head>
+   <body>
+      <div class="page">
+         <div class="content">
+            <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="navheader">
+               <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
+                  <tr>
+                     <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="antparamnest.html" title="4 .  Parameters specified as nested elements"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Chapter  2 .  Calabash Ant Task" href="anttask.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="6 .  What not to do" href="antjustdont.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.13)
+                     </td>
+                  </tr>
+               </table>
+            </div>
+            <div class="body">
+               <section id="antexamples" class="section">
+                  <div class="section-titlepage">
+                     <h2>5. Examples</h2>
+                  </div>
+                  <section id="antexamples.2" class="section">
+                     <div class="section-titlepage">
+                        <h3>5.1. Single input, single output</h3>
+                     </div><pre class="programlisting line-numbers"><code>&lt;calabash in="in.xml" out="out1.xml" pipeline="pipeline.xpl"/&gt;</code></pre><p>What could be simpler?</p>
+                  </section>
+                  <section id="antexamples.3" class="section">
+                     <div class="section-titlepage">
+                        <h3>5.2. <code class="tag-element">pipeline</code></h3>
+                     </div><pre class="programlisting line-numbers"><code>&lt;calabash in="in.xml" out="out.xml"&gt;
+    &lt;pipeline&gt;
+        &lt;file file="pipeline.xpl" /&gt;
+    &lt;/pipeline&gt;
+&lt;/calabash&gt;</code></pre></section>
+                  <section id="antexamples.4" class="section">
+                     <div class="section-titlepage">
+                        <h3>5.3. Implicit fileset plus mapper on additional input port</h3>
+                     </div><pre class="programlisting line-numbers"><code>&lt;calabash includes="doc.xml"
+          inPort="source"
+          destdir="out"
+          extension=".compare.xml"
+          pipeline="compare-001.xpl"&gt;
+    &lt;input port="alternate"&gt;
+        &lt;globmapper from="*.xml" to="*-alt.xml" /&gt;
+    &lt;/input&gt;
+&lt;/calabash&gt;</code></pre></section>
+                  <section id="antexamples.5" class="section">
+                     <div class="section-titlepage">
+                        <h3>5.4. Fixed input, multiple mapped outputs</h3>
+                     </div><pre class="programlisting line-numbers"><code>&lt;calabash in="group-003_input1.xml" pipeline="group-003_pipeline.xpl"&gt;
+    &lt;output port="result"&gt;
+        &lt;globmapper from="*_input1.xml" to="out/*_result.xml" /&gt;
+    &lt;/output&gt;
+    &lt;output port="result2"&gt;
+        &lt;globmapper from="*_input1.xml" to="out/*_result2.xml" /&gt;
+    &lt;/output&gt;
+&lt;/calabash&gt;</code></pre></section>
+                  <section id="antexamples.6" class="section">
+                     <div class="section-titlepage">
+                        <h3>5.5. QNames</h3>
+                     </div><pre class="programlisting line-numbers"><code>&lt;calabash in="in.xml" out="out.xml" pipeline="pipeline.xpl"&gt;
+    &lt;namespace prefix="hi" uri="low" /&gt;
+    &lt;parameter name="{hi}there" value="a value" /&gt;
+    &lt;parameter name="hi:there" value="a value" /&gt;
+&lt;/calabash&gt;</code></pre><p><code class="literal">{hi}there</code> is a QName in Clark notation, where
+                        <code class="literal">hi</code> is the namespace URI and
+                        <code class="literal">there</code> is the local name; whereas
+                        <code class="literal">hi</code> in <code class="literal">hi:there</code> is
+                        a namespace prefix that is bound to the <code class="literal">low</code>
+                        namespace URI.
+                     </p>
+                  </section>
+               </section>
+            </div>
+         </div>
+         <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="navfooter">
+            <table width="100%" summary="Navigation table">
+               <tr>
+                  <td width="40%" align="left"><a title="4 .  Parameters specified as nested elements" href="antparamnest.html"><img src="img/prev.png" alt="Prev" border="0" /></a> 
+                  </td>
+                  <td width="20%" align="center"><a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a></td>
+                  <td width="40%" align="right"> <a title="6 .  What not to do" href="antjustdont.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
+               </tr>
+               <tr>
+                  <td width="40%" align="left">4 .  Parameters specified as nested elements </td>
+                  <td width="20%" align="center"><a title="Chapter  2 .  Calabash Ant Task" href="anttask.html"><img src="img/up.png" alt="Up" border="0" /></a></td>
+                  <td width="40%" align="right"> 6 .  What not to do</td>
+               </tr>
+            </table>
+         </div>
+         <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="copyrightfooter">
+            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013, 2014, 2015 Norman Walsh.
+            </p>
+         </div>
+      </div>
+   </body>
+</html>

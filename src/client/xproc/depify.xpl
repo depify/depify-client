@@ -536,7 +536,7 @@ initialize .depify\n
  see https://github.com/depify\n
  -----------------------------\n
 \n
-usage: depify [install|remove|list|info|search|catalog|library|upgrade|usage ] [package name] [package version]"\n
+usage: depify [install|remove|list|info|search|xproc|catalog|library|upgrade|usage] [package name] [package version]"\n
 \n
 install package\n
 >depify install xprocdoc\n
@@ -564,7 +564,12 @@ reinstall all packages\n
 \n
 initialize .depify\n
 >depify init mypackage 1.0\n
-
+\n
+upgrade depify client\n
+>depify upgrade\n
+\n
+help with depify client\n
+>depify usage\n
 
           </usage>
         </p:inline>

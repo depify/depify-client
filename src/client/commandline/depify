@@ -14,10 +14,8 @@
 # limitations under the License.
 
 #identify env
-darwin=false;
 cygwin=false;
 case "`uname`" in
-  DARWIN*) darwin=true;;
   CYGWIN*) cygwin=true;;
 esac
 
@@ -26,24 +24,18 @@ if [ -z "$JAVA" ]; then
 fi
 
 function real_dir() {
-  MYDIR=$(echo "${1%/*}")
-  if [ "$MYDIR" = "$1" ]; then MYDIR="."; fi
-  (cd "$MYDIR" && echo "$(pwd -P)")
+    SOURCE="$1"
+    while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+	DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+	SOURCE="$(readlink "$SOURCE")"
+	[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+    done
+    echo "$( cd -P "$( dirname "$SOURCE" )" && pwd  )"
 }
 
-if [[ $darwin -eq 0 ]]; then
-SOURCE="${BASH_SOURCE[0]}"
-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
-  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-  SOURCE="$(readlink "$SOURCE")"
-  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
-done
-DEPIFY_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-else
-    DEPIFY_DIR=$(real_dir "${BASH_SOURCE[0]}")
-fi
-
+DEPIFY_DIR=$(real_dir "${BASH_SOURCE[0]}")
 CURRENTDIR=$(real_dir .)
+
 
 #default values
 #####################################################################
@@ -110,7 +102,7 @@ fi
 # create empty depify.xml if it does not exist (run depify init)
 if  [ ! -e "$CURRENTDIR/.depify.xml" ]; then
     # run xproc pipeline
-    echo '<depify xmlns="https://github.com/xquery/depify"/>' > $CURRENTDIR/.depify.xml    
+    echo '<depify xmlns="https://github.com/xquery/depify"/>' > "$CURRENTDIR"/.depify.xml
 fi
 
 if [[ $QUIET -eq 0 ]] ; then

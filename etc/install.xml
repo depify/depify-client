@@ -7,14 +7,12 @@
   <info>
     <appname>depify-client</appname>
     <appversion>1.0</appversion>
-    
-    <appsubpath>depify-1.0</appsubpath>
-    
+    <appsubpath>depify-1.0.1</appsubpath>
     <authors>
       <author name="James Fuller" email="jim.fuller@webcomposite.com"/>
     </authors>
     <url>http://depify.com</url>
-    <javaversion>1.5</javaversion>
+    <javaversion>1.7</javaversion>
   </info>
   
   <!--
@@ -32,9 +30,8 @@
       The ids must be these ones if you want to use the LicencePanel and/or
       the InfoPanel.
   -->
-  <resources>
-    
-    <res id="LicencePanel.licence" src="../LICENSE"/>
+  <resources>    
+    <res id="LicencePanel.licence" src="LICENSE"/>
   </resources>
   
   <!--
@@ -58,12 +55,11 @@
   <packs>
     <pack name="Base" required="yes">
       <description>The base files</description>
-      <fileset dir="depify-1.0" targetdir="$INSTALL_PATH"/>
+      <fileset dir="." targetdir="$INSTALL_PATH"/>
       <parsable type="shell" targetfile="$INSTALL_PATH/depify"/>
       <!--parsable type="shell" targetfile="$INSTALL_PATH/depify.bat"/-->
       <executable targetfile="$INSTALL_PATH/depify" stage="never"/>
       <!--executable targetfile="$INSTALL_PATH/depify.bat" stage="never"/-->
-      <executable targetfile="$INSTALL_PATH/deps/xmlcalabash/calabash" stage="never"/>      
     </pack>
   </packs>
 </installation>

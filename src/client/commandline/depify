@@ -78,7 +78,7 @@ if [ "$1" == "help" ]; then
     VERSION=""
 fi
 
-CLASSPATH="$DEPIFY_DIR/resolver.properties:lib/example-library-ext.jar"
+CLASSPATH="$CLASSPATH:$DEPIFY_DIR/resolver.properties"
 
 CURRENTDIR_URI=file:"$CURRENTDIR"
 

@@ -1,27 +1,41 @@
-apply plugin: 'izpack'
-
-defaultTasks 'assemble', 'test'
-
-ant.importBuild 'build.xml'
-
 buildscript {
-
   repositories {
     mavenCentral()
     jcenter()
+    maven { url "http://maven.restlet.org" }
+    maven { url "http://developer.marklogic.com/maven2" }
   }
-
   dependencies {
     classpath 'com.thaiopensource:jing:20091111'
-    classpath group: 'net.sf.saxon', name:'Saxon-HE', version:'9.5.1-6'
-    classpath group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.0.13-94'
-    classpath 'org.gradle.api.plugins:gradle-izpack-plugin:0.2.3'
+    classpath group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.0.29-96'
+    classpath 'com.bmuschko:gradle-izpack-plugin:2.0'
   }
+}
+
+plugins {
+  id "java"
+  id "maven"
+  id "com.bmuschko.izpack" version "2.0"
+  id "de.undercouch.download" version "1.2"
+}
+
+//defaultTasks 'assemble', 'test'
+//ant.importBuild 'build.xml'
+
+import de.undercouch.gradle.tasks.download.Download
+
+repositories {
+  mavenCentral()
+  maven { url "http://maven.restlet.org" }
+  maven { url "http://developer.marklogic.com/maven2" }
 }
 
 dependencies {
     izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
+    compile ([group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.0.29-96'])
 }
+
+project.ext.releaseVersion = version
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
@@ -38,9 +52,7 @@ class CalabashClientTestTask extends DefaultTask {
         "-ojunit=test/target/test-junit.xml",
       	"test/xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl"
     ]
-
-    Main.main(args as String[])
-    
+    Main.main(args as String[]) 
   }
 }
 
@@ -55,17 +67,8 @@ class CalabashImplTestTask extends DefaultTask {
         "-ojunit=test/target/impl-junit.xml",
       	"test/xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl"
     ]
-
     Main.main(args as String[])
-    
   }
-}
-println '-----------------------------'
-println 'building depify-client'
-println '-----------------------------'
-
-task assemble() {
-    outputs.upToDateWhen { false }
 }
 
 task testClient(type: CalabashClientTestTask){
@@ -76,15 +79,55 @@ task testImpl(type: CalabashImplTestTask){
     println 'running impl unit tests'
 }
 
-task test(dependsOn: [testClient,testImpl]){
-    println 'starting test'
+izpack {
+  baseDir = file("build/dist")
+  installFile = file("etc/install.xml")
+  outputFile = file("build/distributions/depify-" + version + ".jar")
 }
 
-task check(dependsOn: [test]){
-    println 'starting build'
+task generateVERSION() << {
+  def outputFile = new File("$buildDir/dist", "VERSION")
+  outputFile.withPrintWriter { writer ->
+    writer.println version
+  }
 }
 
-task buildInstaller(dependsOn: dist){
-     println "building the installer"
-     println "name: " + project.name
+task copyStuff(type: Copy) {
+  from 'LICENSE'
+  from 'src/client/commandline/depify'
+  from 'src/client/commandline/depify.bat'
+  from 'etc/saxon.xml'
+  from 'etc/xmlcalabash.xml'
+  from 'etc/resolver.properties'
+  from 'etc/catalog.xml'
+  into 'build/dist/'
 }
+
+task copyXProc(type: Copy) {
+  from 'src/client/xproc'
+  into 'build/dist/libs/xproc'
+}
+
+task copyLib(type: Copy) {
+  FileCollection runtime  = configurations.runtime
+  FileCollection lib = runtime
+
+  //temporary hack
+  lib = lib + files(["lib/httpclient-4.2.5.jar"])
+  lib = lib + files(["lib/httpcore-4.2.4.jar"])
+  
+  from lib
+  into { "build/dist/deps/xmlcalabash/lib" }
+}
+
+task tempLib(type: Copy) {
+  from "lib/calabash.jar"
+  into "build/dist/deps/xmlcalabash" 
+}
+
+task copyToDist(dependsOn: [copyStuff,copyXProc,copyLib,tempLib]){
+}
+
+task dist(dependsOn: [copyToDist,izPackCreateInstaller]){
+}
+

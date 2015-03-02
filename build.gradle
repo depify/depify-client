@@ -7,7 +7,7 @@ buildscript {
   }
   dependencies {
     classpath 'com.thaiopensource:jing:20091111'
-    classpath group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.0.29-96'
+    classpath group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.+'
     classpath 'com.bmuschko:gradle-izpack-plugin:2.0'
   }
 }
@@ -32,7 +32,8 @@ repositories {
 
 dependencies {
     izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
-    compile ([group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.0.29-96'])
+    compile (
+    [group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.+'])
 }
 
 project.ext.releaseVersion = version
@@ -105,7 +106,7 @@ task copyStuff(type: Copy) {
 
 task copyXProc(type: Copy) {
   from 'src/client/xproc'
-  into 'build/dist/libs/xproc'
+  into 'build/dist/lib/xproc'
 }
 
 task copyLib(type: Copy) {
@@ -117,12 +118,16 @@ task copyLib(type: Copy) {
   lib = lib + files(["lib/httpcore-4.2.4.jar"])
   
   from lib
-  into { "build/dist/deps/xmlcalabash/lib" }
+  into { "build/dist/lib/xmlcalabash/lib" }
 }
 
 task tempLib(type: Copy) {
-  from "lib/calabash.jar"
-  into "build/dist/deps/xmlcalabash" 
+ from("build/dist/lib/xmlcalabash/lib") {
+    include "xmlcalabash-*.jar"
+    rename 'xmlcalabash-.*.jar','calabash.jar'
+ }
+ into { "build/dist/lib/xmlcalabash" }
+
 }
 
 task copyToDist(dependsOn: [copyStuff,copyXProc,copyLib,tempLib]){

@@ -92,7 +92,7 @@ if [[ $cygwin && $javawin0 -eq 0 ]]; then
 fi
 
 # Put it in a list so that we can haz whitespace in the expanded variables:
-depify_run=("$JAVA" $LOG4J -cp "$CLASSPATH" -jar $DEPIFY_DIR/deps/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR_URI/.depify.xml -oresult=- -Xtransparent-json $DEPIFY_DIR/libs/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR depify_config=$DEPIFY_CONFIG depify_dir=$DEPIFY_DIR)
+depify_run=("$JAVA" $LOG4J -cp "$CLASSPATH" -jar $DEPIFY_DIR/lib/xmlcalabash/calabash.jar --config  $DEPIFY_DIR/xmlcalabash.xml --saxon-configuration $DEPIFY_DIR/saxon.xml -isource=$CURRENTDIR_URI/.depify.xml -oresult=- -Xtransparent-json $DEPIFY_DIR/lib/xproc/depify.xpl command="$COMMAND" package="$PACKAGE" version=$VERSION init-repo-uri="$INITREPO" app_dir=$APP_DIR app_dir_lib=$LIB_DIR depify_config=$DEPIFY_CONFIG depify_dir=$DEPIFY_DIR)
 
 # create lib directory if it does not exist
 if [ ! -d ".$LIB_DIR" ]; then

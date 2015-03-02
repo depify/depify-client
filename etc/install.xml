@@ -6,8 +6,8 @@
   -->
   <info>
     <appname>depify-client</appname>
-    <appversion>1.0</appversion>
-    <appsubpath>depify-1.0.1</appsubpath>
+    <appversion>1.0.1</appversion>
+    <appsubpath>depify</appsubpath>
     <authors>
       <author name="James Fuller" email="jim.fuller@webcomposite.com"/>
     </authors>

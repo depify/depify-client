@@ -121,16 +121,15 @@ task copyLib(type: Copy) {
   into { "build/dist/lib/xmlcalabash/lib" }
 }
 
-task tempLib(type: Copy) {
+task renameLib(type: Copy) {
  from("build/dist/lib/xmlcalabash/lib") {
     include "xmlcalabash-*.jar"
     rename 'xmlcalabash-.*.jar','calabash.jar'
  }
  into { "build/dist/lib/xmlcalabash" }
-
 }
 
-task copyToDist(dependsOn: [copyStuff,copyXProc,copyLib,tempLib]){
+task copyToDist(dependsOn: [copyStuff,copyXProc,copyLib,renameLib]){
 }
 
 task dist(dependsOn: [copyToDist,izPackCreateInstaller]){

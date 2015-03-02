@@ -8,7 +8,7 @@
   <xsl:template match="/"><xproc>
 #!/bin/sh
     
-java -cp <xsl:value-of select="$depify_dir"/>/deps/xmlcalabash/calabash.jar<xsl:for-each select="//@jar">:<xsl:value-of select="replace($app_dir_lib,'/','')"/>/<xsl:value-of select="."/></xsl:for-each> com.xmlcalabash.drivers.Main -oresult=- -Xtransparent-json "$@"</xproc>    
+java -cp <xsl:value-of select="$depify_dir"/>/lib/xmlcalabash/calabash.jar<xsl:for-each select="//@jar">:<xsl:value-of select="replace($app_dir_lib,'/','')"/>/<xsl:value-of select="."/></xsl:for-each> com.xmlcalabash.drivers.Main -oresult=- -Xtransparent-json "$@"</xproc>    
   </xsl:template>
   <xsl:template match="text()"/>
 </xsl:stylesheet> 

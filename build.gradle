@@ -121,7 +121,7 @@ task copyLib(type: Copy) {
   into { "build/dist/lib/xmlcalabash/lib" }
 }
 
-task renameLib(type: Copy) {
+task renameJar(type: Copy) {
  from("build/dist/lib/xmlcalabash/lib") {
     include "xmlcalabash-*.jar"
     rename 'xmlcalabash-.*.jar','calabash.jar'
@@ -129,9 +129,20 @@ task renameLib(type: Copy) {
  into { "build/dist/lib/xmlcalabash" }
 }
 
-task copyToDist(dependsOn: [copyStuff,copyXProc,copyLib,renameLib]){
+task removeJar(type: Delete) <<{
+    FileTree tree = fileTree (dir: "build/dist/lib/xmlcalabash/lib");  
+    tree.include "xmlcalabash-*.jar"  
+    tree.include "saxon-8.7.jar"  
+    tree.each { File file ->    
+        delete(file)  
+    }
+}
+
+task copyToDist(dependsOn: [copyStuff,copyXProc,copyLib,renameJar]) {
+
 }
 
 task dist(dependsOn: [copyToDist,izPackCreateInstaller]){
 }
 
+izPackCreateInstaller.dependsOn(removeJar)

@@ -153,7 +153,9 @@ limitations under the License.
       <p:for-each>
         <p:iteration-source select="//c:file"/>
         <p:variable name="file" select="c:file/@name"/>
-        
+
+        <p:try>
+        <p:group>  
         <cx:unzip content-type="*">
           <p:with-option name="href" select="$temp-zip-file"/>
           <p:with-option name="file" select="$file"/>
@@ -166,6 +168,14 @@ limitations under the License.
         <p:store cx:decode="true">
           <p:with-option name="href" select="concat($app_dir,$app_dir_lib,'/',$file)"/>
         </p:store>
+      </p:group>
+        <p:catch>
+          <cx:message>
+            <p:with-option name="message" select="concat('problem unzipping ',$file,' from ',$temp-zip-file)"/>
+          </cx:message>
+          <p:sink/>
+        </p:catch>
+        </p:try>
       </p:for-each>
      
     </p:declare-step>

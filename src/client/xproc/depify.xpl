@@ -465,12 +465,6 @@ limitations under the License.
       <p:input port="source">
         <p:inline>
           <usage>\n
- -----------------------------\n
- depify 1.0\n
- copyright (c) 2015 Jim Fuller\n
- see https://github.com/depify\n
- -----------------------------\n
-\n
 usage: depify [install|remove|list|info|search|catalog|library|upgrade|usage ] [package name] [package version]"\n
 \n
 install package\n
@@ -513,12 +507,6 @@ initialize .depify\n
       <p:input port="source">
         <p:inline>
           <error>\n
- -----------------------------\n
- depify 1.0\n
- copyright (c) 2015 Jim Fuller\n
- see https://github.com/depify\n
- -----------------------------\n
-\n
  .depify created.\n</error>
         </p:inline>
       </p:input>
@@ -530,12 +518,6 @@ initialize .depify\n
       <p:input port="source">
         <p:inline>
           <usage>\n
- -----------------------------\n
- depify 1.0\n
- copyright (c) 2015 Jim Fuller\n
- see https://github.com/depify\n
- -----------------------------\n
-\n
 usage: depify [install|remove|list|info|search|xproc|catalog|library|upgrade|usage] [package name] [package version]"\n
 \n
 install package\n
@@ -583,16 +565,6 @@ help with depify client\n
   <p:catch name="catch">
     <p:identity>
       <p:input port="source">
-        <p:inline>
-          <error>\n
- -----------------------------\n
- depify 1.0\n
- copyright (c) 2015 Jim Fuller\n
- see https://github.com/depify\n
- -----------------------------\n
-\n
- package or version not found.\n</error>
-        </p:inline>
         <p:pipe step="catch" port="error"/>
       </p:input>
     </p:identity>

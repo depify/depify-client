@@ -12,13 +12,13 @@
       </catalog>
     </xsl:template>
     <xsl:template match="depify:xproc[@jar][starts-with(@library-uri,'!')]">
-      <uri name="{@ns}#library.xpl">
+      <uri name="https://github.com/depify/depify-packages/tree/master{../@path}#xproc">
             <xsl:attribute name="uri" select="concat('jar:file:',replace($app_dir_lib,'/',''),'/',@jar,@library-uri)"/>
       </uri> 
       <xsl:apply-templates select="depify:catalog"/>
     </xsl:template>
     <xsl:template match="depify:xproc">
-      <uri name="{@ns}#library.xpl">
+      <uri name="https://github.com/depify/depify-packages/tree/master{../@path}#xproc">
             <xsl:attribute name="uri" select="concat(replace($app_dir_lib,'/',''),'/',@library-uri)"/>
       </uri> 
       <xsl:apply-templates select="depify:catalog"/>

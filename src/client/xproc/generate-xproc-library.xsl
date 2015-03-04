@@ -11,7 +11,7 @@
       </p:library>
     </xsl:template>
     <xsl:template match="depify:xproc">
-      <xsl:if test="@ns"><p:import href="{@ns}#library.xpl"/></xsl:if>
+      <xsl:if test="@ns"><p:import href="https://github.com/depify/depify-packages/tree/master{../@path}#xproc"/></xsl:if>
       <xsl:apply-templates select="depify:catalog"/>
     </xsl:template>
     <xsl:template match="depify:catalog">

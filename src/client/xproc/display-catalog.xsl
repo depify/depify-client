@@ -17,7 +17,7 @@
       <xsl:apply-templates/>
     </xsl:template>
     <xsl:template match="depify:xproc">
-      <xsl:value-of select="@ns"/>#library.xpl = <xsl:value-of select="concat('jar:file:',replace($app_dir_lib,'/',''),'/',@jar,'!',@library-uri)"/>\n      
+      https://github.com/depify/depify-packages/tree/master<xsl:value-of select="../@path"/>#xproc = <xsl:value-of select="concat('jar:file:',replace($app_dir_lib,'/',''),'/',@jar,'!',@library-uri)"/>\n      
 
       <xsl:apply-templates select="depify:catalog"/>
     </xsl:template>

@@ -60,14 +60,28 @@ limitations under the License.
 
   <p:try>
   <p:group>
-      
-  <p:filter name="get-package">
-    <p:with-option name="select" select="concat('/depify:packages/depify:depify[@name eq &quot;',$package,'&quot;]')"/>
+
+  <p:choose name="get-package">
+    <p:when test="$version ne 'latest'">
+      <p:output port="result"/>
+  <p:filter>
+    <p:with-option name="select" select="concat('/depify:packages/depify:depify[@name eq &quot;',$package,'&quot;][@version eq &quot;',$version,'&quot;][1]')"/>
     <p:input port="source">
       <p:pipe step="main" port="packages"/>
     </p:input>
   </p:filter>
-  
+  </p:when>
+  <p:otherwise>
+    <p:output port="result"/>
+    <p:filter>
+      <p:with-option name="select" select="concat('/depify:packages/depify:depify[@name eq &quot;',$package,'&quot;][1]')"/>
+      <p:input port="source">
+        <p:pipe step="main" port="packages"/>
+      </p:input>
+    </p:filter>
+  </p:otherwise>
+  </p:choose>
+    
   <p:choose name="command-step">
     <p:when test="$command eq 'init' and not(doc-available( concat($app_dir,'/',$depify_config) ))">
       <p:output port="result"/>

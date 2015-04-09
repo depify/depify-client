@@ -4,5 +4,5 @@
    "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
   <uri name="urn:depify"
-    uri="/Applications/depify-1.0/libs/xproc/depify.xpl"/>
+    uri="/Applications/depify/libs/xproc/depify.xpl"/>
 </catalog>

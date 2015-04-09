@@ -141,6 +141,7 @@ task removeJar(type: Delete) <<{
 task copyToDist(dependsOn: [copyStuff,copyXProc,copyLib,renameJar]) {
 
 }
+copyToDist.dependsOn(generateVERSION)
 
 task dist(dependsOn: [copyToDist,izPackCreateInstaller]){
 }

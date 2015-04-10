@@ -111,3 +111,7 @@ fi
 
 # run xproc pipeline
 echo -e $("${depify_run[@]}")
+
+if [ -f $CURRENTDIR/xproc.sh ]; then
+    chmod -f 0700 $CURRENTDIR/xproc.sh
+fi

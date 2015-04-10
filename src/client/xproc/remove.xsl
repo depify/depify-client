@@ -12,7 +12,7 @@
     </xsl:template>
     <xsl:template match="*:depify">
       \n\n
-\033[1;34m<xsl:value-of select="@name"/>\033[0m [v<xsl:value-of select="@version"/>] - <xsl:value-of select="@repo-uri"/>\n<xsl:text>
+\033[1;34m<xsl:value-of select="@name"/>\033[0m [<xsl:value-of select="@version"/>] - <xsl:value-of select="@repo-uri"/>\n<xsl:text>
 </xsl:text>
 
     </xsl:template>

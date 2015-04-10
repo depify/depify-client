@@ -449,6 +449,33 @@ limitations under the License.
       </p:xslt>    
     </p:when>
     <p:when test="$command eq 'install' and $package ne ''">
+      <impl:generate-xproc>
+        <p:input port="source">
+          <p:pipe step="command-step" port="result"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+        <p:with-option name="app_dir" select="$app_dir"/>
+      </impl:generate-xproc>
+      <impl:generate-catalog>
+        <p:input port="source">
+          <p:pipe step="command-step" port="result"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+        <p:with-option name="app_dir" select="$app_dir"/>
+      </impl:generate-catalog>    
+      <impl:generate-xproc-library>
+        <p:input port="source">
+          <p:pipe step="command-step" port="result"/>
+        </p:input>
+        <p:input port="parameters">
+          <p:pipe step="vars" port="result"/>
+        </p:input>
+        <p:with-option name="app_dir" select="$app_dir"/>
+      </impl:generate-xproc-library>
       <p:xslt>
         <p:input port="source">
           <p:pipe step="get-package" port="result"/>
@@ -473,49 +500,7 @@ limitations under the License.
             <p:pipe step="vars" port="result"/>
           </p:input>
       </p:xslt>    
-    </p:when>        
-    <p:when test="$command eq 'usage'">
-      <p:identity>
-      <p:input port="source">
-        <p:inline>
-          <usage>\n
-usage: depify [install|remove|list|info|search|catalog|library|upgrade|usage ] [package name] [package version]"\n
-\n
-install package\n
->depify install xprocdoc\n
-\n
-remove package\n
->depify remove xprocdoc\n
-\n
-info package\n
->depify info xprocdoc\n
-\n
-list installed packages\n
->depify list\n
-\n
-search all packages\n
->depify search xproc\n
-\n
-generate xmlresolver catalog\n
->depify catalog\n
-\n
-generate xproc library\n
->depify library\n
-\n
-reinstall all packages\n
->depify install\n
-\n
-initialize .depify\n
->depify init mypackage 1.0\n
-
-
-          </usage>
-        </p:inline>
-      </p:input>
-    </p:identity>
-
-
-    </p:when>        
+    </p:when>            
     <p:when test="$command eq 'init'">
     <p:identity>
       <p:input port="source">
@@ -525,14 +510,13 @@ initialize .depify\n
         </p:inline>
       </p:input>
     </p:identity>
-      
     </p:when>
     <p:otherwise> 
       <p:identity>
       <p:input port="source">
         <p:inline>
           <usage>\n
-usage: depify [install|remove|list|info|search|xproc|catalog|library|upgrade|usage] [package name] [package version]"\n
+usage: depify [install|remove|list|info|search|xproc|catalog|library|upgrade|help] [package name] [package version]"\n
 \n
 install package\n
 >depify install xprocdoc\n
@@ -565,7 +549,7 @@ upgrade depify client\n
 >depify upgrade\n
 \n
 help with depify client\n
->depify usage\n
+>depify help\n
 
           </usage>
         </p:inline>

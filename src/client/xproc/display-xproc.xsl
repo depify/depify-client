@@ -8,7 +8,7 @@
   </xproc>
     </xsl:template>
     <xsl:template match="*:depify">
-      \033[1;34m<xsl:value-of select="@name"/>\033[0m [v<xsl:value-of select="@version"/>] - <xsl:value-of select="*/*:catalog/@name"/>=<xsl:value-of select="*/*:catalog/@uri"/>\n
+      \033[1;34m<xsl:value-of select="@name"/>\033[0m [<xsl:value-of select="@version"/>] - <xsl:value-of select="*/*:catalog/@name"/>=<xsl:value-of select="*/*:catalog/@uri"/>\n
     </xsl:template>
     <xsl:template match="text()"/>
 </xsl:stylesheet> 

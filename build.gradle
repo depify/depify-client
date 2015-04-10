@@ -7,7 +7,7 @@ buildscript {
   }
   dependencies {
     classpath 'com.thaiopensource:jing:20091111'
-    classpath group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.+'
+    classpath group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.1+'
     classpath 'com.bmuschko:gradle-izpack-plugin:2.0'
   }
 }
@@ -26,6 +26,7 @@ import de.undercouch.gradle.tasks.download.Download
 
 repositories {
   mavenCentral()
+  jcenter()
   maven { url "http://maven.restlet.org" }
   maven { url "http://developer.marklogic.com/maven2" }
 }
@@ -33,7 +34,7 @@ repositories {
 dependencies {
     izpack 'org.codehaus.izpack:izpack-standalone-compiler:4.3.4'
     compile (
-    [group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.+'])
+    [group: 'com.xmlcalabash', name:'xmlcalabash', version:'1.1+'])
 }
 
 project.ext.releaseVersion = version
@@ -42,51 +43,50 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 import com.xmlcalabash.drivers.Main
 
-class CalabashClientTestTask extends DefaultTask {
+class xprocspecTask extends DefaultTask {
+
+@Input
+String xspecSource
+
+@Input
+String htmlReport
+
+@Input
+String junitReport
+
+@Input
+String xmlReport
 
 @TaskAction
   def calabashAction() {
     def args = [
-        "-isource=test/test.xprocspec",
-    	"-oresult=test/target/test.xml",
-    	"-ohtml=test/target/test.html",
-        "-ojunit=test/target/test-junit.xml",
-      	"test/xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl"
-    ]
-    Main.main(args as String[]) 
-  }
-}
-
-class CalabashImplTestTask extends DefaultTask {
-
-@TaskAction
-  def calabashAction() {
-    def args = [
-        "-isource=test/impl.xprocspec",
-    	"-oresult=test/target/impl.xml",
-    	"-ohtml=test/target/impl.html",
-        "-ojunit=test/target/impl-junit.xml",
+        "-isource="+xspecSource,
+    	"-oresult="+xmlReport,
+    	"-ohtml="+htmlReport,
+        "-ojunit="+junitReport,
       	"test/xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl"
     ]
     Main.main(args as String[])
   }
 }
+task testClient(type: xprocspecTask) {
+ outputs.upToDateWhen {false}
 
-task testClient(type: CalabashClientTestTask){
-    println 'running client unit tests'
+     xspecSource="test/test.xprocspec"
+     htmlReport="$buildDir/test/target/test.html"
+     junitReport="$buildDir/test/target/test-junint.xml"
+     xmlReport="$buildDir/test/target/text.xml"
 }
 
-task testImpl(type: CalabashImplTestTask){
-    println 'running impl unit tests'
-}
+test.dependsOn(testClient)
 
 izpack {
-  baseDir = file("build/dist")
+  baseDir = file("$buildDir/dist")
   installFile = file("etc/install.xml")
-  outputFile = file("build/distributions/depify-" + version + ".jar")
+  outputFile = file("$buildDir/distributions/depify-" + version + ".jar")
 }
 
-task generateVERSION() << {
+task generateVERSION() <<{
   def outputFile = new File("$buildDir/dist", "VERSION")
   outputFile.withPrintWriter { writer ->
     writer.println version
@@ -101,49 +101,48 @@ task copyStuff(type: Copy) {
   from 'etc/xmlcalabash.xml'
   from 'etc/resolver.properties'
   from 'etc/catalog.xml'
-  into 'build/dist/'
+  into "$buildDir/dist/"
 }
 
 task copyXProc(type: Copy) {
   from 'src/client/xproc'
-  into 'build/dist/lib/xproc'
+  into "$buildDir/dist/lib/xproc"
 }
 
 task copyLib(type: Copy) {
   FileCollection runtime  = configurations.runtime
   FileCollection lib = runtime
-
-  //temporary hack
-  lib = lib + files(["lib/httpclient-4.2.5.jar"])
-  lib = lib + files(["lib/httpcore-4.2.4.jar"])
-  
   from lib
-  into { "build/dist/lib/xmlcalabash/lib" }
+  into { "$buildDir/dist/lib/xmlcalabash/lib" }
 }
 
-task renameJar(type: Copy) {
- from("build/dist/lib/xmlcalabash/lib") {
+task renameJar(type: Copy)  {
+ from("$buildDir/dist/lib/xmlcalabash/lib") {
     include "xmlcalabash-*.jar"
     rename 'xmlcalabash-.*.jar','calabash.jar'
  }
- into { "build/dist/lib/xmlcalabash" }
+ into { "$buildDir/dist/lib/xmlcalabash" }
 }
 
 task removeJar(type: Delete) <<{
     FileTree tree = fileTree (dir: "build/dist/lib/xmlcalabash/lib");  
     tree.include "xmlcalabash-*.jar"  
-    tree.include "saxon-8.7.jar"  
+    //tree.include "saxon-8.7.jar"  
     tree.each { File file ->    
         delete(file)  
     }
 }
 
-task copyToDist(dependsOn: [copyStuff,copyXProc,copyLib,renameJar]) {
-
+task copyToDist(dependsOn: [generateVERSION,copyStuff,copyXProc,copyLib,renameJar])<< {
 }
+
 copyToDist.dependsOn(generateVERSION)
 
-task dist(dependsOn: [copyToDist,izPackCreateInstaller]){
+task makeDist(dependsOn: [copyToDist,izPackCreateInstaller ]) << {
+  println "Created distribution in build/dist"
+}
+
+task dist(dependsOn:makeDist){
 }
 
 izPackCreateInstaller.dependsOn(removeJar)
